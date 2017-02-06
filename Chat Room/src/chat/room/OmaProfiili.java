@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class OmaProfiili extends JFrame {
@@ -20,24 +21,23 @@ public class OmaProfiili extends JFrame {
     private JPanel pohja = new JPanel(new GridLayout(3, 1));
     private JPanel First = new JPanel(new FlowLayout(FlowLayout.CENTER));
     private JPanel biop = new JPanel(new FlowLayout(FlowLayout.CENTER));
-    private JPanel pwp = new JPanel(new FlowLayout(FlowLayout.CENTER));
-    private JPanel loginp = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-    private JLabel lbNickname = new JLabel("Nickname");
+    private JLabel lbNn = new JLabel("Nickname");
+    private JLabel lbpic = new JLabel("Picture");
+    private JLabel lbload = new JLabel("Select");
+
     private JLabel lbBio = new JLabel("Bio");
 
     private JTextField tfNn = new JTextField(15);
-    private JTextField tfBio = new JTextField(15);   
-    private JButton save = new JButton("save");
-    private JButton Back = new JButton("back");
+    private JTextArea tfBio = new JTextArea("memems");   
+    private JButton save = new JButton("Save");
+    private JButton Back = new JButton("Back");
+    private JButton Load = new JButton("Load");
 
 
     public OmaProfiili() {
-        GridLayout gap = (GridLayout) pohja.getLayout();
-        gap.setHgap(25);
-        gap.setVgap(0);
-        FlowLayout gaps = (FlowLayout) biop.getLayout();
-        gaps.setVgap(25);
+        
+        Asetukset();        
         this.setTitle("Oma Profiili");
         this.setSize(600, 350);
         this.setLocationRelativeTo(null);
@@ -45,10 +45,36 @@ public class OmaProfiili extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         asetteleKomponentit();
         this.setVisible(true);
+        
+    }
+    private void Asetukset(){
+        GridLayout gap = (GridLayout) pohja.getLayout();
+        gap.setHgap(25);
+        gap.setVgap(0);
+        FlowLayout gaps = (FlowLayout) biop.getLayout();
+        gaps.setVgap(25);
+        
+        tfBio.setWrapStyleWord(true);
+        tfBio.setLineWrap(true);
+        tfBio.setWrapStyleWord(true);
+        tfBio.setLineWrap(true);
+        tfBio.setColumns(20);
+        tfBio.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        tfBio.setRows(5);
+        tfBio.setSize(200,200);
+
     }
 
     private void asetteleKomponentit() {
-        fontChange();
+        First.add(lbNn);
+        First.add(tfNn);
+        First.add(lbpic);
+        First.add(lbload);
+        First.add(Load);
+        biop.add(lbBio);
+        biop.add(tfBio);
+        pohja.add(First);
+        pohja.add(biop);
         this.add(pohja);
     }
 
@@ -56,7 +82,7 @@ public class OmaProfiili extends JFrame {
         OmaProfiili k = new OmaProfiili();
     }
 
-    private void fontChange() {
+    private void fontChange(JLabel lbTitle) {
         Font labelFont = lbTitle.getFont();
         String labelText = lbTitle.getText();
 
