@@ -44,7 +44,7 @@ public class Profiili {
         return this.location;
     }
     public String toString() {
-        return "" + this.ID + this.Username + this.etunimi + this.sukunimi + this.nickname + this.ika + this.bio + this.location;
+        return "" + this.ID+ " " + this.Username +" "+ this.etunimi + " "+ this.sukunimi + " "+ this.nickname + " "+ this.ika + " "+ this.bio + " " + this.location;
     }
 }
 
