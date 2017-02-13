@@ -1,0 +1,13 @@
+CREATE TABLE Profile
+(
+ProfileID int IDENTITY(1,1) PRIMARY KEY,
+etunimi varchar(20),
+sukunimi varchar(20),
+nickname varchar(20) not null,
+username varchar(12) not null,
+password varchar(50) not null,
+email varchar(45),
+ika varchar(3),
+bio varchar(255),
+location varchar(40)
+);
