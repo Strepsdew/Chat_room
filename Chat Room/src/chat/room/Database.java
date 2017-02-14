@@ -53,7 +53,8 @@ public class Database {
                 int ika = rs.getInt("ika");
                 String bio = rs.getString("bio");
                 String location = rs.getString("location");
-                Profiili k = new Profiili(id,username,etunimi,sukunimi,nickname,ika,bio,location);
+                String email = rs.getString("email");
+                Profiili k = new Profiili(id,username,etunimi,sukunimi,nickname,ika,bio,location,email);
                 profiilit.add(k);
             }
             
@@ -87,7 +88,28 @@ public class Database {
         }
      return false;
     }
-        public static String md5(String input) {
+    public void updateProfiili(int id,String nickname,int ika, String bio,String location) {
+       try{
+           connection = DriverManager.getConnection(connectionString);
+           String query ="Update Profile set nickname=? ika=? bio=? location=? where ProfiiliID=?";
+           prepsInsertProduct = connection.prepareStatement(query);
+           prepsInsertProduct.setString(1, nickname);
+           prepsInsertProduct.setInt(2,ika);
+           prepsInsertProduct.setString(3, bio);
+           prepsInsertProduct.setString(4, location);
+           prepsInsertProduct.setInt(5, id);           
+           prepsInsertProduct.executeUpdate();
+       }catch (Exception ex) {
+           System.out.println("Error in updateProfiili : " +ex);
+       }
+    }
+        
+    public static void main(String[] args) {
+        Database k = new Database();
+        ArrayList<Profiili> l = new ArrayList<>();
+        k.createUser("peke", "peke","peke","peke", "peke");
+    }
+            public static String md5(String input) {
 
         String md5 = null;
 
@@ -111,10 +133,5 @@ public class Database {
             e.printStackTrace();
         }
         return md5;
-    }
-    public static void main(String[] args) {
-        Database k = new Database();
-        ArrayList<Profiili> l = new ArrayList<>();
-        k.createUser("peke", "peke","peke","peke", "peke");
     }
 }
