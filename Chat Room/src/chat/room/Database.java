@@ -40,7 +40,7 @@ public class Database {
         ArrayList<Profiili> profiilit = new ArrayList<>();
         try {
             connection = DriverManager.getConnection(connectionString);
-            String query = "select * from Profile where username=?";
+            String query = "select * from profile where username=?";
             prepsInsertProduct = connection.prepareStatement(query);
             prepsInsertProduct.setString(1, nimi);
             rs=prepsInsertProduct.executeQuery();
@@ -64,6 +64,20 @@ public class Database {
         }
         return profiilit;
     }
+    public String getHashPassword(String input) {
+        try {
+            connection = DriverManager.getConnection(connectionString);
+            String query = "select password from profile where nickname=?";
+            prepsInsertProduct = connection.prepareStatement(query);
+            prepsInsertProduct.setString(1, input);
+            rs=prepsInsertProduct.executeQuery();
+            String pw = rs.getString("password");
+            return pw;
+        }catch (Exception ex){
+            System.out.println("error in getHashPassword : "+ ex);
+            return null;
+        }
+    }
     public boolean createUser(String Username,String etunimi,String sukunimi, String nickname,String password) {
         ArrayList<Profiili> k = new ArrayList<>();
         k = selectProfiiliByUsername(Username);
@@ -72,7 +86,7 @@ public class Database {
             System.out.println("you is in");
             try {
                 connection = DriverManager.getConnection(connectionString);
-                String query = "INSERT INTO Profile (username,etunimi,sukunimi,nickname,password) values (?,?,?,?,?)";
+                String query = "INSERT INTO profile (username,etunimi,sukunimi,nickname,password) values (?,?,?,?,?)";
                 prepsInsertProduct = connection.prepareStatement(query);
                 prepsInsertProduct.setString(1, Username);
                 prepsInsertProduct.setString(2, etunimi);
@@ -91,7 +105,7 @@ public class Database {
     public void updateProfiili(int id,String nickname,int ika, String bio,String location) {
        try{
            connection = DriverManager.getConnection(connectionString);
-           String query ="Update Profile set nickname=? ika=? bio=? location=? where ProfiiliID=?";
+           String query ="Update profile set nickname=? ika=? bio=? location=? where ProfiiliID=?";
            prepsInsertProduct = connection.prepareStatement(query);
            prepsInsertProduct.setString(1, nickname);
            prepsInsertProduct.setInt(2,ika);
@@ -107,7 +121,7 @@ public class Database {
     public static void main(String[] args) {
         Database k = new Database();
         ArrayList<Profiili> l = new ArrayList<>();
-        k.createUser("peke", "peke","peke","peke", "peke");
+        System.out.println(k.getHashPassword("pekka"));
     }
             public static String md5(String input) {
 
