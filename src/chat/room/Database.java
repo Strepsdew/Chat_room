@@ -22,7 +22,7 @@ public class Database {
             connectionString
                     = "jdbc:sqlserver://chatservu.database.windows.net:1433;"
                     + "database=Chat_Room;"
-                    + "user=Strepsdew@chatservu;"
+                    + "user=Ohjelma@chatservu;"
                     + "password=Tämäonkiva1;"
                     + "encrypt=true;"
                     + "trustServerCertificate=false;"
