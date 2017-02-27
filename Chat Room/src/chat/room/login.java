@@ -7,6 +7,9 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -47,8 +50,18 @@ public class login extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         asetteleKomponentit();
         this.setVisible(true);
+        
+        Register.addMouseListener(new MouseAdapter()  
+                {  
+        public void mouseClicked(MouseEvent e)  
+         {  
+             Register k = new Register();
+        }  
+    });
     }
+    
 
+    
     private void asetteleKomponentit() {
         fontChange();
         titlep.add(lbTitle);
@@ -66,7 +79,6 @@ public class login extends JFrame {
     }
 
     public static void main(String[] args) {
-        login k = new login();
     }
 
     private void fontChange() {
