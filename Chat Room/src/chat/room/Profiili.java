@@ -8,8 +8,9 @@ public class Profiili {
     private int ika;
     private String bio;
     private String location;
+    private String email;
     
-    public Profiili(int id,String Username,String etunimi,String sukunimi, String nickname,int ika, String bio,String location) {
+    public Profiili(int id,String Username,String etunimi,String sukunimi, String nickname,int ika, String bio,String location,String email) {
         this.ID = id;
         this.Username = Username;
         this.etunimi = etunimi;
@@ -18,6 +19,7 @@ public class Profiili {
         this.ika = ika;
         this.bio = bio;
         this.location = location;
+        this.email = email;
     }
     public int getId() {
         return this.ID;
@@ -43,8 +45,11 @@ public class Profiili {
     public String getLocation() {
         return this.location;
     }
+    public String getEmail() {
+        return this.email;
+    }
     public String toString() {
-        return "" + this.ID + this.Username + this.etunimi + this.sukunimi + this.nickname + this.ika + this.bio + this.location;
+        return "" + this.ID+ " " + this.Username +" "+ this.etunimi + " "+ this.sukunimi + " "+ this.nickname + " "+ this.ika + " "+ this.bio + " " + this.location + " " + this.email;
     }
 }
 
