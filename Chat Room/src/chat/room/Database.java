@@ -12,7 +12,7 @@ public class Database {
     Statement statement = null;
     ResultSet rs = null;
     PreparedStatement prepsInsertProduct = null;
-    String connectionString;
+    String connectionString;    
 
     public Database() {
 
@@ -64,19 +64,23 @@ public class Database {
         }
         return profiilit;
     }
-    public String getHashPassword(String input) {
+    public Object getHashPasswordByNickname(String username) {
         try {
             connection = DriverManager.getConnection(connectionString);
             String query = "select password from profile where nickname=?";
             prepsInsertProduct = connection.prepareStatement(query);
-            prepsInsertProduct.setString(1, input);
+            prepsInsertProduct.setString(1, username);
             rs=prepsInsertProduct.executeQuery();
-            String pw = rs.getString("password");
-            return pw;
+            if(rs.next()) {
+            Object jotain = rs.getObject("password");
+                System.out.println(jotain);
+            return jotain;
+            }
         }catch (Exception ex){
-            System.out.println("error in getHashPassword : "+ ex);
+            System.out.println("error in getHashPasswordByNickname : "+ ex);
             return null;
         }
+        return null;
     }
     public boolean createUser(String Username,String etunimi,String sukunimi, String nickname,String password) {
         ArrayList<Profiili> k = new ArrayList<>();
@@ -86,13 +90,12 @@ public class Database {
             System.out.println("you is in");
             try {
                 connection = DriverManager.getConnection(connectionString);
-                String query = "INSERT INTO profile (username,etunimi,sukunimi,nickname,password) values (?,?,?,?,?)";
+                String query = "INSERT INTO profile (username,etunimi,sukunimi,nickname,password) values (?,?,?,?,PWDENCRYPT(?))";
                 prepsInsertProduct = connection.prepareStatement(query);
                 prepsInsertProduct.setString(1, Username);
                 prepsInsertProduct.setString(2, etunimi);
                 prepsInsertProduct.setString(3, sukunimi);
                 prepsInsertProduct.setString(4, nickname);
-                password = md5(password);
                 prepsInsertProduct.setString(5, password);
                 prepsInsertProduct.executeUpdate();
             } catch (Exception ex) {
@@ -101,6 +104,27 @@ public class Database {
             return true;
         }
      return false;
+    }
+    public boolean checkPassword(String nickname,String pw) {
+        Object hash = getHashPasswordByNickname(nickname);
+        try {
+            connection = DriverManager.getConnection(connectionString);
+            String query = "select PWDCOMPARE (?,?)";
+            prepsInsertProduct = connection.prepareStatement(query);
+            prepsInsertProduct.setString(1, pw);
+            prepsInsertProduct.setObject(2, hash);
+            rs=prepsInsertProduct.executeQuery();
+            if (rs.next()) {
+                if(rs.getInt(1)==1){
+                    System.out.println("Toimii ");
+                    return true;
+                }
+            }
+        }catch (Exception ex){
+            System.out.println("error in checkPassword : "+ ex);
+            return false;
+        }
+        return false;
     }
     public void updateProfiili(int id,String nickname,int ika, String bio,String location) {
        try{
@@ -121,31 +145,5 @@ public class Database {
     public static void main(String[] args) {
         Database k = new Database();
         ArrayList<Profiili> l = new ArrayList<>();
-        System.out.println(k.getHashPassword("pekka"));
-    }
-            public static String md5(String input) {
-
-        String md5 = null;
-
-        if (null == input) {
-            return null;
-        }
-
-        try {
-
-            //Create MessageDigest object for MD5
-            MessageDigest digest = MessageDigest.getInstance("MD5");
-
-            //Update input string in message digest
-            digest.update(input.getBytes(), 0, input.length());
-
-            //Converts message digest value in base 16 (hex) 
-            md5 = new BigInteger(1, digest.digest()).toString(16);
-
-        } catch (NoSuchAlgorithmException e) {
-
-            e.printStackTrace();
-        }
-        return md5;
-    }
+    }        
 }

@@ -1,6 +1,7 @@
 TODO:
 
     Database:
-        
+            
         gethashpassword jota compareet tälläin  select PWDCOMPARE(input,gethashpassword) ja jos se on yks eli true niin pääsee läpi
+        
         
