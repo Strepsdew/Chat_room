@@ -1,11 +1,11 @@
 CREATE TABLE IF NOT EXISTS `chat_room`.`profile` (
-  `ProfileID` INT NULL AUTO_INCREMENT,
-  `etunimi` VARCHAR(20) NULL,
-  `sukunimi` VARCHAR(20) NULL,
-  `nickname` VARCHAR(20) NULL,
+  `ProfileID` int IDENTITY(1,1) PRIMARY KEY,
+  `etunimi` VARCHAR(20) not NULL,
+  `sukunimi` VARCHAR(20) not NULL,
+  `nickname` VARCHAR(20) not NULL,
+'password' varbinary(128) not null,
   `ika` INT(3) NULL,
   `bio` VARCHAR(300) NULL,
   `location` VARCHAR(40) NULL,
-  PRIMARY KEY (`ProfileID`))
 ENGINE = InnoDB
 
