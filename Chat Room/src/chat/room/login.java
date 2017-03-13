@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class login extends JFrame {
@@ -32,7 +33,7 @@ public class login extends JFrame {
     private JLabel Register = new JLabel("                        Register                        ");
 
     private JTextField tfNimi = new JTextField(15);
-    private JTextField tfPw = new JTextField(15);   
+    private JPasswordField tfPw = new JPasswordField(15);   
     private JButton login = new JButton("Login");
 
 
@@ -58,6 +59,20 @@ public class login extends JFrame {
              Register k = new Register();
         }  
     });
+        login.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nickname = tfNimi.getText();
+                String pw = tfPw.getText();
+                Database k = new Database();
+                if (k.checkPassword(nickname, pw)){
+                    System.out.println("toimii");
+                }else{
+                    System.out.println("ei toimi");
+                }
+                
+            }
+        });
     }
     
 

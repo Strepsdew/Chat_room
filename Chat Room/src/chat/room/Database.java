@@ -73,7 +73,6 @@ public class Database {
             rs=prepsInsertProduct.executeQuery();
             if(rs.next()) {
             Object jotain = rs.getObject("password");
-                System.out.println(jotain);
             return jotain;
             }
         }catch (Exception ex){
@@ -87,7 +86,6 @@ public class Database {
         k = selectProfiiliByUsername(Username);
         System.out.println(k);
         if (k.size() == 0) {
-            System.out.println("you is in");
             try {
                 connection = DriverManager.getConnection(connectionString);
                 String query = "INSERT INTO profile (username,etunimi,sukunimi,nickname,password) values (?,?,?,?,PWDENCRYPT(?))";
@@ -116,7 +114,6 @@ public class Database {
             rs=prepsInsertProduct.executeQuery();
             if (rs.next()) {
                 if(rs.getInt(1)==1){
-                    System.out.println("Toimii ");
                     return true;
                 }
             }
@@ -143,7 +140,5 @@ public class Database {
     }
         
     public static void main(String[] args) {
-        Database k = new Database();
-        ArrayList<Profiili> l = new ArrayList<>();
     }        
 }
