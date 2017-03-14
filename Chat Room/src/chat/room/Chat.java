@@ -2,28 +2,14 @@ package chat.room;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javafx.scene.layout.Border;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 public class Chat extends JFrame {
     private JPanel pohja = new JPanel(new BorderLayout());
@@ -37,6 +23,9 @@ public class Chat extends JFrame {
     private JButton Sendbtn = new JButton();
     private JTextArea chatarea = new JTextArea();
     
+    Client client = new Client("localhost",1500,"Pekka on kiva",this );
+    private boolean connected;
+
     
     public Chat() {
         this.setTitle("Chat with KAVERIN_NIMI"); // tähän lisätään chat with kaverin nimi
@@ -60,13 +49,22 @@ public class Chat extends JFrame {
                 if (jotain == 0) {
                 viesti.setText("");
                 jotain++;
+                run();
+                
+                
                 }
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    System.out.println("SEND SOMETHING");
+                   
+                    if(connected) {
+			// just have to send the message
+			client.sendMessage(new ChatMessage(ChatMessage.MESSAGE, viesti.getText()));				
+			viesti.setText("");
+			return;
+		}
                 }
             }
 
@@ -91,5 +89,24 @@ public class Chat extends JFrame {
 
     public static void main(String[] args) {
        new Chat();
+       
+       		
     }
+    void append(String str) {
+		chatarea.append(str);
+		chatarea.setCaretPosition(chatarea.getText().length() - 1);
+	}
+    
+    
+    public void run(){
+			if(!client.start()) 
+				return;
+			connected = true;
+			
+			
+    }
+    
+    
 }
+
+
