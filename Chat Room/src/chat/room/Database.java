@@ -36,16 +36,44 @@ public class Database {
 
   
 
-    public ArrayList<Profiili>selectProfiiliByUsername(String nimi) {
+    public ArrayList<Profiili>getUserByNickname(String nimi) {
         ArrayList<Profiili> profiilit = new ArrayList<>();
         try {
             connection = DriverManager.getConnection(connectionString);
-            String query = "select * from profile where username=?";
+            String query = "select * from profile where nickname=?";
             prepsInsertProduct = connection.prepareStatement(query);
             prepsInsertProduct.setString(1, nimi);
             rs=prepsInsertProduct.executeQuery();
             while(rs.next()) {
                 int id = rs.getInt("ProfileID");
+                String username = rs.getString("username");
+                String etunimi = rs.getString("etunimi");
+                String sukunimi = rs.getString("sukunimi");
+                String nickname = rs.getString("nickname");
+                int ika = rs.getInt("ika");
+                String bio = rs.getString("bio");
+                String location = rs.getString("location");
+                String email = rs.getString("email");
+                Profiili k = new Profiili(id,username,etunimi,sukunimi,nickname,ika,bio,location,email);
+                profiilit.add(k);
+            }
+            
+        }catch (Exception ex) {
+            System.out.println("Error in getUserByUsername : " + ex);
+            return null;
+        }
+        return profiilit;
+    }
+    public ArrayList<Profiili> getUserById(int id) {
+        ArrayList<Profiili> profiilit = new ArrayList<>();
+        try {
+            connection = DriverManager.getConnection(connectionString);
+            String query = "select * from profile where ProfileID=?";
+            prepsInsertProduct = connection.prepareStatement(query);
+            prepsInsertProduct.setInt(1, id);
+            rs=prepsInsertProduct.executeQuery();
+            while(rs.next()) {
+                int ID = rs.getInt("ProfileID");
                 String username = rs.getString("username");
                 String etunimi = rs.getString("etunimi");
                 String sukunimi = rs.getString("sukunimi");
@@ -83,7 +111,7 @@ public class Database {
     }
     public boolean createUser(String Username,String etunimi,String sukunimi, String nickname,String password) {
         ArrayList<Profiili> k = new ArrayList<>();
-        k = selectProfiiliByUsername(Username);
+        k = getUserByNickname(nickname);
         System.out.println(k);
         if (k.size() == 0) {
             try {
@@ -140,5 +168,7 @@ public class Database {
     }
         
     public static void main(String[] args) {
+        Database k = new Database();
+        
     }        
 }

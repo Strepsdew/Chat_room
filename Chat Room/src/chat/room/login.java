@@ -5,12 +5,15 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -48,6 +51,30 @@ public class login extends JFrame {
         asetteleKomponentit();
         this.setVisible(true);
         
+        tfPw.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    String nickname = tfNimi.getText();
+                    String pw = tfPw.getText();
+                    Database k = new Database();
+                    if (k.checkPassword(nickname, pw)){
+                        System.out.println("toimii");
+                    }else{
+                        JOptionPane.showMessageDialog(rootPane,"Something went wrong try again!");
+                    }
+
+                    }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+            });
         Register.addMouseListener(new MouseAdapter()  
                 {  
         public void mouseClicked(MouseEvent e)  
@@ -64,7 +91,7 @@ public class login extends JFrame {
                 if (k.checkPassword(nickname, pw)){
                     System.out.println("toimii");
                 }else{
-                    System.out.println("ei toimi");
+                    JOptionPane.showMessageDialog(rootPane,"Something went wrong try again!");
                 }
                 
             }
