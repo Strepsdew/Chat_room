@@ -64,6 +64,21 @@ public class Database {
         }
         return profiilit;
     }
+    public int getIdByNickname(String nickname){
+        try{
+            connection = DriverManager.getConnection(connectionString);
+            String query = "select ProfileID from profile where nickname=?";
+            prepsInsertProduct = connection.prepareStatement(query);
+            prepsInsertProduct.setString(1,nickname);
+            rs=prepsInsertProduct.executeQuery();
+            if(rs.next()){
+               return rs.getInt("ProfileID");
+            }
+        }catch (Exception ex) {
+            System.out.println("Error in getIdByNickname : " + ex);
+        }
+        return 0;
+    }
     public ArrayList<Profiili> getUserById(int id) {
         ArrayList<Profiili> profiilit = new ArrayList<>();
         try {
@@ -169,6 +184,5 @@ public class Database {
         
     public static void main(String[] args) {
         Database k = new Database();
-        
     }        
 }
