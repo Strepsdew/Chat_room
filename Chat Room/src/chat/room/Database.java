@@ -79,8 +79,8 @@ public class Database {
         }
         return 0;
     }
-    public ArrayList<Profiili> getUserById(int id) {
-        ArrayList<Profiili> profiilit = new ArrayList<>();
+    public Profiili getEverythingById(int id) {
+        Profiili k = null;
         try {
             connection = DriverManager.getConnection(connectionString);
             String query = "select * from profile where ProfileID=?";
@@ -97,15 +97,14 @@ public class Database {
                 String bio = rs.getString("bio");
                 String location = rs.getString("location");
                 String email = rs.getString("email");
-                Profiili k = new Profiili(id,username,etunimi,sukunimi,nickname,ika,bio,location,email);
-                profiilit.add(k);
+                k = new Profiili(id,username,etunimi,sukunimi,nickname,ika,bio,location,email);
             }
             
         }catch (Exception ex) {
             System.out.println("Error in selectProfiili : " + ex);
             return null;
         }
-        return profiilit;
+        return k;
     }
     public Object getHashPasswordByNickname(String username) {
         try {
@@ -127,7 +126,6 @@ public class Database {
     public boolean createUser(String Username,String etunimi,String sukunimi, String nickname,String password) {
         ArrayList<Profiili> k = new ArrayList<>();
         k = getUserByNickname(nickname);
-        System.out.println(k);
         if (k.size() == 0) {
             try {
                 connection = DriverManager.getConnection(connectionString);
@@ -184,5 +182,7 @@ public class Database {
         
     public static void main(String[] args) {
         Database k = new Database();
+        Profiili ks = k.getEverythingById(1);
+        System.out.println(ks.getUsername());
     }        
 }

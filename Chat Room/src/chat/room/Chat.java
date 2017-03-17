@@ -75,9 +75,7 @@ public class Chat extends JFrame {
     }
 
     public void giveCurrentUserId(int id) {
-        currentUserId = id;
-        System.out.println(currentUserId);
-    }
+        currentUserId = id;    }
 
     private void asetteleKomponentit() {
         ylaosa.add(Frendbtn, BorderLayout.LINE_START);
