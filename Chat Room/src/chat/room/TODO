@@ -6,6 +6,9 @@ TODO:
         Fix:  
             updateProfiilissa updatetaan väärä nimi nicknamea ei voi vaihtaa mutta username voi tämä pitää muuttaa toisin päin joko java koodista tai sqllässä,
     
+       Json toteutus:
+            Tässä artikelissa opetetaan miten saat JSONarrayhyn dataa sqllästä http://biercoff.com/nice-and-simple-converter-of-java-resultset-into-jsonarray-or-xml/
+      
     Kaverilista json suunitelma
         Jokaisella chat room käyttäjälllä on kansio josta he ei tiedä joka on heidän kaveri lista.  
         Heidän chat room kansioissa on json tiedosto jonka nimi on: "username_kaverit.json"
@@ -24,4 +27,6 @@ TODO:
         Mitä tapahtuu jos käyttäjä kirjautuu toisella koneella chat roomiin mistä hän sitten saa kaverin tiedot.
             Tiedän että jsonia voi tallentaa sqllään mutta en tiedä kuinka iso json tiedosto saa olla.
             Joten en voi vielä varmuudella sanoa miten teemme sen mutta  jotenkin vastaa vasti että kirjotamme json tiedoston sqllään ja luemme sen joka kerta ja sen jälkeen kirjoitamme käyttäjännimi_kaverit.json tiedoston jossa on kavereiden tiedot.
-            
+                
+       Profiili:    
+            Tallenna profiiliin  currentUserin data. Jotta sitä voi kutsua muisa luokissa.

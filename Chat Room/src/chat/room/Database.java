@@ -5,6 +5,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 public class Database {
 
@@ -137,6 +139,9 @@ public class Database {
                 prepsInsertProduct.setString(4, nickname);
                 prepsInsertProduct.setString(5, password);
                 prepsInsertProduct.executeUpdate();
+                String query2 = "insert into kaverit (kaveri) values ('')";
+                statement = connection.createStatement();
+                
             } catch (Exception ex) {
                 System.out.println("Error in createUser : " + ex);
             }
@@ -179,10 +184,90 @@ public class Database {
            System.out.println("Error in updateProfiili : " +ex);
        }
     }
-        
+     
+    public String getNicknameById(int id){
+        try {
+            connection = DriverManager.getConnection(connectionString);
+            String query = "select nickname from profile where ProfileID=?";
+            prepsInsertProduct = connection.prepareStatement(query);
+            prepsInsertProduct.setInt(1, id);
+            rs=prepsInsertProduct.executeQuery();
+            if(rs.next()) {
+                return rs.getString("nickname");
+            }
+        }catch (Exception ex){
+            System.out.println("error in getNicknameById : "+ ex);
+        }
+        return null;
+    }
+    private JSONArray convertToJSON(ResultSet resultSet)
+            throws Exception {
+        JSONArray jsonArray = new JSONArray();
+        while (resultSet.next()) {
+            int total_rows = resultSet.getMetaData().getColumnCount();
+            for (int i = 0; i < total_rows; i++) {
+                JSONObject obj = new JSONObject();
+                obj.put(resultSet.getMetaData().getColumnLabel(i + 1)
+                        .toLowerCase(), resultSet.getObject(i + 1));
+                jsonArray.add(obj);
+            }
+        }
+        return jsonArray;
+    }
+    public JSONArray getFriendsById(int id){
+        //muuta tämä silleen että returnaa JSONArrayn 
+        //koska monta JSONObjectia  yhdessä JSONArrayssa on cleanimpi kuin yksin JSONobjecti
+        JSONArray data = null; 
+        try {
+            connection = DriverManager.getConnection(connectionString);
+            String query = "select kaveri from kaverit where ProfileID=?";
+            prepsInsertProduct = connection.prepareStatement(query);
+            prepsInsertProduct.setInt(1, id);   
+            rs=prepsInsertProduct.executeQuery();
+            data = convertToJSON(rs);
+        }catch (Exception ex){
+            System.out.println("error in getNicknameById : "+ ex);
+        }
+        return data;
+    }
+    public boolean addFriend(int currentUserId,int friendId){
+        Database k = new Database();
+        // tähän pitää tehdä lähetä pyyntö
+        String kaverinimi = k.getNicknameById(friendId);
+        JSONObject kaveri = new JSONObject();
+        kaveri.put("nickname",kaverinimi);
+        kaveri.put("ProfileID",friendId);
+        JSONArray kaverilista =  k.getFriendsById(currentUserId);
+        kaverilista.add(kaveri);
+        try {
+            connection = DriverManager.getConnection(connectionString);
+            String query = "update kaverit set kaveri = ? where ProfileID = ?";
+            prepsInsertProduct = connection.prepareStatement(query);
+            String jsontostring = kaverilista.toString();
+            prepsInsertProduct.setString(1,jsontostring);
+            prepsInsertProduct.setInt(2,currentUserId);
+            prepsInsertProduct.executeUpdate();
+            System.out.println("keeeeek");
+            return true;
+        }catch (Exception ex) {
+            System.out.println("Error in addFriend : "+ex);
+            return false;
+        }
+    }
+    public JSONObject getCurrentUserFriendById(int currentUserId,int FriendId) {
+        Database k = new Database();
+        JSONArray kaverilista = k.getFriendsById(currentUserId);
+        System.out.println(kaverilista.get(0));
+        if (kaverilista.contains(FriendId)) {
+            int indeksi = kaverilista.indexOf(FriendId);
+            JSONObject kaveri = (JSONObject) kaverilista.get(indeksi);
+            return kaveri;
+        }
+        return null;
+    }
     public static void main(String[] args) {
         Database k = new Database();
-        k.createUser("jyri","jyri","jyri","jyri","jyri");
+        System.out.println(k.getFriendsById(1));
+        System.out.println(k.getCurrentUserFriendById(1,4));
     }
-   
 }
