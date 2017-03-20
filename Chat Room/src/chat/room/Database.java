@@ -137,6 +137,8 @@ public class Database {
                 prepsInsertProduct.setString(4, nickname);
                 prepsInsertProduct.setString(5, password);
                 prepsInsertProduct.executeUpdate();
+                String query2 = "insert into kaverit (kaveri) values ('')";
+                statement = connection.createStatement();
             } catch (Exception ex) {
                 System.out.println("Error in createUser : " + ex);
             }
