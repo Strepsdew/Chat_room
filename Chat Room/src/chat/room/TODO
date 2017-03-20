@@ -25,3 +25,11 @@ TODO:
             Tiedän että jsonia voi tallentaa sqllään mutta en tiedä kuinka iso json tiedosto saa olla.
             Joten en voi vielä varmuudella sanoa miten teemme sen mutta  jotenkin vastaa vasti että kirjotamme json tiedoston sqllään ja luemme sen joka kerta ja sen jälkeen kirjoitamme käyttäjännimi_kaverit.json tiedoston jossa on kavereiden tiedot.
             
+
+        Json
+            JsonElement jelem = gson.fromJson(json, JsonElement.class);
+            JsonObject jobj = jelem.getAsJsonObject();
+            System.out.println(jobj.get("nimi").getAsString());
+            Lisää vain tuo getFriendsByIdeeseen ja tee sitten jsonobjecti array jonka palautat  
+            Kuin sinulla on enemmäin kuin yksi kaveri sinun pitää jossain kohtaa splittaa stringistä ne erikseen ja lisää jsonarray listaan
+            

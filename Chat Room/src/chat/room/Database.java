@@ -1,5 +1,9 @@
 package chat.room;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -139,6 +143,7 @@ public class Database {
                 prepsInsertProduct.executeUpdate();
                 String query2 = "insert into kaverit (kaveri) values ('')";
                 statement = connection.createStatement();
+                statement.execute(query2);
             } catch (Exception ex) {
                 System.out.println("Error in createUser : " + ex);
             }
@@ -196,10 +201,55 @@ public class Database {
         }
         return null;
     }
+    public String getFriendsByIdInAstring(int id) {
+        try{
+            connection = DriverManager.getConnection(connectionString);
+            String sql = "select kaveri from kaverit where ProfileID=?";
+            prepsInsertProduct = connection.prepareStatement(sql);
+            prepsInsertProduct.setInt(1,id);
+            rs=prepsInsertProduct.executeQuery();
+            String kaveri = "";
+            if(rs.next()) {
+                kaveri = rs.getString("kaveri");
+            }
+            return kaveri;
+        }catch (Exception ex){
+            System.out.println("error in getfriendsbyid "+ ex);
+            return null;
+        }
+    }
+    public boolean addFriend(int currentUserId,int friendId){
+        Database d = new Database();
+        Gson gson = new Gson();
+        String kaverinimi = d.getNicknameById(friendId);
+        Kaveri obj = new Kaveri(kaverinimi,friendId);
+        String kaverijson = gson.toJson(obj);
+        String muutkaverit = d.getFriendsByIdInAstring(currentUserId);
+        JsonArray lista = new JsonArray();
+        lista.add(kaverijson);
+        lista.add(muutkaverit);
+        System.out.println(lista);
+        
+        try{
+            connection = DriverManager.getConnection(connectionString);
+            String sql = "update kaverit set kaveri =? where ProfileID =?";
+            prepsInsertProduct = connection.prepareStatement(sql);
+            prepsInsertProduct.setString(1,kaverijson);
+            prepsInsertProduct.setInt(2,currentUserId);
+            //prepsInsertProduct.executeUpdate();
+        }catch (Exception ex) {
+            System.out.println("Error in addFriend" + ex);
+        }
+        return false;
+    }
         
     public static void main(String[] args) {
         Database k = new Database();
-        k.createUser("jyri","jyri","jyri","jyri","jyri");
+        Gson gson = new Gson();
+        String json = k.getFriendsByIdInAstring(2);
+        k.addFriend(2, 4);
+        
+       
     }
    
 }
