@@ -184,7 +184,7 @@ public class Database {
         
     public static void main(String[] args) {
         Database k = new Database();
-        Profiili ks = k.getEverythingById(1);
-        System.out.println(ks.getUsername());
-    }        
+        k.createUser("jyri","jyri","jyri","jyri","jyri");
+    }
+   
 }
