@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -218,25 +219,57 @@ public class Database {
             return null;
         }
     }
+    public JsonArray getFriendsByIdInAJsonArray(int currentUserId) {
+        JsonArray lista = new JsonArray();
+        try{
+            connection = DriverManager.getConnection(connectionString);
+            String sql = "select kaveri from kaverit where ProfileID=?";
+            prepsInsertProduct = connection.prepareStatement(sql);
+            prepsInsertProduct.setInt(1,currentUserId);
+            rs=prepsInsertProduct.executeQuery();
+            String kaveri = "";
+            
+            if(rs.next()) {
+                kaveri = rs.getString("kaveri");
+            }
+            return lista;
+        }catch (Exception ex){
+            System.out.println("error in getfriendsbyid "+ ex);
+            return null;
+        }
+    }
     public boolean addFriend(int currentUserId,int friendId){
         Database d = new Database();
         Gson gson = new Gson();
+        
         String kaverinimi = d.getNicknameById(friendId);
         Kaveri obj = new Kaveri(kaverinimi,friendId);
-        String kaverijson = gson.toJson(obj);
-        String muutkaverit = d.getFriendsByIdInAstring(currentUserId);
-        JsonArray lista = new JsonArray();
-        lista.add(kaverijson);
-        lista.add(muutkaverit);
-        System.out.println(lista);
         
+        String kaverijson = gson.toJson(obj);
+        JsonArray lista = new JsonArray();
+        JsonParser jsonParser = new JsonParser();
+        
+        String muutkaverit = "";
+        JsonObject objkaveri = (JsonObject)jsonParser.parse(kaverijson);
+        JsonObject objmuut = null;
+        if (!d.getFriendsByIdInAstring(currentUserId).isEmpty()) {
+            muutkaverit = d.getFriendsByIdInAstring(currentUserId);
+            objmuut = (JsonObject)jsonParser.parse(muutkaverit);
+            lista.add(objmuut);
+        }
+        lista.add(objkaveri);
+        String insert = "";
+        for (JsonElement jsonElement : lista) {
+            insert += jsonElement.toString();
+        }
+        System.out.println(insert);
         try{
             connection = DriverManager.getConnection(connectionString);
             String sql = "update kaverit set kaveri =? where ProfileID =?";
             prepsInsertProduct = connection.prepareStatement(sql);
-            prepsInsertProduct.setString(1,kaverijson);
+            prepsInsertProduct.setString(1,insert);
             prepsInsertProduct.setInt(2,currentUserId);
-            //prepsInsertProduct.executeUpdate();
+            prepsInsertProduct.executeUpdate();
         }catch (Exception ex) {
             System.out.println("Error in addFriend" + ex);
         }
@@ -245,11 +278,7 @@ public class Database {
         
     public static void main(String[] args) {
         Database k = new Database();
-        Gson gson = new Gson();
-        String json = k.getFriendsByIdInAstring(2);
-        k.addFriend(2, 4);
-        
-       
+        k.addFriend(2, 5);
     }
    
 }
