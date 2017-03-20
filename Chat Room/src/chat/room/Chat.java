@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class Chat extends JFrame {
@@ -25,10 +26,12 @@ public class Chat extends JFrame {
     private JTextArea chatarea = new JTextArea();
 
     private int currentUserId;
-    Client client = new Client("localhost", 1500, "Pekka on kiva", this);
+    Client client = new Client("localhost", 1500, null, this);
+    
     private boolean connected;
 
     public Chat() {
+       
         this.setTitle("Chat with KAVERIN_NIMI"); // tähän lisätään chat with kaverin nimi
         this.setSize(410, 350);
         this.setLocationRelativeTo(null);
@@ -50,7 +53,7 @@ public class Chat extends JFrame {
                 if (jotain == 0) {
                     viesti.setText("");
                     jotain++;
-                    run();
+                    
 
                 }
             }
@@ -75,13 +78,16 @@ public class Chat extends JFrame {
     }
 
     public void giveCurrentUserId(int id) {
-        currentUserId = id;    }
+        currentUserId = id; 
+         client.getUsername(currentUserId);
+         run();
+    }
 
     private void asetteleKomponentit() {
         ylaosa.add(Frendbtn, BorderLayout.LINE_START);
         ylaosa.add(closebtn, BorderLayout.LINE_END);
         pohja.add(ylaosa, BorderLayout.PAGE_START);
-        keskiosa.add(chatarea);
+        keskiosa.add(new JScrollPane(chatarea));
         pohja.add(keskiosa, BorderLayout.CENTER);
         viesti.setBounds(100, 300, 200, 200);
         alaosa.add(viesti, BorderLayout.CENTER);

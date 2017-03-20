@@ -67,6 +67,7 @@ public class login extends JFrame {
                         Chat chatform = new Chat();
                         System.out.println(id);
                         chatform.giveCurrentUserId(id);
+                        
                     } else {
                         JOptionPane.showMessageDialog(rootPane, "Something went wrong try again!");
                     }

@@ -13,6 +13,7 @@ public class Client {
 
     private String server = "localhost", username;
     private int port = 1500;
+    Database k = new Database();
     
     Client(String server, int port, String username) {
 		// which calls the common constructor with the GUI set to null
@@ -24,6 +25,11 @@ public class Client {
         this.port = port;
         this.username = username;
         this.gui =gui;
+    }
+    
+    public void getUsername(int id){
+        username = k.getNicknameById(id);
+       new Client(server,port,username,gui);
     }
 
     public boolean start() {

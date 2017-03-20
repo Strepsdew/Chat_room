@@ -1,5 +1,7 @@
 package chat.room;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.*;
 import java.net.*;
 import java.text.SimpleDateFormat;
@@ -19,7 +21,7 @@ public class Server {
 
     public Server(int port) {
         this.port = port;
-        sdf = new SimpleDateFormat("HH:mm:ss");
+        sdf = new SimpleDateFormat("HH:mm");
         al = new ArrayList<ClientThread>();
     }
 
@@ -216,6 +218,24 @@ public class Server {
             return true;
         }
         
+    }
+    
+   public boolean WriteToFile() throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String json = gson.toJson(this);
+        System.out.println(json);
+
+        try (FileWriter writer = new FileWriter("scores.json")) {
+            writer.write(json);
+        } catch (IOException e) {
+            System.out.println("Writing failed " + e.getMessage());
+        }
+
+//        PrintWriter writer = new PrintWriter(new FileWriter("kayttaja.txt", true));
+//        writer.println(this.list);
+//        writer.close();
+        return false;
     }
 
 }

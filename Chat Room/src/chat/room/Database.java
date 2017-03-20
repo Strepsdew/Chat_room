@@ -181,6 +181,21 @@ public class Database {
            System.out.println("Error in updateProfiili : " +ex);
        }
     }
+    public String getNicknameById(int id){
+        try {
+            connection = DriverManager.getConnection(connectionString);
+            String query = "select nickname from profile where ProfileID=?";
+            prepsInsertProduct = connection.prepareStatement(query);
+            prepsInsertProduct.setInt(1, id);
+            rs=prepsInsertProduct.executeQuery();
+            if(rs.next()) {
+                return rs.getString("nickname");
+            }
+        }catch (Exception ex){
+            System.out.println("error in getNicknameById : "+ ex);
+        }
+        return null;
+    }
         
     public static void main(String[] args) {
         Database k = new Database();
