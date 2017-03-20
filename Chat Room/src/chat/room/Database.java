@@ -206,10 +206,7 @@ public class Database {
         while (resultSet.next()) {
             int total_rows = resultSet.getMetaData().getColumnCount();
             for (int i = 0; i < total_rows; i++) {
-                JSONObject obj = new JSONObject();
-                obj.put(resultSet.getMetaData().getColumnLabel(i + 1)
-                        .toLowerCase(), resultSet.getObject(i + 1));
-                jsonArray.add(obj);
+                jsonArray.add(resultSet.getObject(i + 1));
             }
         }
         return jsonArray;
@@ -225,6 +222,7 @@ public class Database {
             prepsInsertProduct.setInt(1, id);   
             rs=prepsInsertProduct.executeQuery();
             data = convertToJSON(rs);
+            System.out.println(data);
         }catch (Exception ex){
             System.out.println("error in getNicknameById : "+ ex);
         }
@@ -235,6 +233,7 @@ public class Database {
         // tähän pitää tehdä lähetä pyyntö
         String kaverinimi = k.getNicknameById(friendId);
         JSONObject kaveri = new JSONObject();
+        if (!kaverinimi.isEmpty()) return false;
         kaveri.put("nickname",kaverinimi);
         kaveri.put("ProfileID",friendId);
         JSONArray kaverilista =  k.getFriendsById(currentUserId);
@@ -247,7 +246,6 @@ public class Database {
             prepsInsertProduct.setString(1,jsontostring);
             prepsInsertProduct.setInt(2,currentUserId);
             prepsInsertProduct.executeUpdate();
-            System.out.println("keeeeek");
             return true;
         }catch (Exception ex) {
             System.out.println("Error in addFriend : "+ex);
@@ -267,7 +265,7 @@ public class Database {
     }
     public static void main(String[] args) {
         Database k = new Database();
-        System.out.println(k.getFriendsById(1));
-        System.out.println(k.getCurrentUserFriendById(1,4));
+        k.addFriend(1,3);
+        
     }
 }
