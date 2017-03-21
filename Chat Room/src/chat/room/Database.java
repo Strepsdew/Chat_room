@@ -223,7 +223,6 @@ public class Database {
                 kaveri.addFriend(arrayofnames.get(i).getAsString(), arrayofid.getAsInt());
                 i++;
             }
-            System.out.println(kaveri.getFriendnames());
             return kaveri;
         }catch (Exception ex){
             System.out.println("error in getfriendsbyid "+ ex);
@@ -236,23 +235,25 @@ public class Database {
         JsonParser jsonparser = new JsonParser();
 
         String kaverinimi = d.getNicknameById(friendId);
-        Kaveri kaverit = d.getFriendsByIdInKaveri(currentUserId);
+        Kaveri kaverit = null;
+        if(d.getFriendsByIdInKaveri(currentUserId) != null) {
+            kaverit = d.getFriendsByIdInKaveri(currentUserId);
+        }else{
+            kaverit = new Kaveri();
+        }
         kaverit.addFriend(kaverinimi,friendId);
         
         String kaveritstring = gson.toJson(kaverit);
         JsonObject obj = (JsonObject)jsonparser.parse(kaveritstring);
         String insert = obj.toString();
-        System.out.println(insert);
         
         try{
             connection = DriverManager.getConnection(connectionString);
             String sql = "update kaverit set kaveri =? where ProfileID =?";
             prepsInsertProduct = connection.prepareStatement(sql);
             prepsInsertProduct.setString(1,insert);
-            System.out.println(insert);
             prepsInsertProduct.setInt(2,currentUserId);
             prepsInsertProduct.execute();  
-            System.out.println("executed");
         }catch (Exception ex) {
             System.out.println("Error in addFriend" + ex);
         }
@@ -261,7 +262,6 @@ public class Database {
         
     public static void main(String[] args) {
         Database k = new Database();
-        k.createUser("laskimemse", "roope","vaaramaa", "fatmeme","roope");
-        k.addFriend(2,7);
+        
     }
 }
