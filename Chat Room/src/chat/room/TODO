@@ -1,7 +1,7 @@
 TODO:
 
     Database:
-            
+         DBCC CHECKIDENT (profile, RESEED, 0);
         gethashpassword jota compareet tälläin  select PWDCOMPARE(input,gethashpassword) ja jos se on yks eli true niin pääsee läpi
         Fix:  
             updateProfiilissa updatetaan väärä nimi nicknamea ei voi vaihtaa mutta username voi tämä pitää muuttaa toisin päin joko java koodista tai sqllässä,
@@ -33,6 +33,8 @@ TODO:
             Lisää vain tuo getFriendsByIdeeseen ja tee sitten jsonobjecti array jonka palautat  
             Kuin sinulla on enemmäin kuin yksi kaveri sinun pitää jossain kohtaa splittaa stringistä ne erikseen ja lisää jsonarray listaan
             
-            Voit tehdä myös yhden ison jsonobjectin johon lisäät koko ajan tietoa. put metodilla
+            Voit tehdä myös yhden ison jsonobjectin johon lisäät koko ajan tietoa. put metodilla    
+            
+
             
             

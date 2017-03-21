@@ -144,7 +144,7 @@ public class Database {
                 prepsInsertProduct.executeUpdate();
                 String query2 = "insert into kaverit (kaveri) values ('')";
                 statement = connection.createStatement();
-                statement.execute(query2);
+                statement.executeUpdate(query2);    
             } catch (Exception ex) {
                 System.out.println("Error in createUser : " + ex);
             }
@@ -202,37 +202,29 @@ public class Database {
         }
         return null;
     }
-    public String getFriendsByIdInAstring(int id) {
+    public Kaveri getFriendsByIdInKaveri(int id) {
+        Kaveri kaveri = new Kaveri();
         try{
             connection = DriverManager.getConnection(connectionString);
             String sql = "select kaveri from kaverit where ProfileID=?";
             prepsInsertProduct = connection.prepareStatement(sql);
             prepsInsertProduct.setInt(1,id);
             rs=prepsInsertProduct.executeQuery();
-            String kaveri = "";
+            String kaverit = "";
             if(rs.next()) {
-                kaveri = rs.getString("kaveri");
+                kaverit = rs.getString("kaveri");
             }
+            JsonParser jsonparser = new JsonParser();
+            JsonObject obj = (JsonObject)jsonparser.parse(kaverit);
+            JsonArray arrayofnames = obj.get("friendnames").getAsJsonArray();
+            JsonArray arrayofids = obj.get("IDs").getAsJsonArray();
+            int i = 0;
+            for (JsonElement arrayofid : arrayofids) {
+                kaveri.addFriend(arrayofnames.get(i).getAsString(), arrayofid.getAsInt());
+                i++;
+            }
+            System.out.println(kaveri.getFriendnames());
             return kaveri;
-        }catch (Exception ex){
-            System.out.println("error in getfriendsbyid "+ ex);
-            return null;
-        }
-    }
-    public JsonArray getFriendsByIdInAJsonArray(int currentUserId) {
-        JsonArray lista = new JsonArray();
-        try{
-            connection = DriverManager.getConnection(connectionString);
-            String sql = "select kaveri from kaverit where ProfileID=?";
-            prepsInsertProduct = connection.prepareStatement(sql);
-            prepsInsertProduct.setInt(1,currentUserId);
-            rs=prepsInsertProduct.executeQuery();
-            String kaveri = "";
-            
-            if(rs.next()) {
-                kaveri = rs.getString("kaveri");
-            }
-            return lista;
         }catch (Exception ex){
             System.out.println("error in getfriendsbyid "+ ex);
             return null;
@@ -241,35 +233,26 @@ public class Database {
     public boolean addFriend(int currentUserId,int friendId){
         Database d = new Database();
         Gson gson = new Gson();
-        
+        JsonParser jsonparser = new JsonParser();
+
         String kaverinimi = d.getNicknameById(friendId);
-        Kaveri obj = new Kaveri(kaverinimi,friendId);
+        Kaveri kaverit = d.getFriendsByIdInKaveri(currentUserId);
+        kaverit.addFriend(kaverinimi,friendId);
         
-        String kaverijson = gson.toJson(obj);
-        JsonArray lista = new JsonArray();
-        JsonParser jsonParser = new JsonParser();
-        
-        String muutkaverit = "";
-        JsonObject objkaveri = (JsonObject)jsonParser.parse(kaverijson);
-        JsonObject objmuut = null;
-        if (!d.getFriendsByIdInAstring(currentUserId).isEmpty()) {
-            muutkaverit = d.getFriendsByIdInAstring(currentUserId);
-            objmuut = (JsonObject)jsonParser.parse(muutkaverit);
-            lista.add(objmuut);
-        }
-        lista.add(objkaveri);
-        String insert = "";
-        for (JsonElement jsonElement : lista) {
-            insert += jsonElement.toString();
-        }
+        String kaveritstring = gson.toJson(kaverit);
+        JsonObject obj = (JsonObject)jsonparser.parse(kaveritstring);
+        String insert = obj.toString();
         System.out.println(insert);
+        
         try{
             connection = DriverManager.getConnection(connectionString);
             String sql = "update kaverit set kaveri =? where ProfileID =?";
             prepsInsertProduct = connection.prepareStatement(sql);
             prepsInsertProduct.setString(1,insert);
+            System.out.println(insert);
             prepsInsertProduct.setInt(2,currentUserId);
-            prepsInsertProduct.executeUpdate();
+            prepsInsertProduct.execute();  
+            System.out.println("executed");
         }catch (Exception ex) {
             System.out.println("Error in addFriend" + ex);
         }
@@ -278,7 +261,7 @@ public class Database {
         
     public static void main(String[] args) {
         Database k = new Database();
-        k.addFriend(2, 5);
+        k.createUser("laskimemse", "roope","vaaramaa", "fatmeme","roope");
+        k.addFriend(2,7);
     }
-   
 }
