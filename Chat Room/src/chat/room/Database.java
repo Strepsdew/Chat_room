@@ -10,6 +10,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Database {
 
@@ -214,6 +215,9 @@ public class Database {
             if(rs.next()) {
                 kaverit = rs.getString("kaveri");
             }
+            if(kaverit.isEmpty()) {
+                return null;
+            }
             JsonParser jsonparser = new JsonParser();
             JsonObject obj = (JsonObject)jsonparser.parse(kaverit);
             JsonArray arrayofnames = obj.get("friendnames").getAsJsonArray();
@@ -259,9 +263,44 @@ public class Database {
         }
         return false;
     }
+    
+    public HashMap<String,Integer>getFriendByNickname(int currentUserId,String nickname){
+        HashMap<String,Integer> kaveri = new HashMap<>();
+        JsonParser jsonparser = new JsonParser();
+        try {
+            connection = DriverManager.getConnection(connectionString);
+            String sql = "SELECT * FROM kaverit where ProfileID=?";
+            prepsInsertProduct = connection.prepareStatement(sql);
+            prepsInsertProduct.setInt(1,currentUserId);
+            prepsInsertProduct.executeQuery();
+            String kaverit = "";
+            if(rs.next()){
+                kaverit = rs.getString("kaveri");
+            }
+            if(kaverit.isEmpty()) {
+                return null;
+            }
+            JsonObject obj = (JsonObject)jsonparser.parse(kaverit);
+            JsonArray arrayofids = obj.get("IDs").getAsJsonArray();
+            JsonArray arrayofnames = obj.get("friendnames").getAsJsonArray();
+            int i = 0;
+            for (JsonElement name : arrayofnames) {
+                String nimi = name.getAsString();
+                if(nimi.equals(nickname)) {
+                    kaveri.put(nimi, arrayofids.get(i).getAsInt());
+                }
+            i++;
+            }
+            System.out.println(kaveri);
+            return kaveri;
+        }catch (Exception ex){
+            System.out.println("Error in getFriendByNickname" + ex);
+            return null;
+        }
+    }
         
     public static void main(String[] args) {
         Database k = new Database();
-        
+        k.getFriendByNickname(2,"jyri");
     }
 }
