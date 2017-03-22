@@ -1,7 +1,40 @@
 TODO:
 
     Database:
-            
+         DBCC CHECKIDENT (profile, RESEED, 0);
         gethashpassword jota compareet tälläin  select PWDCOMPARE(input,gethashpassword) ja jos se on yks eli true niin pääsee läpi
+        Fix:  
+            updateProfiilissa updatetaan väärä nimi nicknamea ei voi vaihtaa mutta username voi tämä pitää muuttaa toisin päin joko java koodista tai sqllässä,
+    
+    Kaverilista json suunitelma
+        Jokaisella chat room käyttäjälllä on kansio josta he ei tiedä joka on heidän kaveri lista.  
+        Heidän chat room kansioissa on json tiedosto jonka nimi on: "username_kaverit.json"
+        Jonne olemme tallentaneet kavereitten tiedot sanasto formatissa aka hashmap 
+
+        Miten saamme tietoa esimerkki : "{'Friend': 'Pekka' FriendID: 1}" sitten kuin luemme json tiedoston tallennamme kaverit hashmappiin josta saame tietoa näin:
+        "getContain("pekka") returnaa 1. 
         
+        Miten kaverin lisääminen onnistuu.
+            Kuin käyttäjä on kirjoittanut kaverin käyttäjä nimen hänelle laitetaan kutsu (emt miten viel) 
+            Kuin kutsu on hyökksytty niin kirjoitamme molmpien omiin json listoihin  "{'Friend': 'Kaveri' FriendID: kaverinid}".
         
+        Miten teemme keskustelun
+            Kuin käyttäjä on päättänyt kenen kanssa hän haluua keskustella vedämme kaverin tiedot json kansiosta ja teemme yhteyden.
+        
+        Mitä tapahtuu jos käyttäjä kirjautuu toisella koneella chat roomiin mistä hän sitten saa kaverin tiedot.
+            Tiedän että jsonia voi tallentaa sqllään mutta en tiedä kuinka iso json tiedosto saa olla.
+            Joten en voi vielä varmuudella sanoa miten teemme sen mutta  jotenkin vastaa vasti että kirjotamme json tiedoston sqllään ja luemme sen joka kerta ja sen jälkeen kirjoitamme käyttäjännimi_kaverit.json tiedoston jossa on kavereiden tiedot.
+            
+
+        Json
+            JsonElement jelem = gson.fromJson(json, JsonElement.class);
+            JsonObject jobj = jelem.getAsJsonObject();
+            System.out.println(jobj.get("nimi").getAsString());
+            Lisää vain tuo getFriendsByIdeeseen ja tee sitten jsonobjecti array jonka palautat  
+            Kuin sinulla on enemmäin kuin yksi kaveri sinun pitää jossain kohtaa splittaa stringistä ne erikseen ja lisää jsonarray listaan
+            
+            Voit tehdä myös yhden ison jsonobjectin johon lisäät koko ajan tietoa. put metodilla    
+            
+
+            
+            

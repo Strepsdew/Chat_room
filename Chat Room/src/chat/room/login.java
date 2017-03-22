@@ -1,21 +1,22 @@
 package chat.room;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class login extends JFrame {
@@ -32,9 +33,8 @@ public class login extends JFrame {
     private JLabel Register = new JLabel("                        Register                        ");
 
     private JTextField tfNimi = new JTextField(15);
-    private JTextField tfPw = new JTextField(15);   
+    private JPasswordField tfPw = new JPasswordField(15);
     private JButton login = new JButton("Login");
-
 
     public login() {
         GridLayout gap = (GridLayout) pohja.getLayout();
@@ -50,18 +50,59 @@ public class login extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         asetteleKomponentit();
         this.setVisible(true);
-        
-        Register.addMouseListener(new MouseAdapter()  
-                {  
-        public void mouseClicked(MouseEvent e)  
-         {  
-             Register k = new Register();
-        }  
-    });
-    }
-    
 
-    
+        tfPw.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    String nickname = tfNimi.getText();
+                    String pw = tfPw.getText();
+                    Database k = new Database();
+                    if (k.checkPassword(nickname, pw)) {
+                        int id = k.getIdByNickname(nickname);
+                        Chat chatform = new Chat();
+                        System.out.println(id);
+                        chatform.giveCurrentUserId(id);
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "Something went wrong try again!");
+                    }
+
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+        });
+        Register.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                Register k = new Register();
+            }
+        });
+        login.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nickname = tfNimi.getText();
+                String pw = tfPw.getText();
+                Database k = new Database();
+                if (k.checkPassword(nickname, pw)) {
+                    int id = k.getIdByNickname(nickname);
+                    System.out.println(id);
+                    Chat chatform = new Chat();
+                    chatform.giveCurrentUserId(id);
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Something went wrong try again!");
+                }
+
+            }
+        });
+    }
+
     private void asetteleKomponentit() {
         fontChange();
         titlep.add(lbTitle);
@@ -79,7 +120,7 @@ public class login extends JFrame {
     }
 
     public static void main(String[] args) {
-       new login();
+        new login();
     }
 
     private void fontChange() {
@@ -89,16 +130,16 @@ public class login extends JFrame {
         int stringWidth = lbTitle.getFontMetrics(labelFont).stringWidth(labelText);
         int componentWidth = lbTitle.getWidth();
 
-    // Find out how much the font can grow in width.
+        // Find out how much the font can grow in width.
         double widthRatio = (double) componentWidth / (double) stringWidth;
 
         int newFontSize = (int) (labelFont.getSize() * widthRatio);
         int componentHeight = lbTitle.getHeight();
 
-    // Pick a new font size so it will not be larger than the height of label.
+        // Pick a new font size so it will not be larger than the height of label.
         int fontSizeToUse = Math.min(newFontSize, componentHeight);
 
-    // Set the label's font size to the newly determined size.
+        // Set the label's font size to the newly determined size.
         lbTitle.setFont(new Font(labelFont.getName(), Font.PLAIN, fontSizeToUse));
     }
 }
