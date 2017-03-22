@@ -14,7 +14,17 @@ public class Kaveri {
         this.IDs.add(id);
     }
     public String ToString() {
-        return " " + this.friendnames + " " + this.IDs;
+        String k = "";
+        String l = "";
+        int i = 0;
+        for (String friendname : friendnames) {
+            k += " " + friendname;
+            l += " " + this.IDs.get(i);
+            i++;
+            System.out.println(friendname);
+        }
+        k += l;
+        return k;
     }
     public ArrayList<String> getFriendnames() {
         System.out.println(this.friendnames);

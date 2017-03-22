@@ -173,6 +173,7 @@ public class Database {
         }
         return false;
     }
+    
     public void updateProfiili(int id,String nickname,int ika, String bio,String location) {
        try{
            connection = DriverManager.getConnection(connectionString);
@@ -202,6 +203,28 @@ public class Database {
             System.out.println("error in getNicknameById : "+ ex);
         }
         return null;
+    }
+    public JsonObject getFriendsByIdInJsonObject(int id) {
+        try{
+            connection = DriverManager.getConnection(connectionString);
+            String sql = "select kaveri from kaverit where ProfileID=?";
+            prepsInsertProduct = connection.prepareStatement(sql);
+            prepsInsertProduct.setInt(1,id);
+            rs=prepsInsertProduct.executeQuery();
+            String kaverit = "";
+            if(rs.next()) {
+                kaverit = rs.getString("kaveri");
+            }
+            if(kaverit.isEmpty()) {
+                return null;
+            }
+            JsonParser jsonparser = new JsonParser();
+            JsonObject obj = (JsonObject)jsonparser.parse(kaverit);
+            return obj;
+        }catch (Exception ex){
+            System.out.println("error in getfriendsbyid "+ ex);
+            return null;
+        }
     }
     public Kaveri getFriendsByIdInKaveri(int id) {
         Kaveri kaveri = new Kaveri();
@@ -298,9 +321,37 @@ public class Database {
             return null;
         }
     }
+    public boolean removeFriendById(int currentUserId, int removeThis){
+        Database d = new Database();
+        Gson gson = new Gson();
+        JsonParser jsonparser = new JsonParser();
+        JsonObject obj= d.getFriendsByIdInJsonObject(currentUserId);
+        final JsonArray pituus = obj.getAsJsonArray("friendnames");
+        for (int i = 0; i < pituus.size(); i++) {
+            if(obj.getAsJsonArray("IDs").get(i).getAsInt() ==  removeThis) {
+                obj.getAsJsonArray("IDs").remove(i);
+                obj.getAsJsonArray("friendnames").remove(i);
+                i--;
+            }
+        }
+        String kaverit = obj.toString();
+        try{
+            connection = DriverManager.getConnection(connectionString);
+            String sql = "update kaverit set kaveri =? where ProfileID=?";
+            prepsInsertProduct = connection.prepareStatement(sql);
+            prepsInsertProduct.setString(1,kaverit);
+            prepsInsertProduct.setInt(2,currentUserId);
+            prepsInsertProduct.execute();
+            return true;
+        }catch (Exception ex) {
+            System.out.println("Error in removeFriendById  : " + ex);
+            return false;
+        }
+    }
         
     public static void main(String[] args) {
         Database k = new Database();
-        k.getFriendByNickname(2,"jyri");
+        k.addFriend(2,k.getIdByNickname("laskimeme"));
+        System.out.println(k.getFriendsByIdInJsonObject(2));
     }
 }
