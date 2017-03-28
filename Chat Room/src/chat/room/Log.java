@@ -3,31 +3,36 @@ package chat.room;
 public class Log {
     public String message;
     public String user;
-      Log(String user,String message) {
+      Log(String message) {
         this.user = user;
         this.message = message;
     }
-      public String getkayttaja(){
-    return this.user;
-}
-public String getpisteet(){
+      
+      
+      //might use in the future but for now they are useless
+//      public String getuser(String user)
+//{
+//    this.user = user;
+//    
+//    return this.user;
+//}
+//      
+//      public String getuser(){
+//    return this.user;
+//}
+ 
+public String getmessage(){
      
        return this.message;      
 }            
-public String getkayttaja(String user)
-{
-    this.user = user;
-    
-    return this.user;
-}
-public String getpisteet(String message)
+public String getmessage(String message)
 {
      this.message = message;
 
     return this.message;
 }
 public String toString() {
-        return this.user +" "+ this.message;
+        return this.message;
     }
     
     

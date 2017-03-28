@@ -2,6 +2,8 @@ package chat.room;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.BorderFactory;
@@ -11,6 +13,8 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 public class Chat extends JFrame {
 
@@ -39,23 +43,26 @@ public class Chat extends JFrame {
         javax.swing.border.Border b = BorderFactory.createLineBorder(Color.BLACK);
         viesti.setBorder(BorderFactory.createCompoundBorder(b,
                 BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-        viesti.setText("kirjoitat tähän");
+//        viesti.setText("kirjoitat tähän");
         Sendbtn.setText("Send");
         closebtn.setText("close");
         asetteleKomponentit();
         this.setVisible(true);
         chatarea.setEditable(false);
+       Sendbtn.setBackground(Color.GRAY);
+        Sendbtn.setForeground(Color.BLACK);
+        viesti.requestFocus();
+
+        Border roundedBorder = new LineBorder(null, 2, true); // the third parameter - true, says it's round
+         viesti.setBorder(roundedBorder); 
+         //yritän tehdä kirjoitus areasta pyöreän
         viesti.addKeyListener(new KeyListener() {
             int jotain;
+            
 
             @Override
             public void keyTyped(KeyEvent e) {
-                if (jotain == 0) {
-                    viesti.setText("");
-                    jotain++;
-                    
-
-                }
+                
             }
 
             @Override
@@ -63,10 +70,12 @@ public class Chat extends JFrame {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 
                     if (connected) {
-                        // just have to send the message
+                        if(!viesti.getText().equals("\n")){
                         client.sendMessage(new ChatMessage(ChatMessage.MESSAGE, viesti.getText()));
                         viesti.setText("");
+                        viesti.requestFocus();
                         return;
+                        }
                     }
                 }
             }
@@ -74,8 +83,30 @@ public class Chat extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
             }
+            
         });
+        
+viesti.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if(viesti.getText().equals("kirjoitat tähän")){
+                    viesti.setText("");
+                }
+                
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                
+                if(viesti.getText().equals("")){
+                viesti.setText("kirjoitat tähän");
+                }
+            }
+        });
+
+
     }
+    
 
     public void giveCurrentUserId(int id) {
         currentUserId = id; 
