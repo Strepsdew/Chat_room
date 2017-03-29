@@ -41,8 +41,8 @@ public class Chat extends JFrame {
     
     private boolean connected;
 
-    public Chat() throws IOException {
-       sendImage();
+    public Chat()  {
+       
         this.setTitle("Chat with KAVERIN_NIMI"); // tähän lisätään chat with kaverin nimi
         this.setSize(410, 350);
         this.setLocationRelativeTo(null);
@@ -143,7 +143,7 @@ viesti.addFocusListener(new FocusListener() {
         this.add(pohja);
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         new Chat();
 
     }
