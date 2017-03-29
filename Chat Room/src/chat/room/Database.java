@@ -351,7 +351,5 @@ public class Database {
         
     public static void main(String[] args) {
         Database k = new Database();
-        k.addFriend(2,k.getIdByNickname("laskimeme"));
-        System.out.println(k.getFriendsByIdInJsonObject(2));
     }
 }
