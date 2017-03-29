@@ -5,12 +5,18 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.imageio.ImageIO;
 
 public class Database {
 
@@ -220,6 +226,7 @@ public class Database {
             }
             JsonParser jsonparser = new JsonParser();
             JsonObject obj = (JsonObject)jsonparser.parse(kaverit);
+ 
             return obj;
         }catch (Exception ex){
             System.out.println("error in getfriendsbyid "+ ex);
@@ -348,10 +355,54 @@ public class Database {
             return false;
         }
     }
-        
-    public static void main(String[] args) {
-        Database k = new Database();
-        k.addFriend(2,k.getIdByNickname("laskimeme"));
-        System.out.println(k.getFriendsByIdInJsonObject(2));
+    public boolean insertPicture(File file) {
+        try{
+            BufferedImage img = ImageIO.read(file);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(img, "png", baos);
+            Blob blFile = new javax.sql.rowset.serial.SerialBlob(baos.toByteArray());
+            connection = DriverManager.getConnection(connectionString);
+            String sql = "insert into ImageTable (Name,Photo) values (?,?)";
+            prepsInsertProduct = connection.prepareStatement(sql);
+            prepsInsertProduct.setString(1, "jotain hauskaa");
+            prepsInsertProduct.setBlob(2, blFile);
+            prepsInsertProduct.execute();
+            return true;
+        }catch (Exception ex) {
+            System.out.println("Error in insertPicture : " + ex);
+            return false;
+        }
+    }
+    public Blob getPicture() {
+        Blob result = null;
+        try{
+           connection = DriverManager.getConnection(connectionString);
+           String sql = "SELECT Photo from ImageTable where Name =?";
+           prepsInsertProduct = connection.prepareStatement(sql);
+           prepsInsertProduct.setString(1, "jotain hauskaa");
+           rs =prepsInsertProduct.executeQuery();
+           if(rs.next()) {
+               result = rs.getBlob("Photo");
+           }
+           System.out.println(result);
+           return result;
+        }catch (Exception ex) {
+            System.out.println("Error in getPicture : " + ex);
+            return null;
+        }
+    }
+    public BufferedImage getBufferedImage() throws IOException, SQLException {
+      Database k = new Database();
+      File f = new File("slk_hbc_logo.png");
+      Blob j = k.getPicture();
+      InputStream in = j.getBinaryStream();  
+      BufferedImage image = ImageIO.read(in);   
+      return image;
+    }
+    public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
+        Database meme = new Database();
+        File k = new File("SoundEffectsMOTD.png");
+        meme.insertPicture(k);
+       
     }
 }

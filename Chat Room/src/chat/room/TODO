@@ -33,7 +33,11 @@ TODO:
             Lisää vain tuo getFriendsByIdeeseen ja tee sitten jsonobjecti array jonka palautat  
             Kuin sinulla on enemmäin kuin yksi kaveri sinun pitää jossain kohtaa splittaa stringistä ne erikseen ja lisää jsonarray listaan
             
-            Voit tehdä myös yhden ison jsonobjectin johon lisäät koko ajan tietoa. put metodilla    
+            Voit tehdä myös yhden ison jsonobjectin johon lisäät koko ajan tietoa. put metodilla    ¨¨
+
+        Kuva profiiliin lisäsys suunitelma
+            Resettaa database ja lisää sinne column kuva joka on maxvarbinary 
+            Tee tähän liittyvät metodit.
             
 
             
