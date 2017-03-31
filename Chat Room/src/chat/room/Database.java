@@ -355,17 +355,17 @@ public class Database {
             return false;
         }
     }
-    public boolean insertPicture(File file) {
+    public boolean insertPicture(File file,int currentUserId) {
         try{
             BufferedImage img = ImageIO.read(file);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ImageIO.write(img, "png", baos);
             Blob blFile = new javax.sql.rowset.serial.SerialBlob(baos.toByteArray());
             connection = DriverManager.getConnection(connectionString);
-            String sql = "insert into ImageTable (Name,Photo) values (?,?)";
+            String sql = "update profile set ProfilePhoto=? where ProfileID=?";
             prepsInsertProduct = connection.prepareStatement(sql);
-            prepsInsertProduct.setString(1, "jotain hauskaa");
-            prepsInsertProduct.setBlob(2, blFile);
+            prepsInsertProduct.setBlob(1, blFile);
+            prepsInsertProduct.setInt(2,currentUserId);
             prepsInsertProduct.execute();
             return true;
         }catch (Exception ex) {
@@ -373,16 +373,16 @@ public class Database {
             return false;
         }
     }
-    public Blob getPicture() {
+    public Blob getPicture(int id) {
         Blob result = null;
         try{
            connection = DriverManager.getConnection(connectionString);
-           String sql = "SELECT Photo from ImageTable where Name =?";
+           String sql = "select ProfilePhoto from profile where ProfileID=?";
            prepsInsertProduct = connection.prepareStatement(sql);
-           prepsInsertProduct.setString(1, "jotain hauskaa");
+           prepsInsertProduct.setInt(1,id);
            rs =prepsInsertProduct.executeQuery();
            if(rs.next()) {
-               result = rs.getBlob("Photo");
+               result = rs.getBlob("ProfilePhoto");
            }
            System.out.println(result);
            return result;
@@ -391,18 +391,14 @@ public class Database {
             return null;
         }
     }
-    public BufferedImage getBufferedImage() throws IOException, SQLException {
+    public BufferedImage getBufferedImageById(int id) throws IOException, SQLException {
       Database k = new Database();
-      File f = new File("slk_hbc_logo.png");
-      Blob j = k.getPicture();
+      Blob j = k.getPicture(id);
       InputStream in = j.getBinaryStream();  
       BufferedImage image = ImageIO.read(in);   
       return image;
     }
     public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
         Database meme = new Database();
-        File k = new File("SoundEffectsMOTD.png");
-        meme.insertPicture(k);
-       
     }
 }
