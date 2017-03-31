@@ -2,12 +2,6 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[ImageTable](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-	[Photo] [varbinary](max) NULL
-)
-GO
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -22,6 +16,7 @@ CREATE TABLE [dbo].[profile](
 	[location] [varchar](40) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[username] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
 	[email] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	ProfilePhoto varbinary(max),
 	[ika] [int] NULL,
 PRIMARY KEY CLUSTERED 
 (
@@ -43,8 +38,6 @@ REFERENCES [dbo].[profile] ([ProfileID])
 GO
 ALTER TABLE [dbo].[kaverit]  WITH NOCHECK ADD FOREIGN KEY([ProfileID])
 REFERENCES [dbo].[profile] ([ProfileID])
-GO
--- BCPArgs:2:[dbo].[ImageTable] in "c:\SQLAzureMW\BCPData\dbo.ImageTable.dat" -E -n -C RAW -b 1000 -a 4096
 GO
 -- BCPArgs:7:[dbo].[profile] in "c:\SQLAzureMW\BCPData\dbo.profile.dat" -E -n -C RAW -b 1000 -a 4096
 GO
