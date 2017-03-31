@@ -41,6 +41,7 @@ public class Server {
                 display("Server waiting for clients on port " + port + ".");
 
                 Socket socket = serverSocket.accept();
+                
 
                 if (!keepGoing) {
                     break;
