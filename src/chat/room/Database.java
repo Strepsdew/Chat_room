@@ -5,12 +5,27 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import javax.imageio.ImageIO;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 
 public class Database {
 
@@ -220,6 +235,7 @@ public class Database {
             }
             JsonParser jsonparser = new JsonParser();
             JsonObject obj = (JsonObject)jsonparser.parse(kaverit);
+
             return obj;
         }catch (Exception ex){
             System.out.println("error in getfriendsbyid "+ ex);
@@ -348,6 +364,53 @@ public class Database {
             return false;
         }
     }
+
+    public boolean insertPicture(File file,int currentUserId) {
+        try{
+            BufferedImage img = ImageIO.read(file);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(img, "png", baos);
+            Blob blFile = new javax.sql.rowset.serial.SerialBlob(baos.toByteArray());
+            connection = DriverManager.getConnection(connectionString);
+            String sql = "update profile set ProfilePhoto=? where ProfileID=?";
+            prepsInsertProduct = connection.prepareStatement(sql);
+            prepsInsertProduct.setBlob(1, blFile);
+            prepsInsertProduct.setInt(2,currentUserId);
+            prepsInsertProduct.execute();
+            return true;
+        }catch (Exception ex) {
+            System.out.println("Error in insertPicture : " + ex);
+            return false;
+        }
+    }
+    public Blob getPicture(int id) {
+        Blob result = null;
+        try{
+           connection = DriverManager.getConnection(connectionString);
+           String sql = "select ProfilePhoto from profile where ProfileID=?";
+           prepsInsertProduct = connection.prepareStatement(sql);
+           prepsInsertProduct.setInt(1,id);
+           rs =prepsInsertProduct.executeQuery();
+           if(rs.next()) {
+               result = rs.getBlob("ProfilePhoto");
+           }
+           System.out.println(result);
+           return result;
+        }catch (Exception ex) {
+            System.out.println("Error in getPicture : " + ex);
+            return null;
+        }
+    }
+    public BufferedImage getBufferedImageById(int id) throws IOException, SQLException {
+      Database k = new Database();
+      Blob j = k.getPicture(id);
+      InputStream in = j.getBinaryStream();  
+      BufferedImage image = ImageIO.read(in);   
+      return image;
+    }
+    public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
+        Database meme = new Database();
+
         
     public static void main(String[] args) {
         Database k = new Database();

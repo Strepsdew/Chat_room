@@ -3,6 +3,7 @@ package chat.room;
 public class Log {
     public String message;
     public String user;
+  
       Log(String message) {
         this.user = user;
         this.message = message;
@@ -26,13 +27,16 @@ public String getmessage(){
        return this.message;      
 }            
 public String getmessage(String message)
+
 {
      this.message = message;
 
     return this.message;
 }
 public String toString() {
-        return this.message;
+
+        return this.user +" "+ this.message;
+
     }
     
     

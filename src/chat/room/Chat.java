@@ -2,6 +2,17 @@ package chat.room;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
 import java.awt.Image;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -23,6 +34,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
+
 public class Chat extends JFrame {
 
     private JPanel pohja = new JPanel(new BorderLayout());
@@ -36,12 +48,15 @@ public class Chat extends JFrame {
     private JButton sendBtn = new JButton();
     private JTextArea chatArea = new JTextArea();
 
+
     private int currentUserId;
     Client client = new Client("localhost", 1500, null, this);
     
     private boolean connected;
 
-    public Chat()  {
+
+    public Chat() {
+
        
         this.setTitle("Chat with KAVERIN_NIMI"); // tähän lisätään chat with kaverin nimi
         this.setSize(410, 350);
@@ -88,12 +103,14 @@ public class Chat extends JFrame {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 
                     if (connected) {
+
                         
                         client.sendMessage(new ChatMessage(ChatMessage.MESSAGE, viesti.getText()));
                         viesti.setText("");
                         
                         return;
                         
+
                     }
                 }
             }
@@ -123,6 +140,7 @@ viesti.addFocusListener(new FocusListener() {
 
     }
     
+
 
     public void giveCurrentUserId(int id) {
         currentUserId = id; 
@@ -160,6 +178,7 @@ viesti.addFocusListener(new FocusListener() {
         connected = true;
 
     }
+
     
     public void sendImage() throws IOException{
         
@@ -188,5 +207,6 @@ viesti.addFocusListener(new FocusListener() {
             }
     }
     
+
 
 }

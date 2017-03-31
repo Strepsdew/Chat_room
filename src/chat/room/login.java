@@ -20,6 +20,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class login extends JFrame {
+
     private JPanel pohja = new JPanel(new GridLayout(4, 1));
     private JPanel tunnup = new JPanel(new FlowLayout(FlowLayout.CENTER));
     private JPanel titlep = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -66,7 +67,9 @@ public class login extends JFrame {
                         Chat chatform = new Chat();
                         System.out.println(id);
                         chatform.giveCurrentUserId(id);
+
                         setVisible(false);
+
                     } else {
                         JOptionPane.showMessageDialog(rootPane, "Something went wrong try again!");
                     }
@@ -81,7 +84,9 @@ public class login extends JFrame {
         Register.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 Register k = new Register();
+
                 setVisible(false);
+
             }
         });
         login.addActionListener(new ActionListener() {
@@ -95,7 +100,9 @@ public class login extends JFrame {
                     System.out.println(id);
                     Chat chatform = new Chat();
                     chatform.giveCurrentUserId(id);
+
                     setVisible(false);
+
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Something went wrong try again!");
                 }
