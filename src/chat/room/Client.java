@@ -6,6 +6,10 @@ import java.util.*;
 
 public class Client {
 
+    
+     private ArrayList<Log> messageLog = new ArrayList<Log>();
+
+
     private ObjectInputStream sInput;
     private ObjectOutputStream sOutput;
     private Socket socket;
@@ -63,7 +67,9 @@ public class Client {
       if(gui == null){
           System.out.println(msg);
       }else{
+
           System.out.println(msg+"\n");
+
       }
     }
 
@@ -166,5 +172,31 @@ public class Client {
                 }
             }
         }
+
+//        
+//        public boolean WriteToFile() throws IOException {
+//        
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+//        LocalDate localDate = LocalDate.now();
+//        
+//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//
+//        String json = gson.toJson(messageLog);
+//
+//        try (FileWriter writer = new FileWriter("Single"+ localDate+".json")) {
+//            writer.write(json);
+//        } catch (IOException e) {
+//            System.out.println("Writing failed " + e.getMessage());
+//        }
+//
+////        PrintWriter writer = new PrintWriter(new FileWriter("kayttaja.txt", true));
+////        writer.println(this.list);
+////        writer.close();
+//        return false;
+//    }
+        
+        //locaali log file clientille... ei toimi pitää tehä sama ku serverille
+        
+
     }
 }

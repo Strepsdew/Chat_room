@@ -5,7 +5,12 @@ import com.google.gson.GsonBuilder;
 import java.io.*;
 import java.net.*;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class Server {
 
@@ -18,6 +23,10 @@ public class Server {
     private int port;
 
     private boolean keepGoing;
+
+
+    private ArrayList<Log> message = new ArrayList<Log>();
+
 
     public Server(int port) {
         this.port = port;
@@ -70,10 +79,18 @@ public class Server {
 
     }
 
-    private synchronized void broadcast(String message) {
+      private void add(String msg)  throws IOException {
+            Log asd = new Log(msg);
+            message.add(asd);
+            WriteToFile();
+        }
+
+    private synchronized void broadcast(String message) throws IOException {
         String time = sdf.format(new Date());
         String messageLf = time + " " + message + "\n";
         System.out.print(messageLf);
+        add(messageLf);
+
 
         for (int i = al.size(); --i >= 0;) {
             ClientThread ct = al.get(i);
@@ -162,7 +179,14 @@ public class Server {
                 switch (cm.getType()) {
 
                     case ChatMessage.MESSAGE:
+                {
+                    try {
                         broadcast(username + ": " + message);
+                    } catch (IOException ex) {
+                        Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
                         break;
                     case ChatMessage.LOGOUT:
                         display(username + " disconnected with a LOGOUT message.");
@@ -170,63 +194,75 @@ public class Server {
                         break;
                     case ChatMessage.WHOISIN:
                         writeMsg("List of the users connected at " + sdf.format(new Date()) + "\n");
-                        for (int i = 0; i < al.size(); ++i){
-                        ClientThread ct = al.get(i);
+
+                        for (int i = 0; i < al.size(); ++i) {
+                            ClientThread ct = al.get(i);
+
                             writeMsg((i + 1) + ")" + ct.username + " since " + ct.date);
                         }
                         break;
                 }
             }
-            
+
             remove(id);
             close();
         }
-        private void close(){
-            try{
-                if(sOutput != null){
+
+        private void close() {
+            try {
+                if (sOutput != null) {
                     sOutput.close();
                 }
-            }catch(Exception e){
+            } catch (Exception e) {
             }
-            try{
-                if(sInput !=null){
+            try {
+                if (sInput != null) {
                     sInput.close();
                 }
-            }catch(Exception e){
+            } catch (Exception e) {
             }
-            try{
-                if(socket != null){
+            try {
+                if (socket != null) {
                     socket.close();
                 }
-            }catch(Exception e){
-                
+            } catch (Exception e) {
+
             }
         }
-        
-        private boolean writeMsg(String msg){
-            if(!socket.isConnected()){
+
+      
+
+        private boolean writeMsg(String msg) {
+            if (!socket.isConnected()) {
                 close();
                 return false;
             }
-            
-            try{
+
+            try {
                 sOutput.writeObject(msg);
-            }catch(IOException e){
-                display("error sending message to "+ username);
+                
+
+            } catch (IOException e) {
+                display("error sending message to " + username);
                 display(e.toString());
             }
+            
             return true;
         }
-        
+
     }
-    
-   public boolean WriteToFile() throws IOException {
+
+    public boolean WriteToFile() throws IOException {
+        
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDate localDate = LocalDate.now();
+        
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        String json = gson.toJson(this);
-        System.out.println(json);
+        String json = gson.toJson(message);
 
-        try (FileWriter writer = new FileWriter("scores.json")) {
+        try (FileWriter writer = new FileWriter(localDate+".json")) {
+
             writer.write(json);
         } catch (IOException e) {
             System.out.println("Writing failed " + e.getMessage());

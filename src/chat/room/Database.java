@@ -5,6 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -17,6 +18,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
+
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class Database {
 
@@ -226,7 +235,7 @@ public class Database {
             }
             JsonParser jsonparser = new JsonParser();
             JsonObject obj = (JsonObject)jsonparser.parse(kaverit);
- 
+
             return obj;
         }catch (Exception ex){
             System.out.println("error in getfriendsbyid "+ ex);
@@ -355,6 +364,7 @@ public class Database {
             return false;
         }
     }
+
     public boolean insertPicture(File file,int currentUserId) {
         try{
             BufferedImage img = ImageIO.read(file);
@@ -400,5 +410,9 @@ public class Database {
     }
     public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
         Database meme = new Database();
+
+        
+    public static void main(String[] args) {
+        Database k = new Database();
     }
 }
