@@ -411,8 +411,7 @@ public class Database {
     public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
         Database meme = new Database();
 
-        
-    public static void main(String[] args) {
-        Database k = new Database();
+            
+   
     }
 }
