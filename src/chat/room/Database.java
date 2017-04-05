@@ -409,8 +409,7 @@ public class Database {
     }
     public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
         Database meme = new Database();
-
-            
-   
+        File file = new File("Download.png");
+        meme.insertPicture(file, 2);
     }
 }
