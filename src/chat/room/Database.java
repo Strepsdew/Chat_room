@@ -291,7 +291,7 @@ public class Database {
             String sql = "SELECT * FROM kaverit where ProfileID=?";
             prepsInsertProduct = connection.prepareStatement(sql);
             prepsInsertProduct.setInt(1,currentUserId);
-            prepsInsertProduct.executeQuery();
+            rs = prepsInsertProduct.executeQuery();
             String kaverit = "";
             if(rs.next()){
                 kaverit = rs.getString("kaveri");

@@ -12,6 +12,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Server {
+    
+    
+
+Map<String, Socket> clients = new HashMap<String, Socket> ();
 
     private static int uniqueId;
 
@@ -24,7 +28,10 @@ public class Server {
     private boolean keepGoing;
 
     private ArrayList<Log> message = new ArrayList<Log>();
-
+    
+    private int myId;
+    
+    private int friendsId;
     public Server(int port) {
         this.port = port;
         sdf = new SimpleDateFormat("HH:mm");
@@ -89,11 +96,13 @@ public class Server {
         add(messageLf);
 
         for (int i = al.size(); --i >= 0;) {
+            
             ClientThread ct = al.get(i);
-
+            if(i == myId || i == friendsId){
             if (!ct.writeMsg(messageLf)) {
                 al.remove(i);
                 display("Disconnected Client " + ct.username + " removed from list.");
+            }
             }
         }
     }
@@ -148,6 +157,8 @@ public class Server {
                 sOutput = new ObjectOutputStream(socket.getOutputStream());
                 sInput = new ObjectInputStream(socket.getInputStream());
                 username = (String) sInput.readObject();
+                System.out.println("asdasdasd: "+ socket);
+                clients.put(username, socket);
                 display(username + "just connected.");
                 
             } catch (IOException e) {
@@ -163,6 +174,9 @@ public class Server {
             while (keepGoing) {
                 try {
                     cm = (ChatMessage) sInput.readObject();
+                     friendsId = (Integer) sInput.readObject();
+                     myId = (Integer) sInput.readObject();
+                    System.out.println("kaverin id: "+friendsId+" ja mun id: "+myId);
                 } catch (IOException e) {
                     display(username + " Exception reading Streams: " + e);
                     break;
