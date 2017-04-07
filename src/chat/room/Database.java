@@ -25,6 +25,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 
 public class Database {
@@ -159,8 +160,8 @@ public class Database {
                 prepsInsertProduct.setString(5, password);
                 prepsInsertProduct.executeUpdate();
                 String query2 = "insert into kaverit (kaveri) values ('')";
-                statement = connection.createStatement();
-                statement.executeUpdate(query2);    
+                prepsInsertProduct = connection.prepareStatement(query2);
+                prepsInsertProduct.executeUpdate();   
             } catch (Exception ex) {
                 System.out.println("Error in createUser : " + ex);
             }
@@ -273,17 +274,20 @@ public class Database {
         }
     }
     
-    public boolean haveThisFriend(Kaveri kaverit,int currentUserId){
+    public boolean haveThisFriend(String kaverinimi,int friendId,int currentUserId){
         Database d = new Database();
         Kaveri kaveri = null;
         if(d.getFriendsByIdInKaveri(currentUserId)!=null){
             kaveri = d.getFriendsByIdInKaveri(currentUserId);
+        }else{
+            kaveri = new Kaveri();
         }
-        int i = 0;
-        ArrayList<Integer> ids = kaveri.getIds();
-        for (int id : kaverit.getIds()) {
-            if(id == ids.get(i)) return true;
-            i++;
+        if(Objects.nonNull(kaveri.getIds())){
+            for (int id : kaveri.getIds()) {
+                if(id == friendId) return true;
+            }
+        }else{
+            return false;
         }
         return false;
     }
@@ -299,8 +303,10 @@ public class Database {
         }else{
             kaverit = new Kaveri();
         }
-        if(!haveThisFriend(kaverit,currentUserId)){
+        if(!haveThisFriend(kaverinimi,friendId,currentUserId)){
             kaverit.addFriend(kaverinimi,friendId);
+        }else{
+            return false;
         }
         
         String kaveritstring = gson.toJson(kaverit);
@@ -314,7 +320,11 @@ public class Database {
         }else{
             kaverinkaverit = new Kaveri();
         }
-        kaverinkaverit.addFriend(currentUser,currentUserId);
+        if(!haveThisFriend(currentUser,currentUserId,friendId)) {
+            kaverinkaverit.addFriend(currentUser,currentUserId);
+        }else{
+            return false;
+        }
         
         String kaverinkaveritstring = gson.toJson(kaverinkaverit);
         JsonObject obj2 =(JsonObject)jsonparser.parse(kaverinkaveritstring);
@@ -326,13 +336,15 @@ public class Database {
             prepsInsertProduct = connection.prepareStatement(sql);
             prepsInsertProduct.setString(1,insert);
             prepsInsertProduct.setInt(2,currentUserId);
-            //prepsInsertProduct.execute();
+            prepsInsertProduct.execute();
+            
             String sql2 = "update kaverit set kaveri =? where ProfileID =?";
             prepsInsertProduct = connection.prepareStatement(sql2);
             prepsInsertProduct.setString(1,insert2);
             prepsInsertProduct.setInt(2,friendId);
-            //prepsInsertProduct.execute();
+            prepsInsertProduct.execute();
             
+            return true;
         }catch (Exception ex) {
             System.out.println("Error in addFriend" + ex);
         }
@@ -445,6 +457,6 @@ public class Database {
     }
     public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
         Database meme = new Database();
-        meme.addFriend(1, 2);
+        meme.addFriend(3, 2);
     }
 }
