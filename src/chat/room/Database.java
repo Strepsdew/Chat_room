@@ -272,6 +272,21 @@ public class Database {
             return null;
         }
     }
+    
+    public boolean haveThisFriend(Kaveri kaverit,int currentUserId){
+        Database d = new Database();
+        Kaveri kaveri = null;
+        if(d.getFriendsByIdInKaveri(currentUserId)!=null){
+            kaveri = d.getFriendsByIdInKaveri(currentUserId);
+        }
+        int i = 0;
+        ArrayList<Integer> ids = kaveri.getIds();
+        for (int id : kaverit.getIds()) {
+            if(id == ids.get(i)) return true;
+            i++;
+        }
+        return false;
+    }
     public boolean addFriend(int currentUserId,int friendId){
         Database d = new Database();
         Gson gson = new Gson();
@@ -284,19 +299,40 @@ public class Database {
         }else{
             kaverit = new Kaveri();
         }
-        kaverit.addFriend(kaverinimi,friendId);
+        if(!haveThisFriend(kaverit,currentUserId)){
+            kaverit.addFriend(kaverinimi,friendId);
+        }
         
         String kaveritstring = gson.toJson(kaverit);
         JsonObject obj = (JsonObject)jsonparser.parse(kaveritstring);
         String insert = obj.toString();
         
+        String currentUser =d.getNicknameById(currentUserId);
+        Kaveri kaverinkaverit = null;
+        if(d.getFriendsByIdInKaveri(friendId)!=null){
+            kaverinkaverit = d.getFriendsByIdInKaveri(friendId);
+        }else{
+            kaverinkaverit = new Kaveri();
+        }
+        kaverinkaverit.addFriend(currentUser,currentUserId);
+        
+        String kaverinkaveritstring = gson.toJson(kaverinkaverit);
+        JsonObject obj2 =(JsonObject)jsonparser.parse(kaverinkaveritstring);
+        String insert2 = obj2.toString();
+
         try{
             connection = DriverManager.getConnection(connectionString);
             String sql = "update kaverit set kaveri =? where ProfileID =?";
             prepsInsertProduct = connection.prepareStatement(sql);
             prepsInsertProduct.setString(1,insert);
             prepsInsertProduct.setInt(2,currentUserId);
-            prepsInsertProduct.execute();  
+            //prepsInsertProduct.execute();
+            String sql2 = "update kaverit set kaveri =? where ProfileID =?";
+            prepsInsertProduct = connection.prepareStatement(sql2);
+            prepsInsertProduct.setString(1,insert2);
+            prepsInsertProduct.setInt(2,friendId);
+            //prepsInsertProduct.execute();
+            
         }catch (Exception ex) {
             System.out.println("Error in addFriend" + ex);
         }
@@ -409,7 +445,6 @@ public class Database {
     }
     public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
         Database meme = new Database();
-        File file = new File("Download.png");
-        meme.insertPicture(file, 2);
+        meme.addFriend(1, 2);
     }
 }

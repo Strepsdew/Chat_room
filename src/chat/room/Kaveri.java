@@ -30,4 +30,7 @@ public class Kaveri {
         System.out.println(this.friendnames);
         return this.friendnames;
     }
+    public ArrayList<Integer> getIds(){
+        return this.IDs;
+    }
 }
