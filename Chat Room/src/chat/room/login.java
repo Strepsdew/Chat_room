@@ -64,9 +64,9 @@ public class login extends JFrame {
                     Database k = new Database();
                     if (k.checkPassword(nickname, pw)) {
                         int id = k.getIdByNickname(nickname);
-                        Chat chatform = new Chat();
+                        ChatRoom chatform = new ChatRoom();
                         System.out.println(id);
-                        chatform.giveCurrentUserId(id);
+                        chatform.recieveCurrentUserId(id);
                         
                     } else {
                         JOptionPane.showMessageDialog(rootPane, "Something went wrong try again!");
@@ -93,8 +93,8 @@ public class login extends JFrame {
                 if (k.checkPassword(nickname, pw)) {
                     int id = k.getIdByNickname(nickname);
                     System.out.println(id);
-                    Chat chatform = new Chat();
-                    chatform.giveCurrentUserId(id);
+                    ChatRoom chatform = new ChatRoom();
+                    chatform.recieveCurrentUserId(id);
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Something went wrong try again!");
                 }

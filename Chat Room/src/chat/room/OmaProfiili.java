@@ -62,6 +62,7 @@ public class OmaProfiili extends JFrame {
         tfBio.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         tfBio.setRows(5);
         tfBio.setSize(200,200);
+        this.setVisible(true);
 
     }
 
