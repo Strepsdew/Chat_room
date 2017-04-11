@@ -4,6 +4,10 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Objects;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
@@ -13,7 +17,9 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 public class ChatRoom extends JFrame{
   
-    
+    int currentUserId;
+    Database db = new Database();
+    Kaveri kaverit = null;
     JFrame frame = new JFrame();
     JPanel pohja = new JPanel(new GridLayout(8,1));
     JPanel kaveri1 = new JPanel(new GridLayout(1,3));
@@ -35,29 +41,29 @@ public class ChatRoom extends JFrame{
     
    
     
-    JPanel circle1 = new JPanel() {
+    JLabel circle1 = new JLabel() {
     public void paintComponent(Graphics g) {
-        g.drawOval(10, 0, 49, 49);
+        g.drawOval(10, 0, 45, 45);
     }
 };
     JPanel circle2 = new JPanel() {
     public void paintComponent(Graphics g) {
-        g.drawOval(10, 0, 49, 49);
+        g.drawOval(10, 0, 45, 45);
     }
 };
     JPanel circle3 = new JPanel() {
     public void paintComponent(Graphics g) {
-        g.drawOval(10, 0, 49, 49);
+        g.drawOval(10, 0, 45, 45);
     }
 };
     JPanel circle4 = new JPanel() {
     public void paintComponent(Graphics g) {
-        g.drawOval(10, 0, 49, 49);
+        g.drawOval(10, 0, 45, 45);
     }
 };
     JPanel circle5 = new JPanel() {
     public void paintComponent(Graphics g) {
-        g.drawOval(10, 0, 49, 49);
+        g.drawOval(10, 0, 45, 45);
     }
 };
     
@@ -81,8 +87,38 @@ public class ChatRoom extends JFrame{
         this.setSize(210, 400);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         asetteleKomponentit();
-        this.setVisible(true);
-        
+    }
+    public void giveCurrentUserId(int id) throws IOException, SQLException{
+        this.currentUserId = id;
+        kaverit = db.getFriendsByIdInKaveri(currentUserId);
+        asetteleKaverit();
+        nimi.setText(db.getNicknameById(id));
+    }
+    private void asetteleKaverit() throws IOException, SQLException {
+        System.out.println(kaverit.getIds().size());
+        for (int i = 0; i < kaverit.getIds().size(); i++) {
+            switch(i) {
+                case 0:
+                    kaveri1.add(nimi1);
+                    circle1.setIcon(new ImageIcon(db.getBufferedImageById(kaverit.getIds().get(i))));
+                    kaveri1.add(circle1);
+                    pohja.add(kaveri1);
+                    nimi1.setText(kaverit.getFriendnames().get(i));
+                    break;
+                case 1:
+                    kaveri2.add(nimi2);
+                    kaveri2.add(circle2);
+                    pohja.add(kaveri2);
+                    nimi2.setText(kaverit.getFriendnames().get(i));
+                    break;
+                case 2:
+                    kaveri3.add(nimi3);
+                    kaveri3.add(circle3);
+                    pohja.add(kaveri3);
+                    nimi3.setText(kaverit.getFriendnames().get(i));
+                    break;
+                }
+        }
     }
     private void asetteleKomponentit() {
         fontChange();
@@ -90,38 +126,12 @@ public class ChatRoom extends JFrame{
         rivi3.add(searchbt);
         rivi3.add(addbt);
         
-        
-        kaveri1.add(nimi1);
-        kaveri1.add(circle1);
-        
-        
-        kaveri2.add(nimi2);
-        kaveri2.add(circle2);
-        
-        kaveri3.add(nimi3);
-        kaveri3.add(circle3);
-        
-        kaveri4.add(nimi4);
-        kaveri4.add(circle4);
-                
-        kaveri5.add(nimi5);
-        kaveri5.add(circle5);
-        
         pohja.add(rivi1);
         pohja.add(rivi2);
         pohja.add(rivi3);
-        pohja.add(kaveri1);
-        pohja.add(kaveri2);
-        pohja.add(kaveri3);
-        pohja.add(kaveri4);
-        pohja.add(kaveri5);
         
         rivi1.add(lbTitle);
-        
         this.add(pohja);
-        
-       
-        
     }
     
     public static void main(String[] args) {
