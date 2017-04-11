@@ -4,15 +4,25 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
@@ -20,6 +30,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class OmaProfiili extends JFrame {
         
@@ -34,7 +45,7 @@ public class OmaProfiili extends JFrame {
         JLabel lbBio = new JLabel("Bio:     ");
          JLabel lbIka = new JLabel("Age:     ");
          JLabel lbLocation = new JLabel("Location:     ");
-          JLabel lbPic = new JLabel("Picture:     ");
+          JLabel lbPic = new JLabel("");
          
         //textfield
         JTextField txtNimi = new JTextField(10);
@@ -47,12 +58,14 @@ public class OmaProfiili extends JFrame {
         private JButton btnEdit = new JButton("Edit");
         private JButton btnBack = new JButton("Back");
         private JButton btnLogout = new JButton("Logout");
+        private JButton btnPic = new JButton("Set your picture");
         
     public OmaProfiili() {
         
                 
         this.setTitle("Oma Profiili");
         this.setSize(300, 320);
+        
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         asetteleKomponentit();
@@ -91,6 +104,40 @@ public class OmaProfiili extends JFrame {
                 txtIka.setText("");
                 txtLocation.setEditable(false);
                 txtLocation.setText("");
+            }
+        });
+        
+        btnPic.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                try{
+                    
+                    JFileChooser chooser = new JFileChooser();
+                    FileNameExtensionFilter filter = new FileNameExtensionFilter("png","PNG");
+                    chooser.setFileFilter(filter);
+                    int status = chooser.showOpenDialog(null);
+            if (status == JFileChooser.APPROVE_OPTION) {
+                File file = chooser.getSelectedFile();
+                if (file == null) {
+                    return;
+                }
+
+               String  fileName = chooser.getSelectedFile().getAbsolutePath();
+               
+                   File sourceimage = new File(fileName);
+                Image image = ImageIO.read(sourceimage);
+                
+                   
+              
+                image = resize(image,150,95);
+                lbPic.setIcon(new ImageIcon(image));
+                
+
+            }
+
+            }catch(IOException es){
+                    System.out.println(es);
+                    }
+                
             }
         });
     }
@@ -160,6 +207,9 @@ public class OmaProfiili extends JFrame {
          
          oikeaAla.add(btnLogout);
          
+         vasenYla.add(lbPic,gbc);
+         vasenAla.add(btnPic,gbc);
+         
         //kuva
       
     }
@@ -186,5 +236,16 @@ public class OmaProfiili extends JFrame {
 
     // Set the label's font size to the newly determined size.
         lbTitle.setFont(new Font(labelFont.getName(), Font.PLAIN, fontSizeToUse));
+    }
+    //pöllin pekalta :D
+    public BufferedImage resize(Image img, int newW, int newH) {
+        Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
+        BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
+
+        Graphics2D g2d = dimg.createGraphics();
+        g2d.drawImage(tmp, 0, 0, null);
+        g2d.dispose();
+
+        return dimg;
     }
 }

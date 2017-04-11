@@ -22,6 +22,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Chat extends JFrame {
 
@@ -42,7 +43,7 @@ public class Chat extends JFrame {
     private boolean connected;
 
     public Chat()  {
-       
+      
         this.setTitle("Chat with KAVERIN_NIMI"); // tähän lisätään chat with kaverin nimi
         this.setSize(410, 350);
         this.setLocationRelativeTo(null);
@@ -161,9 +162,12 @@ viesti.addFocusListener(new FocusListener() {
 
     }
     
-    public void sendImage() throws IOException{
+    public void sendImage(){
         
+        try{
         JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(".jpg","JPG");
+        chooser.setFileFilter(filter);
             int status = chooser.showOpenDialog(null);
             if (status == JFileChooser.APPROVE_OPTION) {
                 File file = chooser.getSelectedFile();
@@ -183,9 +187,11 @@ viesti.addFocusListener(new FocusListener() {
                 frame.add(label);
                  frame.setVisible(true);
 
-
-
             }
+
+            }catch(IOException e){
+                    System.out.println(e);
+                    }
     }
     
 
