@@ -15,7 +15,7 @@ public class Server {
     
     
 
-Map<String, ClientThread> clients = new HashMap<String, ClientThread> ();
+Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
 
     private static int uniqueId;
 
@@ -30,6 +30,7 @@ Map<String, ClientThread> clients = new HashMap<String, ClientThread> ();
     private ArrayList<Log> message = new ArrayList<Log>();
     
     private int myId;
+    private Database k = new Database();
     
     private int friendsId;
     public Server(int port) {
@@ -52,7 +53,7 @@ Map<String, ClientThread> clients = new HashMap<String, ClientThread> ();
                     break;
                 }
                 ClientThread t = new ClientThread(socket);
-                al.add(t);
+                clients.put(0, t);
                 t.start();
             }
             try {
@@ -155,9 +156,9 @@ Map<String, ClientThread> clients = new HashMap<String, ClientThread> ();
                 sOutput = new ObjectOutputStream(socket.getOutputStream());
                 sInput = new ObjectInputStream(socket.getInputStream());
                 username = (String) sInput.readObject();
-                
-                
                 display(username + "just connected.");
+                
+                    
                 
             } catch (IOException e) {
                 display("Exception creating new input/output Streams: " + e);

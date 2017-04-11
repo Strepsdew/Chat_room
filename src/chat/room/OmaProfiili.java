@@ -32,18 +32,20 @@ public class OmaProfiili extends JFrame {
          
         //textfield
         JTextField txtNimi = new JTextField(10);
-        JTextArea txtBio = new JTextArea();
+        JTextField txtBio = new JTextField(10);
         JTextField txtIka = new JTextField(3);
         JTextField txtLocation = new JTextField(10);
         
         //buttonit
-        private JButton save = new JButton("Save");
+        private JButton btnSave = new JButton("Save");
+        private JButton btnEdit = new JButton("Edit");
+        private JButton btnBack = new JButton("Back");
         
     public OmaProfiili() {
         
                 
         this.setTitle("Oma Profiili");
-        this.setSize(600, 175);
+        this.setSize(600, 320);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         asetteleKomponentit();
@@ -57,30 +59,35 @@ public class OmaProfiili extends JFrame {
 
     
     private void asetteleKomponentit() {
-        JPanel panelMain = new JPanel();
+        JPanel panelMain = new JPanel(new GridLayout(2,3));
         getContentPane().add(panelMain);
         Border padding = BorderFactory.createEmptyBorder(20, 20, 20, 20);
-        JPanel panelForm = new JPanel(new GridBagLayout());
-        panelMain.add(panelForm);
+        JPanel tekstiPanel = new JPanel(new GridBagLayout());
+        JPanel Buttonit = new JPanel(new GridBagLayout());
         
-        panelForm.setBorder(padding);
+        
+        panelMain.add(tekstiPanel);
+        panelMain.add(Buttonit);
+        
+        
+        panelMain.setBorder(padding);
         
         GridBagConstraints gbc = new GridBagConstraints();
         
-       gbc.insets = new Insets(2,2,2,2); 
+       gbc.insets = new Insets(3,3,3,3); 
        
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.LINE_END;
         
         //Label:it
-        panelForm.add(lbNick, gbc);
+        tekstiPanel.add(lbNick, gbc);
         gbc.gridy++;
-        panelForm.add(lbBio,gbc);
+        tekstiPanel.add(lbBio,gbc);
         gbc.gridy++;
-        panelForm.add(lbIka,gbc);
+        tekstiPanel.add(lbIka,gbc);
         gbc.gridy++;
-        panelForm.add(lbLocation,gbc);
+        tekstiPanel.add(lbLocation,gbc);
         
         gbc.anchor = GridBagConstraints.LINE_START;
         
@@ -88,17 +95,25 @@ public class OmaProfiili extends JFrame {
         gbc.gridx = 1;
         gbc.gridy = 0;
         
-        panelForm.add(txtNimi, gbc);
+        tekstiPanel.add(txtNimi, gbc);
         gbc.gridy++;
-        panelForm.add(txtBio, gbc);
+        tekstiPanel.add(txtBio, gbc);
          gbc.gridy++;
-        panelForm.add(txtIka, gbc);
+        tekstiPanel.add(txtIka, gbc);
          gbc.gridy++;
-        panelForm.add(txtLocation, gbc);
+        tekstiPanel.add(txtLocation, gbc);
         
         //buttonit
+        gbc.gridx = 0;
+        gbc.gridy = 0;
         
-        
+         gbc.insets = new Insets(10,10,10,10);
+        Buttonit.add(btnSave, gbc);
+        gbc.gridx++;
+       
+        Buttonit.add(btnEdit, gbc);
+        gbc.gridx++;
+        Buttonit.add(btnBack, gbc);
         //kuva
       
     }
