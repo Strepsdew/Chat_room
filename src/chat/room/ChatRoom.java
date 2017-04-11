@@ -39,10 +39,9 @@ public class ChatRoom extends JFrame{
     JButton chat4 = new JButton("Chat");
     JButton chat5 = new JButton("Chat");
     
-   
-    
     JLabel circle1 = new JLabel() {
     public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         g.drawOval(10, 0, 45, 45);
     }
 };
@@ -95,29 +94,17 @@ public class ChatRoom extends JFrame{
         nimi.setText(db.getNicknameById(id));
     }
     private void asetteleKaverit() throws IOException, SQLException {
-        System.out.println(kaverit.getIds().size());
         for (int i = 0; i < kaverit.getIds().size(); i++) {
-            switch(i) {
-                case 0:
-                    kaveri1.add(nimi1);
-                    circle1.setIcon(new ImageIcon(db.getBufferedImageById(kaverit.getIds().get(i))));
-                    kaveri1.add(circle1);
-                    pohja.add(kaveri1);
-                    nimi1.setText(kaverit.getFriendnames().get(i));
-                    break;
-                case 1:
-                    kaveri2.add(nimi2);
-                    kaveri2.add(circle2);
-                    pohja.add(kaveri2);
-                    nimi2.setText(kaverit.getFriendnames().get(i));
-                    break;
-                case 2:
-                    kaveri3.add(nimi3);
-                    kaveri3.add(circle3);
-                    pohja.add(kaveri3);
-                    nimi3.setText(kaverit.getFriendnames().get(i));
-                    break;
+            JPanel kaveri = new JPanel(new GridLayout(1,3));
+            JLabel nimi = new JLabel(kaverit.getFriendnames().get(i), SwingConstants.CENTER);
+            JPanel k = new JPanel() {
+                public void paintComponent(Graphics g) {
+                    g.drawOval(10, 0, 45, 45);
                 }
+            };
+            kaveri.add(nimi);
+            kaveri.add(k);
+            pohja.add(kaveri);
         }
     }
     private void asetteleKomponentit() {
