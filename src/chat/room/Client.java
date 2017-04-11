@@ -18,7 +18,6 @@ public class Client {
     Database k = new Database();
     
     Client(String server, int port, String username) {
-		// which calls the common constructor with the GUI set to null
 		this(server, port, username, null);
 	}
 

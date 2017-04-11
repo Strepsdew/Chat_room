@@ -4,10 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Scanner;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
@@ -15,67 +19,88 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 public class OmaProfiili extends JFrame {
 
-    private JPanel pohja = new JPanel(new GridLayout(3, 1));
-    private JPanel First = new JPanel(new FlowLayout(FlowLayout.CENTER));
-    private JPanel biop = new JPanel(new FlowLayout(FlowLayout.CENTER));
-
-    private JLabel lbNn = new JLabel("Nickname");
-    private JLabel lbpic = new JLabel("Picture");
-    private JLabel lbload = new JLabel("Select");
-
-    private JLabel lbBio = new JLabel("Bio");
-
-    private JTextField tfNn = new JTextField(15);
-    private JTextArea tfBio = new JTextArea("memems");   
-    private JButton save = new JButton("Save");
-    private JButton Back = new JButton("Back");
-    private JButton Load = new JButton("Load");
-
-
+        //label
+        JLabel lbNick = new JLabel("Nickname:      ");
+        JLabel lbBio = new JLabel("Bio:     ");
+         JLabel lbIka = new JLabel("Age:     ");
+         JLabel lbLocation = new JLabel("Location:     ");
+          JLabel lbPic = new JLabel("Picture:     ");
+         
+        //textfield
+        JTextField txtNimi = new JTextField(10);
+        JTextArea txtBio = new JTextArea();
+        JTextField txtIka = new JTextField(3);
+        JTextField txtLocation = new JTextField(10);
+        
+        //buttonit
+        private JButton save = new JButton("Save");
+        
     public OmaProfiili() {
         
-        Asetukset();        
+                
         this.setTitle("Oma Profiili");
-        this.setSize(600, 350);
+        this.setSize(600, 175);
         this.setLocationRelativeTo(null);
-        save.setPreferredSize(new Dimension(80, 30));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         asetteleKomponentit();
+        setResizable(true);
         this.setVisible(true);
         
-    }
-    private void Asetukset(){
-        GridLayout gap = (GridLayout) pohja.getLayout();
-        gap.setHgap(25);
-        gap.setVgap(0);
-        FlowLayout gaps = (FlowLayout) biop.getLayout();
-        gaps.setVgap(25);
         
-        tfBio.setWrapStyleWord(true);
-        tfBio.setLineWrap(true);
-        tfBio.setWrapStyleWord(true);
-        tfBio.setLineWrap(true);
-        tfBio.setColumns(20);
-        tfBio.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        tfBio.setRows(5);
-        tfBio.setSize(200,200);
-
     }
+   
+    
 
+    
     private void asetteleKomponentit() {
-        First.add(lbNn);
-        First.add(tfNn);
-        First.add(lbpic);
-        First.add(lbload);
-        First.add(Load);
-        biop.add(lbBio);
-        biop.add(tfBio);
-        pohja.add(First);
-        pohja.add(biop);
-        this.add(pohja);
+        JPanel panelMain = new JPanel();
+        getContentPane().add(panelMain);
+        Border padding = BorderFactory.createEmptyBorder(20, 20, 20, 20);
+        JPanel panelForm = new JPanel(new GridBagLayout());
+        panelMain.add(panelForm);
+        
+        panelForm.setBorder(padding);
+        
+        GridBagConstraints gbc = new GridBagConstraints();
+        
+       gbc.insets = new Insets(2,2,2,2); 
+       
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        
+        //Label:it
+        panelForm.add(lbNick, gbc);
+        gbc.gridy++;
+        panelForm.add(lbBio,gbc);
+        gbc.gridy++;
+        panelForm.add(lbIka,gbc);
+        gbc.gridy++;
+        panelForm.add(lbLocation,gbc);
+        
+        gbc.anchor = GridBagConstraints.LINE_START;
+        
+        //text boxit
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        
+        panelForm.add(txtNimi, gbc);
+        gbc.gridy++;
+        panelForm.add(txtBio, gbc);
+         gbc.gridy++;
+        panelForm.add(txtIka, gbc);
+         gbc.gridy++;
+        panelForm.add(txtLocation, gbc);
+        
+        //buttonit
+        
+        
+        //kuva
+      
     }
 
     public static void main(String[] args) {

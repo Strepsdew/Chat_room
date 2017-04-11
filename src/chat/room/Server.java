@@ -15,7 +15,7 @@ public class Server {
     
     
 
-Map<String, Socket> clients = new HashMap<String, Socket> ();
+Map<String, ClientThread> clients = new HashMap<String, ClientThread> ();
 
     private static int uniqueId;
 
@@ -48,8 +48,6 @@ Map<String, Socket> clients = new HashMap<String, Socket> ();
                 display("Server waiting for clients on port " + port + ".");
 
                 Socket socket = serverSocket.accept();
-                
-
                 if (!keepGoing) {
                     break;
                 }
@@ -157,8 +155,8 @@ Map<String, Socket> clients = new HashMap<String, Socket> ();
                 sOutput = new ObjectOutputStream(socket.getOutputStream());
                 sInput = new ObjectInputStream(socket.getInputStream());
                 username = (String) sInput.readObject();
-                System.out.println("asdasdasd: "+ socket);
-                clients.put(username, socket);
+                
+                
                 display(username + "just connected.");
                 
             } catch (IOException e) {
@@ -176,7 +174,6 @@ Map<String, Socket> clients = new HashMap<String, Socket> ();
                     cm = (ChatMessage) sInput.readObject();
                      friendsId = (Integer) sInput.readObject();
                      myId = (Integer) sInput.readObject();
-                    System.out.println("kaverin id: "+friendsId+" ja mun id: "+myId);
                 } catch (IOException e) {
                     display(username + " Exception reading Streams: " + e);
                     break;
