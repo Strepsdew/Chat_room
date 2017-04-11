@@ -22,7 +22,13 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 
 public class OmaProfiili extends JFrame {
-
+        
+        //panelit
+        JPanel oikeaYla = new JPanel(new GridBagLayout());
+        JPanel oikeaAla = new JPanel(new GridBagLayout());
+        JPanel vasenYla = new JPanel(new GridBagLayout());
+        JPanel vasenAla = new JPanel(new GridBagLayout());
+        
         //label
         JLabel lbNick = new JLabel("Nickname:      ");
         JLabel lbBio = new JLabel("Bio:     ");
@@ -53,8 +59,40 @@ public class OmaProfiili extends JFrame {
         setResizable(true);
         this.setVisible(true);
         this.pack();
+        btnSave.setVisible(false);
+        txtNimi.setEditable(false);
+        txtBio.setEditable(false);
+        txtIka.setEditable(false);
+        txtLocation.setEditable(false);
         
-        
+        btnEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnEdit.setVisible(false);
+                btnSave.setVisible(true);
+                btnSave.setVisible(true);
+                txtNimi.setEditable(true);
+                txtBio.setEditable(true);
+                txtIka.setEditable(true);
+                txtLocation.setEditable(true);
+                
+            }
+        });
+        btnSave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnSave.setVisible(false);
+                btnEdit.setVisible(true);
+                txtNimi.setEditable(false);
+                txtNimi.setText("");
+                txtBio.setEditable(false); 
+                txtBio.setText("");
+                txtIka.setEditable(false);
+                txtIka.setText("");
+                txtLocation.setEditable(false);
+                txtLocation.setText("");
+            }
+        });
     }
    
     
@@ -64,16 +102,13 @@ public class OmaProfiili extends JFrame {
         JPanel panelMain = new JPanel(new GridLayout(2,2));
          getContentPane().add(panelMain);
          Border padding = BorderFactory.createEmptyBorder(10, 10, 10, 10);
-        JPanel panelForm = new JPanel(new GridBagLayout());
-        JPanel ala = new JPanel(new GridBagLayout());
-        JPanel vasen = new JPanel(new GridBagLayout());
-        JPanel vasenv = new JPanel(new GridBagLayout());
+       
         
-         panelMain.add(vasen);
+         panelMain.add(vasenYla);
          
-         panelMain.add(panelForm);
-         panelMain.add(vasenv);
-         panelMain.add(ala);
+         panelMain.add(oikeaYla);
+         panelMain.add(vasenAla);
+         panelMain.add(oikeaAla);
          
          panelMain.setBorder(padding);
          
@@ -86,13 +121,13 @@ public class OmaProfiili extends JFrame {
          gbc.anchor = GridBagConstraints.LINE_END;
          
          //Label:it
-         panelForm.add(lbNick, gbc);
+         oikeaYla.add(lbNick, gbc);
         gbc.gridy++;
-         panelForm.add(lbBio,gbc);
+         oikeaYla.add(lbBio,gbc);
          gbc.gridy++;
-         panelForm.add(lbIka,gbc);
+         oikeaYla.add(lbIka,gbc);
          gbc.gridy++;
-         panelForm.add(lbLocation,gbc);
+         oikeaYla.add(lbLocation,gbc);
          
          gbc.anchor = GridBagConstraints.LINE_START;
          
@@ -100,13 +135,13 @@ public class OmaProfiili extends JFrame {
          gbc.gridx = 1;
          gbc.gridy = 0;
          
-         panelForm.add(txtNimi, gbc);
+         oikeaYla.add(txtNimi, gbc);
          gbc.gridy++;
-         panelForm.add(txtBio, gbc);
+         oikeaYla.add(txtBio, gbc);
           gbc.gridy++;
-         panelForm.add(txtIka, gbc);
+         oikeaYla.add(txtIka, gbc);
          gbc.gridy++;
-         panelForm.add(txtLocation, gbc);
+         oikeaYla.add(txtLocation, gbc);
          
          //buttonit
          
@@ -114,14 +149,16 @@ public class OmaProfiili extends JFrame {
          gbc.gridy = 0;
          
         gbc.insets = new Insets(7,7,7,7);
-         ala.add(btnEdit, gbc);
+         oikeaAla.add(btnSave, gbc);
+         
+         oikeaAla.add(btnEdit, gbc);
          gbc.gridx++;
          
-         ala.add(btnBack, gbc);
+         oikeaAla.add(btnBack, gbc);
          
          gbc.gridx++;
          
-         ala.add(btnLogout);
+         oikeaAla.add(btnLogout);
          
         //kuva
       
