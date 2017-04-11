@@ -40,6 +40,7 @@ public class OmaProfiili extends JFrame {
         private JButton btnSave = new JButton("Save");
         private JButton btnEdit = new JButton("Edit");
         private JButton btnBack = new JButton("Back");
+        private JButton btnLogout = new JButton("Logout");
         
     public OmaProfiili() {
         
@@ -59,61 +60,63 @@ public class OmaProfiili extends JFrame {
 
     
     private void asetteleKomponentit() {
-        JPanel panelMain = new JPanel(new GridLayout(2,3));
-        getContentPane().add(panelMain);
-        Border padding = BorderFactory.createEmptyBorder(20, 20, 20, 20);
-        JPanel tekstiPanel = new JPanel(new GridBagLayout());
-        JPanel Buttonit = new JPanel(new GridBagLayout());
+        JPanel panelMain = new JPanel(new GridLayout(2,1));
+         getContentPane().add(panelMain);
+         Border padding = BorderFactory.createEmptyBorder(0, 0, 0, 0);
+        JPanel panelForm = new JPanel(new GridBagLayout());
+        JPanel ala = new JPanel(new GridBagLayout());
         
+         panelMain.add(panelForm);
+         panelMain.add(ala);
+         
+         panelForm.setBorder(padding);
+         
+         GridBagConstraints gbc = new GridBagConstraints();
+         
+        gbc.insets = new Insets(2,2,2,2); 
         
-        panelMain.add(tekstiPanel);
-        panelMain.add(Buttonit);
-        
-        
-        panelMain.setBorder(padding);
-        
-        GridBagConstraints gbc = new GridBagConstraints();
-        
-       gbc.insets = new Insets(3,3,3,3); 
-       
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.LINE_END;
-        
-        //Label:it
-        tekstiPanel.add(lbNick, gbc);
+         gbc.gridx = 0;
+         gbc.gridy = 0;
+         gbc.anchor = GridBagConstraints.LINE_END;
+         
+         //Label:it
+         panelForm.add(lbNick, gbc);
         gbc.gridy++;
-        tekstiPanel.add(lbBio,gbc);
-        gbc.gridy++;
-        tekstiPanel.add(lbIka,gbc);
-        gbc.gridy++;
-        tekstiPanel.add(lbLocation,gbc);
-        
-        gbc.anchor = GridBagConstraints.LINE_START;
-        
-        //text boxit
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        
-        tekstiPanel.add(txtNimi, gbc);
-        gbc.gridy++;
-        tekstiPanel.add(txtBio, gbc);
+         panelForm.add(lbBio,gbc);
          gbc.gridy++;
-        tekstiPanel.add(txtIka, gbc);
+         panelForm.add(lbIka,gbc);
          gbc.gridy++;
-        tekstiPanel.add(txtLocation, gbc);
-        
-        //buttonit
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        
-         gbc.insets = new Insets(10,10,10,10);
-        Buttonit.add(btnSave, gbc);
-        gbc.gridx++;
-       
-        Buttonit.add(btnEdit, gbc);
-        gbc.gridx++;
-        Buttonit.add(btnBack, gbc);
+         panelForm.add(lbLocation,gbc);
+         
+         gbc.anchor = GridBagConstraints.LINE_START;
+         
+         //text boxit
+         gbc.gridx = 1;
+         gbc.gridy = 0;
+         
+         panelForm.add(txtNimi, gbc);
+         gbc.gridy++;
+         panelForm.add(txtBio, gbc);
+          gbc.gridy++;
+         panelForm.add(txtIka, gbc);
+         gbc.gridy++;
+         panelForm.add(txtLocation, gbc);
+         
+         //buttonit
+         
+         gbc.gridx = 0;
+         gbc.gridy = 0;
+         
+        gbc.insets = new Insets(7,7,7,7);
+         ala.add(btnEdit, gbc);
+         gbc.gridx++;
+         ala.add(btnSave, gbc);
+         gbc.gridx++;
+         ala.add(btnBack, gbc);
+         
+         gbc.gridx++;
+         ala.add(btnLogout);
+         
         //kuva
       
     }
