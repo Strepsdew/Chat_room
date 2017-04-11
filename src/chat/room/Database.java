@@ -83,6 +83,8 @@ public class Database {
         }catch (Exception ex) {
             System.out.println("Error in getUserByUsername : " + ex);
             return null;
+        }finally{
+            suljeYhteys(connection);
         }
         return profiilit;
     }
@@ -98,6 +100,8 @@ public class Database {
             }
         }catch (Exception ex) {
             System.out.println("Error in getIdByNickname : " + ex);
+        }finally{
+            suljeYhteys(connection);
         }
         return 0;
     }
@@ -125,6 +129,8 @@ public class Database {
         }catch (Exception ex) {
             System.out.println("Error in selectProfiili : " + ex);
             return null;
+        }finally{
+            suljeYhteys(connection);
         }
         return k;
     }
@@ -142,6 +148,8 @@ public class Database {
         }catch (Exception ex){
             System.out.println("error in getHashPasswordByNickname : "+ ex);
             return null;
+        }finally{
+            suljeYhteys(connection);
         }
         return null;
     }
@@ -164,7 +172,9 @@ public class Database {
                 prepsInsertProduct.executeUpdate();   
             } catch (Exception ex) {
                 System.out.println("Error in createUser : " + ex);
-            }
+            }finally{
+            suljeYhteys(connection);
+        }
             return true;
         }
      return false;
@@ -186,6 +196,8 @@ public class Database {
         }catch (Exception ex){
             System.out.println("error in checkPassword : "+ ex);
             return false;
+        }finally{
+            suljeYhteys(connection);
         }
         return false;
     }
@@ -203,7 +215,9 @@ public class Database {
            prepsInsertProduct.executeUpdate();
        }catch (Exception ex) {
            System.out.println("Error in updateProfiili : " +ex);
-       }
+       }finally{
+            suljeYhteys(connection);
+        }
     }
     public String getNicknameById(int id){
         try {
@@ -217,6 +231,8 @@ public class Database {
             }
         }catch (Exception ex){
             System.out.println("error in getNicknameById : "+ ex);
+        }finally{
+            suljeYhteys(connection);
         }
         return null;
     }
@@ -241,6 +257,8 @@ public class Database {
         }catch (Exception ex){
             System.out.println("error in getfriendsbyid "+ ex);
             return null;
+        }finally{
+            suljeYhteys(connection);
         }
     }
     public Kaveri getFriendsByIdInKaveri(int id) {
@@ -271,6 +289,8 @@ public class Database {
         }catch (Exception ex){
             System.out.println("error in getfriendsbyid "+ ex);
             return null;
+        }finally{
+            suljeYhteys(connection);
         }
     }
     
@@ -347,6 +367,8 @@ public class Database {
             return true;
         }catch (Exception ex) {
             System.out.println("Error in addFriend" + ex);
+        }finally{
+            suljeYhteys(connection);
         }
         return false;
     }
@@ -382,6 +404,8 @@ public class Database {
         }catch (Exception ex){
             System.out.println("Error in getFriendByNickname" + ex);
             return null;
+        }finally{
+            suljeYhteys(connection);
         }
     }
     public boolean removeFriendById(int currentUserId, int removeThis){
@@ -409,6 +433,8 @@ public class Database {
         }catch (Exception ex) {
             System.out.println("Error in removeFriendById  : " + ex);
             return false;
+        }finally{
+            suljeYhteys(connection);
         }
     }
 
@@ -428,6 +454,8 @@ public class Database {
         }catch (Exception ex) {
             System.out.println("Error in insertPicture : " + ex);
             return false;
+        }finally{
+            suljeYhteys(connection);
         }
     }
     public Blob getPicture(int id) {
@@ -446,6 +474,8 @@ public class Database {
         }catch (Exception ex) {
             System.out.println("Error in getPicture : " + ex);
             return null;
+        }finally{
+            suljeYhteys(connection);
         }
     }
     public BufferedImage getBufferedImageById(int id) throws IOException, SQLException {
@@ -459,4 +489,15 @@ public class Database {
         Database meme = new Database();
         meme.addFriend(3, 2);
     }
+    
+     public static void suljeYhteys(Connection suljettavaYhteys){
+        if(suljettavaYhteys!=null){
+            try{
+                suljettavaYhteys.close();
+            }
+            catch(Exception e){
+                //mitään ei ole tehtävissä
+            }
+        }
+     }
 }
