@@ -46,12 +46,13 @@ public class OmaProfiili extends JFrame {
         
                 
         this.setTitle("Oma Profiili");
-        this.setSize(600, 320);
+        this.setSize(300, 320);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         asetteleKomponentit();
         setResizable(true);
         this.setVisible(true);
+        this.pack();
         
         
     }
@@ -60,16 +61,21 @@ public class OmaProfiili extends JFrame {
 
     
     private void asetteleKomponentit() {
-        JPanel panelMain = new JPanel(new GridLayout(2,1));
+        JPanel panelMain = new JPanel(new GridLayout(2,2));
          getContentPane().add(panelMain);
-         Border padding = BorderFactory.createEmptyBorder(0, 0, 0, 0);
+         Border padding = BorderFactory.createEmptyBorder(10, 10, 10, 10);
         JPanel panelForm = new JPanel(new GridBagLayout());
         JPanel ala = new JPanel(new GridBagLayout());
+        JPanel vasen = new JPanel(new GridBagLayout());
+        JPanel vasenv = new JPanel(new GridBagLayout());
         
+         panelMain.add(vasen);
+         
          panelMain.add(panelForm);
+         panelMain.add(vasenv);
          panelMain.add(ala);
          
-         panelForm.setBorder(padding);
+         panelMain.setBorder(padding);
          
          GridBagConstraints gbc = new GridBagConstraints();
          
@@ -110,11 +116,11 @@ public class OmaProfiili extends JFrame {
         gbc.insets = new Insets(7,7,7,7);
          ala.add(btnEdit, gbc);
          gbc.gridx++;
-         ala.add(btnSave, gbc);
-         gbc.gridx++;
+         
          ala.add(btnBack, gbc);
          
          gbc.gridx++;
+         
          ala.add(btnLogout);
          
         //kuva
