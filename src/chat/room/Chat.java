@@ -31,6 +31,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Chat extends JFrame {
 
@@ -50,6 +51,7 @@ public class Chat extends JFrame {
 
     private boolean connected;
 
+
     public Chat() {
         Database k = new Database();
         BufferedImage kuva = null;
@@ -59,6 +61,7 @@ public class Chat extends JFrame {
         }
         kuva = resize(kuva, 45, 45);
         FriendLabel.setIcon(new ImageIcon(kuva));
+
 
         this.setTitle("Chat with KAVERIN_NIMI"); // tähän lisätään chat with kaverin nimi
         this.setSize(410, 350);
@@ -226,17 +229,23 @@ public class Chat extends JFrame {
 
     }
 
-    public void sendImage() throws IOException {
-
+    
+    public void sendImage(){
+        
+        try{
         JFileChooser chooser = new JFileChooser();
-        int status = chooser.showOpenDialog(null);
-        if (status == JFileChooser.APPROVE_OPTION) {
-            File file = chooser.getSelectedFile();
-            if (file == null) {
-                return;
-            }
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(".jpg","JPG");
+        chooser.setFileFilter(filter);
+            int status = chooser.showOpenDialog(null);
+            if (status == JFileChooser.APPROVE_OPTION) {
+                File file = chooser.getSelectedFile();
+                if (file == null) {
+                    return;
+                }
+
 
             String fileName = chooser.getSelectedFile().getAbsolutePath();
+
 
             File sourceimage = new File(fileName);
             Image image = ImageIO.read(sourceimage);
@@ -248,6 +257,13 @@ public class Chat extends JFrame {
             frame.setVisible(true);
 
         }
+
+            }
+
+            }catch(IOException e){
+                    System.out.println(e);
+                    }
+
     }
 
 }

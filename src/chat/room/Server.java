@@ -13,6 +13,10 @@ import java.util.logging.Logger;
 
 
 public class Server {
+    
+    
+
+Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
 
     private static int uniqueId;
 
@@ -26,7 +30,11 @@ public class Server {
 
 
     private ArrayList<Log> message = new ArrayList<Log>();
-
+    
+    private int myId;
+    private Database k = new Database();
+    
+    private int friendsId;
 
     public Server(int port) {
         this.port = port;
@@ -44,12 +52,11 @@ public class Server {
                 display("Server waiting for clients on port " + port + ".");
 
                 Socket socket = serverSocket.accept();
-
                 if (!keepGoing) {
                     break;
                 }
                 ClientThread t = new ClientThread(socket);
-                al.add(t);
+                clients.put(0, t);
                 t.start();
             }
             try {
@@ -93,11 +100,13 @@ public class Server {
 
 
         for (int i = al.size(); --i >= 0;) {
+            
             ClientThread ct = al.get(i);
-
+            if(i == myId || i == friendsId){
             if (!ct.writeMsg(messageLf)) {
                 al.remove(i);
                 display("Disconnected Client " + ct.username + " removed from list.");
+            }
             }
         }
     }
@@ -153,7 +162,6 @@ public class Server {
                 sInput = new ObjectInputStream(socket.getInputStream());
                 username = (String) sInput.readObject();
                 display(username + "just connected.");
-
             } catch (IOException e) {
                 display("Exception creating new input/output Streams: " + e);
             } catch (ClassNotFoundException e) {
@@ -167,6 +175,8 @@ public class Server {
             while (keepGoing) {
                 try {
                     cm = (ChatMessage) sInput.readObject();
+                     friendsId = (Integer) sInput.readObject();
+                     myId = (Integer) sInput.readObject();
                 } catch (IOException e) {
                     display(username + " Exception reading Streams: " + e);
                     break;
