@@ -68,7 +68,7 @@ public class OmaProfiili extends JFrame {
         
         private Database k = new Database();
         
-        Image image = null;
+        File sourceimage = null;
         
         
     public OmaProfiili() {
@@ -154,7 +154,7 @@ public class OmaProfiili extends JFrame {
                 txtIka.setText(tiedot[5]);
                 txtLocation.setText(tiedot[7]);
                 
-                
+                k.insertPicture(sourceimage, 4);
                 
             }
         });
@@ -202,7 +202,7 @@ public class OmaProfiili extends JFrame {
 
                String  fileName = chooser.getSelectedFile().getAbsolutePath();
                
-                   File sourceimage = new File(fileName);
+                    sourceimage = new File(fileName);
                 Image image = ImageIO.read(sourceimage);
                 
                    
