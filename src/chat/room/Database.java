@@ -4,9 +4,28 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.imageio.ImageIO;
+
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
+
 
 public class Database {
 
@@ -63,6 +82,8 @@ public class Database {
         }catch (Exception ex) {
             System.out.println("Error in getUserByUsername : " + ex);
             return null;
+        }finally{
+            suljeYhteys(connection);
         }
         return profiilit;
     }
@@ -78,6 +99,8 @@ public class Database {
             }
         }catch (Exception ex) {
             System.out.println("Error in getIdByNickname : " + ex);
+        }finally{
+            suljeYhteys(connection);
         }
         return 0;
     }
@@ -105,6 +128,8 @@ public class Database {
         }catch (Exception ex) {
             System.out.println("Error in selectProfiili : " + ex);
             return null;
+        }finally{
+            suljeYhteys(connection);
         }
         return k;
     }
@@ -122,6 +147,8 @@ public class Database {
         }catch (Exception ex){
             System.out.println("error in getHashPasswordByNickname : "+ ex);
             return null;
+        }finally{
+            suljeYhteys(connection);
         }
         return null;
     }
@@ -140,11 +167,13 @@ public class Database {
                 prepsInsertProduct.setString(5, password);
                 prepsInsertProduct.executeUpdate();
                 String query2 = "insert into kaverit (kaveri) values ('')";
-                statement = connection.createStatement();
-                statement.executeUpdate(query2);    
+                prepsInsertProduct = connection.prepareStatement(query2);
+                prepsInsertProduct.executeUpdate();   
             } catch (Exception ex) {
                 System.out.println("Error in createUser : " + ex);
-            }
+            }finally{
+            suljeYhteys(connection);
+        }
             return true;
         }
      return false;
@@ -166,6 +195,8 @@ public class Database {
         }catch (Exception ex){
             System.out.println("error in checkPassword : "+ ex);
             return false;
+        }finally{
+            suljeYhteys(connection);
         }
         return false;
     }
@@ -183,7 +214,9 @@ public class Database {
            prepsInsertProduct.executeUpdate();
        }catch (Exception ex) {
            System.out.println("Error in updateProfiili : " +ex);
-       }
+       }finally{
+            suljeYhteys(connection);
+        }
     }
     public String getNicknameById(int id){
         try {
@@ -197,6 +230,8 @@ public class Database {
             }
         }catch (Exception ex){
             System.out.println("error in getNicknameById : "+ ex);
+        }finally{
+            suljeYhteys(connection);
         }
         return null;
     }
@@ -216,10 +251,13 @@ public class Database {
             }
             JsonParser jsonparser = new JsonParser();
             JsonObject obj = (JsonObject)jsonparser.parse(kaverit);
+
             return obj;
         }catch (Exception ex){
             System.out.println("error in getfriendsbyid "+ ex);
             return null;
+        }finally{
+            suljeYhteys(connection);
         }
     }
     public Kaveri getFriendsByIdInKaveri(int id) {
@@ -250,7 +288,27 @@ public class Database {
         }catch (Exception ex){
             System.out.println("error in getfriendsbyid "+ ex);
             return null;
+        }finally{
+            suljeYhteys(connection);
         }
+    }
+    
+    public boolean haveThisFriend(String kaverinimi,int friendId,int currentUserId){
+        Database d = new Database();
+        Kaveri kaveri = null;
+        if(d.getFriendsByIdInKaveri(currentUserId)!=null){
+            kaveri = d.getFriendsByIdInKaveri(currentUserId);
+        }else{
+            kaveri = new Kaveri();
+        }
+        if(Objects.nonNull(kaveri.getIds())){
+            for (int id : kaveri.getIds()) {
+                if(id == friendId) return true;
+            }
+        }else{
+            return false;
+        }
+        return false;
     }
     public boolean addFriend(int currentUserId,int friendId){
         Database d = new Database();
@@ -264,21 +322,52 @@ public class Database {
         }else{
             kaverit = new Kaveri();
         }
-        kaverit.addFriend(kaverinimi,friendId);
+        if(!haveThisFriend(kaverinimi,friendId,currentUserId)){
+            kaverit.addFriend(kaverinimi,friendId);
+        }else{
+            return false;
+        }
         
         String kaveritstring = gson.toJson(kaverit);
         JsonObject obj = (JsonObject)jsonparser.parse(kaveritstring);
         String insert = obj.toString();
         
+        String currentUser =d.getNicknameById(currentUserId);
+        Kaveri kaverinkaverit = null;
+        if(d.getFriendsByIdInKaveri(friendId)!=null){
+            kaverinkaverit = d.getFriendsByIdInKaveri(friendId);
+        }else{
+            kaverinkaverit = new Kaveri();
+        }
+        if(!haveThisFriend(currentUser,currentUserId,friendId)) {
+            kaverinkaverit.addFriend(currentUser,currentUserId);
+        }else{
+            return false;
+        }
+        
+        String kaverinkaveritstring = gson.toJson(kaverinkaverit);
+        JsonObject obj2 =(JsonObject)jsonparser.parse(kaverinkaveritstring);
+        String insert2 = obj2.toString();
+
         try{
             connection = DriverManager.getConnection(connectionString);
             String sql = "update kaverit set kaveri =? where ProfileID =?";
             prepsInsertProduct = connection.prepareStatement(sql);
             prepsInsertProduct.setString(1,insert);
             prepsInsertProduct.setInt(2,currentUserId);
-            prepsInsertProduct.execute();  
+            prepsInsertProduct.execute();
+            
+            String sql2 = "update kaverit set kaveri =? where ProfileID =?";
+            prepsInsertProduct = connection.prepareStatement(sql2);
+            prepsInsertProduct.setString(1,insert2);
+            prepsInsertProduct.setInt(2,friendId);
+            prepsInsertProduct.execute();
+            
+            return true;
         }catch (Exception ex) {
             System.out.println("Error in addFriend" + ex);
+        }finally{
+            suljeYhteys(connection);
         }
         return false;
     }
@@ -310,11 +399,12 @@ public class Database {
                 }
             i++;
             }
-            System.out.println(kaveri);
             return kaveri;
         }catch (Exception ex){
             System.out.println("Error in getFriendByNickname" + ex);
             return null;
+        }finally{
+            suljeYhteys(connection);
         }
     }
     public boolean removeFriendById(int currentUserId, int removeThis){
@@ -342,10 +432,71 @@ public class Database {
         }catch (Exception ex) {
             System.out.println("Error in removeFriendById  : " + ex);
             return false;
+        }finally{
+            suljeYhteys(connection);
         }
     }
-        
-    public static void main(String[] args) {
-        Database k = new Database();
+
+    public boolean insertPicture(File file,int currentUserId) {
+        try{
+            BufferedImage img = ImageIO.read(file);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(img, "png", baos);
+            Blob blFile = new javax.sql.rowset.serial.SerialBlob(baos.toByteArray());
+            connection = DriverManager.getConnection(connectionString);
+            String sql = "update profile set ProfilePhoto=? where ProfileID=?";
+            prepsInsertProduct = connection.prepareStatement(sql);
+            prepsInsertProduct.setBlob(1, blFile);
+            prepsInsertProduct.setInt(2,currentUserId);
+            prepsInsertProduct.execute();
+            return true;
+        }catch (Exception ex) {
+            System.out.println("Error in insertPicture : " + ex);
+            return false;
+        }finally{
+            suljeYhteys(connection);
+        }
     }
+    public Blob getPicture(int id) {
+        Blob result = null;
+        try{
+           connection = DriverManager.getConnection(connectionString);
+           String sql = "select ProfilePhoto from profile where ProfileID=?";
+           prepsInsertProduct = connection.prepareStatement(sql);
+           prepsInsertProduct.setInt(1,id);
+           rs =prepsInsertProduct.executeQuery();
+           if(rs.next()) {
+               result = rs.getBlob("ProfilePhoto");
+           }
+           System.out.println(result);
+           return result;
+        }catch (Exception ex) {
+            System.out.println("Error in getPicture : " + ex);
+            return null;
+        }finally{
+            suljeYhteys(connection);
+        }
+    }
+    public BufferedImage getBufferedImageById(int id) throws IOException, SQLException {
+      Database k = new Database();
+      Blob j = k.getPicture(id);
+      InputStream in = j.getBinaryStream();  
+      BufferedImage image = ImageIO.read(in);   
+      return image;
+    }
+    public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
+        Database meme = new Database();
+        meme.addFriend(3, 2);
+    }
+    
+     public static void suljeYhteys(Connection suljettavaYhteys){
+        if(suljettavaYhteys!=null){
+            try{
+                suljettavaYhteys.close();
+            }
+            catch(Exception e){
+                //mitään ei ole tehtävissä
+            }
+        }
+     }
 }

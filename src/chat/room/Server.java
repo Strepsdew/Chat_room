@@ -11,6 +11,7 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class Server {
     
     
@@ -27,12 +28,14 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
 
     private boolean keepGoing;
 
+
     private ArrayList<Log> message = new ArrayList<Log>();
     
     private int myId;
     private Database k = new Database();
     
     private int friendsId;
+
     public Server(int port) {
         this.port = port;
         sdf = new SimpleDateFormat("HH:mm");
@@ -82,6 +85,7 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
         System.out.println(time);
 
     }
+
       private void add(String msg)  throws IOException {
             Log asd = new Log(msg);
             message.add(asd);
@@ -93,6 +97,7 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
         String messageLf = time + " " + message + "\n";
         System.out.print(messageLf);
         add(messageLf);
+
 
         for (int i = al.size(); --i >= 0;) {
             
@@ -157,9 +162,6 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
                 sInput = new ObjectInputStream(socket.getInputStream());
                 username = (String) sInput.readObject();
                 display(username + "just connected.");
-                
-                    
-                
             } catch (IOException e) {
                 display("Exception creating new input/output Streams: " + e);
             } catch (ClassNotFoundException e) {
@@ -194,6 +196,7 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
                         Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
+
                         break;
                     case ChatMessage.LOGOUT:
                         display(username + " disconnected with a LOGOUT message.");
@@ -201,8 +204,10 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
                         break;
                     case ChatMessage.WHOISIN:
                         writeMsg("List of the users connected at " + sdf.format(new Date()) + "\n");
+
                         for (int i = 0; i < al.size(); ++i) {
                             ClientThread ct = al.get(i);
+
                             writeMsg((i + 1) + ")" + ct.username + " since " + ct.date);
                         }
                         break;
@@ -267,6 +272,7 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
         String json = gson.toJson(message);
 
         try (FileWriter writer = new FileWriter(localDate+".json")) {
+
             writer.write(json);
         } catch (IOException e) {
             System.out.println("Writing failed " + e.getMessage());

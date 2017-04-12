@@ -5,8 +5,10 @@ import java.io.*;
 import java.util.*;
 
 public class Client {
+
     
      private ArrayList<Log> messageLog = new ArrayList<Log>();
+
 
     private ObjectInputStream sInput;
     private ObjectOutputStream sOutput;
@@ -64,7 +66,9 @@ public class Client {
       if(gui == null){
           System.out.println(msg);
       }else{
-          System.out.println(msg);
+
+          System.out.println(msg+"\n");
+
       }
     }
 
@@ -169,6 +173,7 @@ public class Client {
                 }
             }
         }
+
 //        
 //        public boolean WriteToFile() throws IOException {
 //        
@@ -193,5 +198,6 @@ public class Client {
         
         //locaali log file clientille... ei toimi pitää tehä sama ku serverille
         
+
     }
 }

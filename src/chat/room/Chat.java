@@ -2,11 +2,19 @@ package chat.room;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -17,6 +25,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -32,18 +41,28 @@ public class Chat extends JFrame {
     private JPanel alaosa = new JPanel(new BorderLayout());
 
     private JTextArea viesti = new JTextArea();
-    private JButton backBtn = new JButton();
-    private JButton Frendbtn = new JButton();
+    private JButton closeBtn = new JButton();
+    private JLabel FriendLabel = new JLabel();
     private JButton sendBtn = new JButton();
     private JTextArea chatArea = new JTextArea();
 
     private int currentUserId;
     Client client = new Client("localhost", 1500, null, this);
-    
+
     private boolean connected;
 
-    public Chat()  {
-      
+
+    public Chat() {
+        Database k = new Database();
+        BufferedImage kuva = null;
+        try {
+            kuva = k.getBufferedImageById(2);
+        } catch (Exception ex) {
+        }
+        kuva = resize(kuva, 45, 45);
+        FriendLabel.setIcon(new ImageIcon(kuva));
+
+
         this.setTitle("Chat with KAVERIN_NIMI"); // tähän lisätään chat with kaverin nimi
         this.setSize(410, 350);
         this.setLocationRelativeTo(null);
@@ -53,87 +72,135 @@ public class Chat extends JFrame {
                 BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 //        viesti.setText("kirjoitat tähän");
         sendBtn.setText("Send");
-        backBtn.setText("Back");
+        closeBtn.setText("Close");
+        closeBtn.setBackground(Color.GRAY);
+        closeBtn.setForeground(Color.BLACK);
         asetteleKomponentit();
         this.setVisible(true);
         chatArea.setEditable(false);
-       sendBtn.setBackground(Color.GRAY);
+        sendBtn.setBackground(Color.GRAY);
         sendBtn.setForeground(Color.BLACK);
         viesti.setText("kirjoitat tähän");
         chatArea.requestFocus();
-
         Border roundedBorder = new LineBorder(null, 2, true); // the third parameter - true, says it's round
-         viesti.setBorder(roundedBorder); 
-         //yritän tehdä kirjoitus areasta pyöreän
-         
-         
-         chatArea.addKeyListener(new KeyListener(){
-             @Override
-            public void keyTyped(KeyEvent e) {}
-            
+        viesti.setBorder(roundedBorder);
+        //yritän tehdä kirjoitus areasta pyöreän
+        FriendLabel.addMouseListener(new MouseListener() {
+            InffoIkkuna tama= new InffoIkkuna(2); // friend id = 2 vaihda sitte myöhemmin
             @Override
-            public void keyPressed(KeyEvent e) {viesti.requestFocus();}
-                  
+            public void mouseClicked(MouseEvent e) {
+            }
+
             @Override
-            public void keyReleased(KeyEvent e) {}
-         });
-         
-         
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                tiedotIkkunaan(tama);
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                tama.setVisible(false);
+            }
+        
+        });
+        closeBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+            }
+        });
+        chatArea.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                viesti.requestFocus();
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+
         viesti.addKeyListener(new KeyListener() {
-            
+
             @Override
-            public void keyTyped(KeyEvent e) {}
+            public void keyTyped(KeyEvent e) {
+            }
 
             @Override
             public void keyReleased(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 
                     if (connected) {
-                        
+
                         client.sendMessage(new ChatMessage(ChatMessage.MESSAGE, viesti.getText()));
                         viesti.setText("");
-                        
+
                         return;
-                        
+
                     }
                 }
             }
 
             @Override
-            public void keyPressed(KeyEvent e) {}
+            public void keyPressed(KeyEvent e) {
+            }
         });
-        
-viesti.addFocusListener(new FocusListener() {
+
+        viesti.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if(viesti.getText().equals("kirjoitat tähän")){
+                if (viesti.getText().equals("kirjoitat tähän")) {
                     viesti.setText("");
                 }
-                
+
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                
-                if(viesti.getText().equals("")){
-                viesti.setText("kirjoitat tähän");
+
+                if (viesti.getText().equals("")) {
+                    viesti.setText("kirjoitat tähän");
                 }
             }
         });
 
-
     }
-    
+    private void tiedotIkkunaan(InffoIkkuna k){
+        k.setLocation(this.getX()+10,this.getY()+80);
+        //k.setLocationRelativeTo(FriendLabel);
+        k.setVisible(true);
+    }
+
+    public BufferedImage resize(BufferedImage img, int newW, int newH) {
+        Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
+        BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
+
+        Graphics2D g2d = dimg.createGraphics();
+        g2d.drawImage(tmp, 0, 0, null);
+        g2d.dispose();
+
+        return dimg;
+    }
 
     public void giveCurrentUserId(int id) {
-        currentUserId = id; 
-         client.getUsername(currentUserId);
-         run();
+        currentUserId = id;
+        client.getUsername(currentUserId);
+        run();
     }
 
     private void asetteleKomponentit() {
-        ylaosa.add(Frendbtn, BorderLayout.LINE_START);
-        ylaosa.add(backBtn, BorderLayout.LINE_END);
+        ylaosa.add(FriendLabel, BorderLayout.LINE_START);
+        ylaosa.add(closeBtn, BorderLayout.LINE_END);
         pohja.add(ylaosa, BorderLayout.PAGE_START);
         keskiosa.add(new JScrollPane(chatArea));
         pohja.add(keskiosa, BorderLayout.CENTER);
@@ -161,6 +228,7 @@ viesti.addFocusListener(new FocusListener() {
         connected = true;
 
     }
+
     
     public void sendImage(){
         
@@ -175,24 +243,27 @@ viesti.addFocusListener(new FocusListener() {
                     return;
                 }
 
-               String  fileName = chooser.getSelectedFile().getAbsolutePath();
-               
-                   File sourceimage = new File(fileName);
-                Image image = ImageIO.read(sourceimage);
-                   
-              
-                JFrame frame = new JFrame();
-                 frame.setSize(300, 300);
-                JLabel label = new JLabel(new ImageIcon(image));
-                frame.add(label);
-                 frame.setVisible(true);
+
+            String fileName = chooser.getSelectedFile().getAbsolutePath();
+
+
+            File sourceimage = new File(fileName);
+            Image image = ImageIO.read(sourceimage);
+
+            JFrame frame = new JFrame();
+            frame.setSize(300, 300);
+            JLabel label = new JLabel(new ImageIcon(image));
+            frame.add(label);
+            frame.setVisible(true);
+
+        }
 
             }
 
             }catch(IOException e){
                     System.out.println(e);
                     }
+
     }
-    
 
 }
