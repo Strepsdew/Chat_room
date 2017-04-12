@@ -29,7 +29,7 @@ public class ChatRoom extends JFrame {
     Database db = new Database();
     Kaveri kaverit = null;
     JFrame frame = new JFrame();
-    JPanel pohja = new JPanel(new GridLayout(8, 1));
+    JPanel pohja = new JPanel(new GridLayout(100, 1));
     JPanel rivi1 = new JPanel(new FlowLayout());
     JPanel rivi2 = new JPanel(new GridLayout(1, 2));
     JPanel rivi3 = new JPanel(new FlowLayout());
@@ -63,7 +63,7 @@ public class ChatRoom extends JFrame {
         for (int i = 0; i < kaverit.getIds().size(); i++) {
             int id = kaverit.getIds().get(i);
             BufferedImage image = db.getBufferedImageById(id);
-            JPanel kaveri = new JPanel(new GridLayout(1, 3));
+            JPanel kaveri = new JPanel(new GridLayout(3, 1));
             JLabel nimi = new JLabel(kaverit.getFriendnames().get(i), SwingConstants.CENTER);
             if (Objects.isNull(image)) {
                 JPanel pallo = new JPanel() {
@@ -118,7 +118,7 @@ public class ChatRoom extends JFrame {
         pohja.add(rivi3);
 
         rivi1.add(lbTitle);
-        this.add(pohja);
+        this.add(new JScrollPane(pohja));
     }
 
     public static void main(String[] args) {

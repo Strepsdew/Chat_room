@@ -472,5 +472,6 @@ public class Database {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
         Database meme = new Database();
+        meme.addFriend(4, 6);
     }
 }
