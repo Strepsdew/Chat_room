@@ -26,6 +26,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -35,6 +36,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class OmaProfiili extends JFrame {
         
         //panelit
+        JPanel panelMain = new JPanel(new GridLayout(2,2));
         JPanel oikeaYla = new JPanel(new GridBagLayout());
         JPanel oikeaAla = new JPanel(new GridBagLayout());
         JPanel vasenYla = new JPanel(new GridBagLayout());
@@ -42,6 +44,8 @@ public class OmaProfiili extends JFrame {
         
         //label
         JLabel lbNick = new JLabel("Nickname:      ");
+        JLabel lbEtu = new JLabel("Etunimi:      ");
+        JLabel lbSuku = new JLabel("Sukunimi:      ");
         JLabel lbBio = new JLabel("Bio:     ");
          JLabel lbIka = new JLabel("Age:     ");
          JLabel lbLocation = new JLabel("Location:     ");
@@ -49,6 +53,8 @@ public class OmaProfiili extends JFrame {
          
         //textfield
         JTextField txtNimi = new JTextField(10);
+        JTextField txtEtu = new JTextField(10);
+        JTextField txtSuku = new JTextField(10);
         JTextField txtBio = new JTextField(10);
         JTextField txtIka = new JTextField(3);
         JTextField txtLocation = new JTextField(10);
@@ -60,11 +66,32 @@ public class OmaProfiili extends JFrame {
         private JButton btnLogout = new JButton("Logout");
         private JButton btnPic = new JButton("Set your picture");
         
+        private Database k = new Database();
+        
+        Image image = null;
+        
+        
     public OmaProfiili() {
         
-                
+       Profiili p = k.getEverythingById(2); 
+        String[]tiedot = p.toString().split(",");
+        if(tiedot[6].contains("null")){
+            tiedot[6] = "";
+        }
+        
+        if(tiedot[7].contains("null")){
+            tiedot[7] = "";
+        }
+        txtEtu.setText(tiedot[2]);
+         txtSuku.setText(tiedot[3]);
+        txtNimi.setText(tiedot[1]);
+        txtBio.setText(tiedot[6]);
+        txtIka.setText(tiedot[5]);
+        txtLocation.setText(tiedot[7]);
+        
+        
         this.setTitle("Oma Profiili");
-        this.setSize(300, 320);
+        this.setSize(500, 320);
         
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -72,7 +99,11 @@ public class OmaProfiili extends JFrame {
         setResizable(true);
         this.setVisible(true);
         this.pack();
+        
+        
         btnSave.setVisible(false);
+        txtEtu.setEditable(false);
+        txtSuku.setEditable(false);
         txtNimi.setEditable(false);
         txtBio.setEditable(false);
         txtIka.setEditable(false);
@@ -83,10 +114,12 @@ public class OmaProfiili extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 btnEdit.setVisible(false);
                 btnSave.setVisible(true);
-                btnSave.setVisible(true);
+                
                 txtNimi.setEditable(true);
                 txtBio.setEditable(true);
                 txtIka.setEditable(true);
+                txtSuku.setEditable(true);
+                txtEtu.setEditable(true);
                 txtLocation.setEditable(true);
                 
             }
@@ -104,6 +137,52 @@ public class OmaProfiili extends JFrame {
                 txtIka.setText("");
                 txtLocation.setEditable(false);
                 txtLocation.setText("");
+                txtEtu.setEditable(false);
+                txtSuku.setEditable(false);
+                
+                Profiili p = k.getEverythingById(2); 
+                String[]tiedot = p.toString().split(",");
+                if(tiedot[6].contains("null")){
+                    tiedot[6] = "";
+                }
+
+                if(tiedot[7].contains("null")){
+                    tiedot[7] = "";
+                }
+                txtNimi.setText(tiedot[1]);
+                txtBio.setText(tiedot[6]);
+                txtIka.setText(tiedot[5]);
+                txtLocation.setText(tiedot[7]);
+                
+                
+                
+            }
+        });
+        btnLogout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Object[] options = {"Yes",
+                    "No"};
+            int dialogueResult = JOptionPane.showOptionDialog(null,
+            "Are you sure?",
+            "Logout confirmation",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,     
+            options,  
+            options[0]);
+            
+            if(dialogueResult == JOptionPane.YES_OPTION){
+                dispose();
+                login k = new login();
+            }
+            }
+        });
+        
+        btnBack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
             }
         });
         
@@ -146,7 +225,7 @@ public class OmaProfiili extends JFrame {
 
     
     private void asetteleKomponentit() {
-        JPanel panelMain = new JPanel(new GridLayout(2,2));
+        
          getContentPane().add(panelMain);
          Border padding = BorderFactory.createEmptyBorder(10, 10, 10, 10);
        
@@ -169,7 +248,11 @@ public class OmaProfiili extends JFrame {
          
          //Label:it
          oikeaYla.add(lbNick, gbc);
-        gbc.gridy++;
+         gbc.gridy++;
+         oikeaYla.add(lbEtu,gbc);
+         gbc.gridy++;
+         oikeaYla.add(lbSuku,gbc);
+         gbc.gridy++;
          oikeaYla.add(lbBio,gbc);
          gbc.gridy++;
          oikeaYla.add(lbIka,gbc);
@@ -183,6 +266,10 @@ public class OmaProfiili extends JFrame {
          gbc.gridy = 0;
          
          oikeaYla.add(txtNimi, gbc);
+         gbc.gridy++;
+         oikeaYla.add(txtEtu,gbc);
+         gbc.gridy++;
+         oikeaYla.add(txtSuku,gbc);
          gbc.gridy++;
          oikeaYla.add(txtBio, gbc);
           gbc.gridy++;

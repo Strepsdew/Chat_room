@@ -83,6 +83,7 @@ public class ChatRoom extends JFrame{
         asetteleKomponentit();
         this.setVisible(true);
         
+        
     }
     private void asetteleKomponentit() {
         fontChange();
