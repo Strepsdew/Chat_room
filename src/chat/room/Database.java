@@ -478,12 +478,18 @@ public class Database {
         }
     }
     public BufferedImage getBufferedImageById(int id) throws IOException, SQLException {
-      Database k = new Database();
+     
+        Database k = new Database();
       Blob j = k.getPicture(id);
       InputStream in = j.getBinaryStream();  
       BufferedImage image = ImageIO.read(in);   
-      return image;
+      
+     
+     return image;
     }
+    
+    
+    
     public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
         Database meme = new Database();
         meme.addFriend(3, 2);

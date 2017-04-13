@@ -17,6 +17,7 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -69,9 +70,20 @@ public class OmaProfiili extends JFrame {
         private Database k = new Database();
         
         File sourceimage = null;
+        Image image = null;
+        
         
         
     public OmaProfiili() {
+        
+        try{
+           image = resize(k.getBufferedImageById(4),150,95);
+           lbPic.setIcon(new ImageIcon(image));
+        }catch(IOException a){
+            System.out.println("asd");
+        }catch(SQLException s){
+            System.out.println("dsa");
+        }
         
        Profiili p = k.getEverythingById(2); 
         String[]tiedot = p.toString().split(",");
@@ -100,7 +112,7 @@ public class OmaProfiili extends JFrame {
         this.setVisible(true);
         this.pack();
         
-        
+        btnPic.setVisible(false);
         btnSave.setVisible(false);
         txtEtu.setEditable(false);
         txtSuku.setEditable(false);
@@ -121,6 +133,8 @@ public class OmaProfiili extends JFrame {
                 txtSuku.setEditable(true);
                 txtEtu.setEditable(true);
                 txtLocation.setEditable(true);
+                
+                btnPic.setVisible(true);
                 
             }
         });
@@ -154,7 +168,11 @@ public class OmaProfiili extends JFrame {
                 txtIka.setText(tiedot[5]);
                 txtLocation.setText(tiedot[7]);
                 
+                
+                if(sourceimage == null){
+                }else{
                 k.insertPicture(sourceimage, 4);
+                }
                 
             }
         });
@@ -186,8 +204,9 @@ public class OmaProfiili extends JFrame {
             }
         });
         
-        btnPic.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
+        btnPic.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
                 try{
                     
                     JFileChooser chooser = new JFileChooser();
