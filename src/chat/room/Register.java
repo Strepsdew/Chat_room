@@ -13,27 +13,42 @@ import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class Register extends JFrame {
 
-    private JPanel pohja = new JPanel(new GridLayout(5, 1));
-    private JPanel tunnup = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    private JPanel pohja = new JPanel(new GridLayout(9, 1));
+    private JPanel username = new JPanel(new FlowLayout(FlowLayout.CENTER));
     private JPanel titlep = new JPanel(new FlowLayout(FlowLayout.CENTER));
     private JPanel pwp = new JPanel(new FlowLayout(FlowLayout.CENTER));
     private JPanel pwp2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
-    private JPanel loginp = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    private JPanel emailp = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    private JPanel registerp = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    private JPanel nick = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    private JPanel firstName = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    private JPanel lastName = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    
 
     private JLabel lbNimi = new JLabel("Username");
     private JLabel lbTitle = new JLabel("Registeration");
     private JLabel lbPassword = new JLabel("Password");
     private JLabel lbPassword2 = new JLabel("Password Again");
+    private JLabel lbEmail = new JLabel("      Email      ");
+    private JLabel lbNick = new JLabel("Nickname");
+    private JLabel lbFirst = new JLabel("First name");
+    private JLabel lbLast = new JLabel("Last name");
 
     
     private JTextField tfNimi = new JTextField(15);
-    private JTextField tfPw = new JTextField(15); 
-    private JTextField tfPw2 = new JTextField(15);   
-    private JButton create = new JButton("Create user");
+    private JPasswordField tfPw = new JPasswordField(15); 
+    private JPasswordField tfPw2 = new JPasswordField(15);
+    private JTextField tfEmail = new JTextField(15);
+    private JTextField tfNick = new JTextField(15);
+    private JTextField tfFirst = new JTextField(15);
+    private JTextField tfLast = new JTextField(15);
+    private JButton register = new JButton("Register");
+    private JButton cancel = new JButton("Cancel");
 
 
     public Register() {
@@ -44,9 +59,10 @@ public class Register extends JFrame {
         gaps.setVgap(25);
         this.setTitle("Register");
         lbTitle.setSize(100, 100);
-        this.setSize(250, 320);
+        this.setSize(245, 400);
         this.setLocationRelativeTo(null);
-        create.setPreferredSize(new Dimension(120, 30));
+        register.setPreferredSize(new Dimension(100, 30));
+        cancel.setPreferredSize(new Dimension(90, 30));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         asetteleKomponentit();
         this.setVisible(true);
@@ -60,19 +76,33 @@ public class Register extends JFrame {
 
     private void asetteleKomponentit() {
         fontChange();
+        lbTitle.setFont(new Font(lbTitle.getName(), Font.PLAIN, 20));
         titlep.add(lbTitle);
-        tunnup.add(lbNimi);
-        tunnup.add(tfNimi);
+        username.add(lbNimi);
+        username.add(tfNimi);
         pwp.add(lbPassword);
         pwp.add(tfPw);
         pwp2.add(lbPassword2);
         pwp2.add(tfPw2);
-        loginp.add(create);
+        emailp.add(lbEmail);
+        emailp.add(tfEmail);
+        registerp.add(cancel);
+        registerp.add(register);
+        firstName.add(lbFirst);
+        firstName.add(tfFirst);
+        lastName.add(lbLast);
+        lastName.add(tfLast);
+        nick.add(lbNick);
+        nick.add(tfNick);
         pohja.add(titlep);
-        pohja.add(tunnup);
+        pohja.add(username);
+        pohja.add(emailp);
+        pohja.add(firstName);
+        pohja.add(lastName);
+        pohja.add(nick);
         pohja.add(pwp);
         pohja.add(pwp2);
-        pohja.add(loginp);
+        pohja.add(registerp);
         this.add(pohja);
     }
 

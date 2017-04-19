@@ -25,6 +25,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 
 public class Database {
@@ -84,6 +85,21 @@ public class Database {
             return null;
         }
         return profiilit;
+    }
+    public int getIdByUsername(String username){
+        try{
+            connection = DriverManager.getConnection(connectionString);
+            String query = "select ProfileID from profile where username=?";
+            prepsInsertProduct = connection.prepareStatement(query);
+            prepsInsertProduct.setString(1,username);
+            rs=prepsInsertProduct.executeQuery();
+            if(rs.next()){
+               return rs.getInt("ProfileID");
+            }
+        }catch (Exception ex) {
+            System.out.println("Error in getIdByNickname : " + ex);
+        }
+        return 0;
     }
     public int getIdByNickname(String nickname){
         try{
@@ -147,7 +163,7 @@ public class Database {
     public boolean createUser(String Username,String etunimi,String sukunimi, String nickname,String password) {
         ArrayList<Profiili> k = new ArrayList<>();
         k = getUserByNickname(nickname);
-        if (k.size() == 0) {
+        if (k.size() == 0 && new Database().getIdByUsername(Username) == 0) {
             try {
                 connection = DriverManager.getConnection(connectionString);
                 String query = "INSERT INTO profile (username,etunimi,sukunimi,nickname,password) values (?,?,?,?,PWDENCRYPT(?))";
@@ -445,6 +461,6 @@ public class Database {
     }
     public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
         Database meme = new Database();
-        meme.addFriend(1, 2);
+        System.out.println(meme.createUser("pekska","peskka","peskka","psekka","pekka"));
     }
 }
