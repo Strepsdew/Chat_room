@@ -1,6 +1,5 @@
 package chat.room;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -8,17 +7,23 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
@@ -27,15 +32,16 @@ public class ChatRoom extends JFrame {
 
     int currentUserId;
     Database db = new Database();
-    Kaveri kaverit = null;
-    JFrame frame = new JFrame();
+    Kaveri kaverit=null;
     JPanel pohja = new JPanel(new GridLayout(100, 1));
     JPanel rivi1 = new JPanel(new FlowLayout());
     JPanel rivi2 = new JPanel(new GridLayout(1, 2));
     JPanel rivi3 = new JPanel(new FlowLayout());
-
-    JButton searchbt = new JButton("Add");
-    JButton addbt = new JButton("Search");
+    JMenuBar menuBar = new JMenuBar();
+    JMenu helpmenu = new JMenu("Help");
+    JMenu logoutmenu = new JMenu("Logout");
+    JMenu refreshmenu = new JMenu("Refresh");
+    JLabel addlb = new JLabel("Add Friend");
 
     JLabel lbTitle = new JLabel("Oma profiili");
     JLabel nimi = new JLabel("Oma Nimi", SwingConstants.CENTER);
@@ -50,6 +56,16 @@ public class ChatRoom extends JFrame {
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         asetteleKomponentit();
+        this.setResizable(false);
+        addlb.addMouseListener(new addL());
+        lbTitle.addMouseListener(new msProfile());
+        refreshmenu.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                kaverit = db.getFriendsByIdInKaveri(currentUserId);
+                try {asetteleKaverit();}catch (Exception ex){}
+            }
+        });
     }
 
     public void giveCurrentUserId(int id) throws IOException, SQLException {
@@ -109,10 +125,18 @@ public class ChatRoom extends JFrame {
 
     private void asetteleKomponentit() {
         fontChange();
+        addlb.setFont(new Font(addlb.getName(), Font.PLAIN, 20));
+        lbTitle.setFont(new Font(addlb.getName(), Font.PLAIN, 20));
+        nimi.setFont(new Font(addlb.getName(), Font.PLAIN, 20));
         rivi2.add(nimi);
-        rivi3.add(searchbt);
-        rivi3.add(addbt);
-
+        rivi3.add(addlb);
+        helpmenu.setSize(100,100);
+        menuBar.add(helpmenu);
+        menuBar.add(logoutmenu);
+        menuBar.add(refreshmenu);
+        menuBar.setSize(1,1);
+        this.setJMenuBar(menuBar);
+        
         pohja.add(rivi1);
         pohja.add(rivi2);
         pohja.add(rivi3);
@@ -145,5 +169,68 @@ public class ChatRoom extends JFrame {
         // Set the label's font size to the newly determined size.
         lbTitle.setFont(new Font(labelFont.getName(), Font.PLAIN, fontSizeToUse));
     }
+    class addL implements MouseListener{
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            AddIkkuna info= new AddIkkuna(currentUserId);
+            System.out.println(currentUserId +" chat room");
+            tiedotIkkunaaa(info);
+        }
 
+        @Override
+        public void mousePressed(MouseEvent e) {
+          
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+          
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+        
+        }
+        
+    }
+    
+    class msProfile implements MouseListener{
+
+        
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+           
+            
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            OmaProfiili k = new OmaProfiili();
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+        }
+        
+    }
+    private void tiedotIkkunaaa(AddIkkuna k){
+        k.setLocation(this.getX()+10,this.getY()+80);
+        //k.setLocationRelativeTo(FriendLabel);
+        k.setVisible(true);
+    }
 }

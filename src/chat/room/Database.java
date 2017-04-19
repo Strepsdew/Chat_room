@@ -99,6 +99,21 @@ public class Database {
         }
         return 0;
     }
+    public int getIdByUsername(String username) {
+        try {
+            connection = DriverManager.getConnection(connectionString);
+            String query = "select ProfileID from profile where username=?";
+            prepsInsertProduct = connection.prepareStatement(query);
+            prepsInsertProduct.setString(1, username);
+            rs = prepsInsertProduct.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("ProfileID");
+            }
+        } catch (Exception ex) {
+            System.out.println("Error in getIdByNickname : " + ex);
+        }
+        return 0;
+    }
 
     public Profiili getEverythingById(int id) {
         Profiili k = null;
@@ -279,7 +294,7 @@ public class Database {
         }
     }
 
-    public boolean haveThisFriend(String kaverinimi, int friendId, int currentUserId) {
+    public boolean haveThisFriend(int friendId, int currentUserId) {
         Database d = new Database();
         Kaveri kaveri = null;
         if (d.getFriendsByIdInKaveri(currentUserId) != null) {
@@ -311,7 +326,7 @@ public class Database {
         } else {
             kaverit = new Kaveri();
         }
-        if (!haveThisFriend(kaverinimi, friendId, currentUserId)) {
+        if (!haveThisFriend(friendId, currentUserId)) {
             kaverit.addFriend(kaverinimi, friendId);
         } else {
             return false;
@@ -328,7 +343,7 @@ public class Database {
         } else {
             kaverinkaverit = new Kaveri();
         }
-        if (!haveThisFriend(currentUser, currentUserId, friendId)) {
+        if (!haveThisFriend(currentUserId, friendId)) {
             kaverinkaverit.addFriend(currentUser, currentUserId);
         } else {
             return false;
@@ -451,7 +466,6 @@ public class Database {
             if (rs.next()) {
                 result = rs.getBlob("ProfilePhoto");
             }
-            System.out.println(result);
             return result;
         } catch (Exception ex) {
             System.out.println("Error in getPicture : " + ex);
@@ -472,5 +486,6 @@ public class Database {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
         Database meme = new Database();
+        meme.removeFriendById(1, 0);
     }
 }
