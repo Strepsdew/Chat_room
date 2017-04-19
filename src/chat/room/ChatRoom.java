@@ -1,18 +1,27 @@
 package chat.room;
-import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.Closeable;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 public class ChatRoom extends JFrame{
   
+    Integer currentUserId = 0;
+    Database db = new Database();
+    
     
     JFrame frame = new JFrame();
     JPanel pohja = new JPanel(new GridLayout(8,1));
@@ -22,17 +31,15 @@ public class ChatRoom extends JFrame{
     JPanel kaveri4 = new JPanel(new GridLayout(1,3));
     JPanel kaveri5 = new JPanel(new GridLayout(1,3));
     JPanel rivi1 = new JPanel(new FlowLayout());
-    JPanel rivi2 = new JPanel(new GridLayout(1,2));
+    JPanel rivi2 = new JPanel(new GridLayout(1,3));
     JPanel rivi3 = new JPanel(new FlowLayout());
-    
-    JButton searchbt = new JButton("Add");
-    JButton addbt = new JButton("Search");
+    JLabel addlb = new JLabel("Add Friend");
     JButton chat1 = new JButton("Chat");
     JButton chat2 = new JButton("Chat");
     JButton chat3 = new JButton("Chat");
     JButton chat4 = new JButton("Chat");
     JButton chat5 = new JButton("Chat");
-    
+  
    
     
     JPanel circle1 = new JPanel() {
@@ -63,7 +70,7 @@ public class ChatRoom extends JFrame{
     
 
     JLabel lbTitle = new JLabel("Oma profiili");
-    JLabel nimi = new JLabel("Oma Nimi", SwingConstants.CENTER);
+    JLabel nimi = new JLabel("", SwingConstants.CENTER);
     JLabel tyhjaa = new JLabel("");
     JLabel nimi1 = new JLabel("Kaveri1", SwingConstants.CENTER);
     JLabel nimi2 = new JLabel("Kaveri2", SwingConstants.CENTER);
@@ -71,6 +78,7 @@ public class ChatRoom extends JFrame{
     JLabel nimi4 = new JLabel("Kaveri4", SwingConstants.CENTER);
     JLabel nimi5 = new JLabel("Kaveri5", SwingConstants.CENTER);
     JLabel nimi6 = new JLabel("Kaveri6", SwingConstants.CENTER);
+    JOptionPane pane = new JOptionPane();
     
     public ChatRoom(){
         GridLayout gap = (GridLayout) pohja.getLayout();
@@ -79,6 +87,7 @@ public class ChatRoom extends JFrame{
         this.setTitle("ChatRoom");
         lbTitle.setSize(100, 100);
         this.setSize(210, 400);
+        this.setLocation(500, 300);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         asetteleKomponentit();
         this.setVisible(true);
@@ -86,9 +95,10 @@ public class ChatRoom extends JFrame{
     }
     private void asetteleKomponentit() {
         fontChange();
+        rivi1.add(lbTitle);
         rivi2.add(nimi);
-        rivi3.add(searchbt);
-        rivi3.add(addbt);
+        addlb.setFont(new Font(addlb.getName(), Font.PLAIN, 20));
+        rivi3.add(addlb);
         
         
         kaveri1.add(nimi1);
@@ -116,17 +126,34 @@ public class ChatRoom extends JFrame{
         pohja.add(kaveri4);
         pohja.add(kaveri5);
         
-        rivi1.add(lbTitle);
+        
         
         this.add(pohja);
+        
+        
+        addlb.addMouseListener(new addL());
+        lbTitle.addMouseListener(new msProfile());
+        
+        
+        
+        
         
        
         
     }
-    
+    public void recieveCurrentUserId(int id){
+    this.currentUserId = id;
+       
+        nimi.setText(db.getNicknameById(this.currentUserId));
+    }
     public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable(){
+        @Override
+        public void run(){
         ChatRoom cr = new ChatRoom();
+        }
             
+    });
     }
     
     private void fontChange() {
@@ -149,5 +176,68 @@ public class ChatRoom extends JFrame{
         lbTitle.setFont(new Font(labelFont.getName(), Font.PLAIN, fontSizeToUse));
     }
     
+    class addL implements MouseListener{
+         AddIkkuna info= new AddIkkuna(2);
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            tiedotIkkunaaa(info);
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+          
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+          
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+        
+        }
+        
+    }
+    
+    class msProfile implements MouseListener{
+
+        
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+           
+            
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            OmaProfiili k = new OmaProfiili();
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+        }
+        
+    }
+    private void tiedotIkkunaaa(AddIkkuna k){
+        k.setLocation(this.getX()+10,this.getY()+80);
+        //k.setLocationRelativeTo(FriendLabel);
+        k.setVisible(true);
+    }
     
 }
