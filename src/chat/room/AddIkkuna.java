@@ -28,7 +28,6 @@ public class AddIkkuna extends JFrame{
     public AddIkkuna(int id) {
         this.setUndecorated(true);
         this.currentUserId = id;
-        System.out.println(currentUserId + " in addikkuna");
         this.setSize(240,60);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);

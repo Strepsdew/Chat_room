@@ -65,11 +65,11 @@ public class ChatRoom extends JFrame {
             }
         });
         logoutmenu.addMouseListener(new MouseAdapter() {
-           @Override
-           public void mouseClicked(MouseEvent e){
-               setVisible(false);
-               new login();
-           }
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                setVisible(false);
+                new login();
+            }
         });
     }
 
@@ -93,23 +93,33 @@ public class ChatRoom extends JFrame {
                     BufferedImage image = db.getBufferedImageById(id);
                     JLabel FriendNickname = new JLabel(uudetKaverit.getFriendnames().get(i), SwingConstants.CENTER);
                     JPanel kaveri = new JPanel(new GridLayout(1, 3));
-                    BufferedImage img = resize(image, 45, 45);
-                    JPanel pallo = new JPanel() {
-                        protected void paintComponent(Graphics g) {
-                            super.paintComponent(g);
+                    if (Objects.isNull(image)) {
+                        JPanel pallo = new JPanel() {
+                            public void paintComponent(Graphics g) {
+                                super.paintComponent(g);
+                                g.drawOval(0, 0, 45, 45);
+                            }
+                        };
+                        kaveri.add(FriendNickname);
+                        kaveri.add(pallo);
+                    } else {
+                        BufferedImage img = resize(image, 45, 45);
+                        JPanel pallo = new JPanel() {
+                            protected void paintComponent(Graphics g) {
+                                super.paintComponent(g);
 
-                            Graphics2D g2 = (Graphics2D) g;
-                            Ellipse2D ellipse = new Ellipse2D.Double(0, 0, 45, 45);
-                            Rectangle2D rect = new Rectangle2D.Double(0, 0, 500, 500);
-                            g2.setPaint(new Color(255, 0, 0, 150));
-                            g2.setClip(ellipse);
-                            g2.clip(rect);
-                            g.drawImage(img, 0, 0, null);
-                        }
-                    };
-                    kaveri.add(FriendNickname);
-                    kaveri.add(pallo);
-                    System.out.println("toimii");
+                                Graphics2D g2 = (Graphics2D) g;
+                                Ellipse2D ellipse = new Ellipse2D.Double(0, 0, 45, 45);
+                                Rectangle2D rect = new Rectangle2D.Double(0, 0, 500, 500);
+                                g2.setPaint(new Color(255, 0, 0, 150));
+                                g2.setClip(ellipse);
+                                g2.clip(rect);
+                                g.drawImage(img, 0, 0, null);
+                            }
+                        };
+                        kaveri.add(FriendNickname);
+                        kaveri.add(pallo);
+                    }
                     pohja.add(kaveri);
                 } catch (IOException | SQLException ex) {
                 }
@@ -121,28 +131,38 @@ public class ChatRoom extends JFrame {
 
     private void lisaaAinoakaveri() {
         Kaveri uudetKaverit = new Database().getFriendsByIdInKaveri(currentUserId);
-        int id = uudetKaverit.getIds().get(uudetKaverit.getIds().size()-1);
+        int id = uudetKaverit.getIds().get(uudetKaverit.getIds().size() - 1);
         try {
             BufferedImage image = db.getBufferedImageById(id);
-            JLabel FriendNickname = new JLabel(uudetKaverit.getFriendnames().get(uudetKaverit.getIds().size()-1), SwingConstants.CENTER);
+            JLabel FriendNickname = new JLabel(uudetKaverit.getFriendnames().get(uudetKaverit.getIds().size() - 1), SwingConstants.CENTER);
             JPanel kaveri = new JPanel(new GridLayout(1, 3));
-            BufferedImage img = resize(image, 45, 45);
-            JPanel pallo = new JPanel() {
-                protected void paintComponent(Graphics g) {
-                    super.paintComponent(g);
+            if (Objects.isNull(image)) {
+                JPanel pallo = new JPanel() {
+                    public void paintComponent(Graphics g) {
+                        super.paintComponent(g);
+                        g.drawOval(0, 0, 45, 45);
+                    }
+                };
+                kaveri.add(FriendNickname);
+                kaveri.add(pallo);
+            } else {
+                BufferedImage img = resize(image, 45, 45);
+                JPanel pallo = new JPanel() {
+                    protected void paintComponent(Graphics g) {
+                        super.paintComponent(g);
 
-                    Graphics2D g2 = (Graphics2D) g;
-                    Ellipse2D ellipse = new Ellipse2D.Double(0, 0, 45, 45);
-                    Rectangle2D rect = new Rectangle2D.Double(0, 0, 500, 500);
-                    g2.setPaint(new Color(255, 0, 0, 150));
-                    g2.setClip(ellipse);
-                    g2.clip(rect);
-                    g.drawImage(img, 0, 0, null);
-                }
-            };
-            kaveri.add(FriendNickname);
-            kaveri.add(pallo);
-            System.out.println("toimii");
+                        Graphics2D g2 = (Graphics2D) g;
+                        Ellipse2D ellipse = new Ellipse2D.Double(0, 0, 45, 45);
+                        Rectangle2D rect = new Rectangle2D.Double(0, 0, 500, 500);
+                        g2.setPaint(new Color(255, 0, 0, 150));
+                        g2.setClip(ellipse);
+                        g2.clip(rect);
+                        g.drawImage(img, 0, 0, null);
+                    }
+                };
+                kaveri.add(FriendNickname);
+                kaveri.add(pallo);
+            }
             pohja.add(kaveri);
         } catch (Exception ex) {
         }
@@ -152,13 +172,11 @@ public class ChatRoom extends JFrame {
     public void giveCurrentUserId(int id) throws IOException, SQLException {
         this.currentUserId = id;
         kaverit = db.getFriendsByIdInKaveri(currentUserId);
-        System.out.println("?" + db.getNicknameById(id));
         asetteleKaverit();
         nimi.setText(db.getNicknameById(id));
     }
 
     private void asetteleKaverit() throws IOException, SQLException {
-        System.out.println("please no");
         if (Objects.isNull(kaverit)) {
             return;
         }
@@ -261,7 +279,6 @@ public class ChatRoom extends JFrame {
         @Override
         public void mouseClicked(MouseEvent e) {
             AddIkkuna info = new AddIkkuna(currentUserId);
-            System.out.println(currentUserId + " chat room");
             tiedotIkkunaaa(info);
         }
 
