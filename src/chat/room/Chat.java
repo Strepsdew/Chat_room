@@ -260,7 +260,7 @@ public class Chat extends JFrame {
 
             }
 
-            }catch(IOException e){
+            catch(IOException e){
                     System.out.println(e);
                     }
 
