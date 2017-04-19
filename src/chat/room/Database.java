@@ -128,10 +128,10 @@ public class Database {
         return k;
     }
 
-    public Object getHashPasswordByNickname(String username) {
+    public Object getHashPasswordByUsername(String username) {
         try {
             connection = DriverManager.getConnection(connectionString);
-            String query = "select password from profile where nickname=?";
+            String query = "select password from profile where username=?";
             prepsInsertProduct = connection.prepareStatement(query);
             prepsInsertProduct.setString(1, username);
             rs = prepsInsertProduct.executeQuery();
@@ -171,8 +171,8 @@ public class Database {
         return false;
     }
 
-    public boolean checkPassword(String nickname, String pw) {
-        Object hash = getHashPasswordByNickname(nickname);
+    public boolean checkPassword(String username, String pw) {
+        Object hash = getHashPasswordByUsername(username);
         try {
             connection = DriverManager.getConnection(connectionString);
             String query = "select PWDCOMPARE (?,?)";
@@ -472,6 +472,5 @@ public class Database {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
         Database meme = new Database();
-        meme.addFriend(4, 6);
     }
 }

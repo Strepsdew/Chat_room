@@ -42,8 +42,8 @@ public class ChatRoom extends JFrame {
 
     public ChatRoom() {
         GridLayout gap = (GridLayout) pohja.getLayout();
-        gap.setHgap(25);
-        gap.setVgap(0);
+        gap.setHgap(50);
+        gap.setVgap(9);
         this.setTitle("ChatRoom");
         lbTitle.setSize(100, 100);
         this.setSize(210, 400);
@@ -63,7 +63,7 @@ public class ChatRoom extends JFrame {
         for (int i = 0; i < kaverit.getIds().size(); i++) {
             int id = kaverit.getIds().get(i);
             BufferedImage image = db.getBufferedImageById(id);
-            JPanel kaveri = new JPanel(new GridLayout(3, 1));
+            JPanel kaveri = new JPanel(new GridLayout(1, 3));
             JLabel nimi = new JLabel(kaverit.getFriendnames().get(i), SwingConstants.CENTER);
             if (Objects.isNull(image)) {
                 JPanel pallo = new JPanel() {
