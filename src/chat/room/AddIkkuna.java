@@ -13,6 +13,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -45,25 +46,29 @@ public class AddIkkuna extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             Database d = new Database();
+            boolean j = false;
             int kaveri=0;
-            if(Objects.isNull(d.getIdByNickname(tf.getText()))){
+            if(d.getIdByNickname(tf.getText())==0){
                 kaveri = d.getIdByUsername(tf.getText());
             }else{
                 kaveri = d.getIdByNickname(tf.getText());
             }
-            System.out.println(kaveri+" "+currentUserId +"haloo vitu");
-            System.out.println(currentUserId);
             if(Objects.nonNull(d.haveThisFriend(kaveri,currentUserId))&&Objects.nonNull(d.haveThisFriend(currentUserId,kaveri))){
-                System.out.println("jotain");
                 if(kaveri != 0) {
-                    System.out.println("ines");
-                    System.out.println(currentUserId);
                     d.addFriend(currentUserId,kaveri);
-                    System.out.println(currentUserId);
+                    JOptionPane.showMessageDialog(rootPane, "Successful!");
                     setVisible(false);
+                    j = true;
                 }   
+            }else{
+                JOptionPane.showMessageDialog(rootPane,"Something went wrong try again!");
+                setVisible(false);
+                j = false;
             }
-            
+        if(!j){
+            JOptionPane.showMessageDialog(rootPane,"Something went wrong try again!");
+        }
+        setVisible(false);    
         }
     }
     
@@ -79,4 +84,3 @@ public class AddIkkuna extends JFrame{
     public static void main(String[] args) {
     }
 }
-

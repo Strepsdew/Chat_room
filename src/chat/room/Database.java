@@ -161,19 +161,20 @@ public class Database {
         return null;
     }
 
-    public boolean createUser(String Username, String etunimi, String sukunimi, String nickname, String password) {
+    public boolean createUser(String Username, String etunimi, String sukunimi, String nickname,String email, String password) {
         ArrayList<Profiili> k = new ArrayList<>();
         k = getUserByNickname(nickname);
         if (k.size() == 0) {
             try {
                 connection = DriverManager.getConnection(connectionString);
-                String query = "INSERT INTO profile (username,etunimi,sukunimi,nickname,password) values (?,?,?,?,PWDENCRYPT(?))";
+                String query = "INSERT INTO profile (username,etunimi,sukunimi,nickname,email,password) values (?,?,?,?,?,PWDENCRYPT(?))";
                 prepsInsertProduct = connection.prepareStatement(query);
                 prepsInsertProduct.setString(1, Username);
                 prepsInsertProduct.setString(2, etunimi);
                 prepsInsertProduct.setString(3, sukunimi);
                 prepsInsertProduct.setString(4, nickname);
-                prepsInsertProduct.setString(5, password);
+                prepsInsertProduct.setString(5, email);
+                prepsInsertProduct.setString(6, password);
                 prepsInsertProduct.executeUpdate();
                 String query2 = "insert into kaverit (kaveri) values ('')";
                 prepsInsertProduct = connection.prepareStatement(query2);
@@ -486,6 +487,6 @@ public class Database {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
         Database meme = new Database();
-        meme.removeFriendById(1, 0);
+        System.out.println(meme.getIdByNickname("sup"));
     }
 }
