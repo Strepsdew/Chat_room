@@ -85,7 +85,7 @@ public class OmaProfiili extends JFrame {
             System.out.println("dsa");
         }
         
-       Profiili p = k.getEverythingById(2); 
+       Profiili p = k.getEverythingById(4); 
         String[]tiedot = p.toString().split(",");
         if(tiedot[6].contains("null")){
             tiedot[6] = "";
@@ -141,6 +141,10 @@ public class OmaProfiili extends JFrame {
         btnSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
+               int ika = Integer.parseInt(txtIka.getText());
+                k.updateProfiili(4, txtEtu.getText(), txtSuku.getText(), txtNimi.getText(), ika, txtBio.getText(), txtLocation.getText());
+                
                 btnSave.setVisible(false);
                 btnEdit.setVisible(true);
                 txtNimi.setEditable(false);
@@ -154,7 +158,8 @@ public class OmaProfiili extends JFrame {
                 txtEtu.setEditable(false);
                 txtSuku.setEditable(false);
                 
-                Profiili p = k.getEverythingById(2); 
+                 Profiili p = k.getEverythingById(4); 
+                
                 String[]tiedot = p.toString().split(",");
                 if(tiedot[6].contains("null")){
                     tiedot[6] = "";
@@ -163,16 +168,21 @@ public class OmaProfiili extends JFrame {
                 if(tiedot[7].contains("null")){
                     tiedot[7] = "";
                 }
+
+                txtEtu.setText(tiedot[2]);
+                txtSuku.setText(tiedot[3]);
                 txtNimi.setText(tiedot[1]);
                 txtBio.setText(tiedot[6]);
                 txtIka.setText(tiedot[5]);
                 txtLocation.setText(tiedot[7]);
                 
-                
                 if(sourceimage == null){
                 }else{
                 k.insertPicture(sourceimage, 4);
                 }
+                
+                
+                
                 
             }
         });

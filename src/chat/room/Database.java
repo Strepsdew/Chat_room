@@ -201,16 +201,18 @@ public class Database {
         return false;
     }
     
-    public void updateProfiili(int id,String nickname,int ika, String bio,String location) {
+    public void updateProfiili(int id,String etu, String suku,String nickname,int ika, String bio,String location) {
        try{
            connection = DriverManager.getConnection(connectionString);
-           String query ="Update profile set nickname=? ika=? bio=? location=? where ProfiiliID=?";
+           String query ="Update profile set etunimi =?, sukunimi=?, nickname=?, ika=?, bio=?, location=? where ProfileID=?";
            prepsInsertProduct = connection.prepareStatement(query);
-           prepsInsertProduct.setString(1, nickname);
-           prepsInsertProduct.setInt(2,ika);
-           prepsInsertProduct.setString(3, bio);
-           prepsInsertProduct.setString(4, location);
-           prepsInsertProduct.setInt(5, id);           
+           prepsInsertProduct.setString(1, etu);
+           prepsInsertProduct.setString(2, suku);
+           prepsInsertProduct.setString(3, nickname);
+           prepsInsertProduct.setInt(4, ika);
+           prepsInsertProduct.setString(5, bio);
+           prepsInsertProduct.setString(6, location);
+           prepsInsertProduct.setInt(7, id);           
            prepsInsertProduct.executeUpdate();
        }catch (Exception ex) {
            System.out.println("Error in updateProfiili : " +ex);
