@@ -75,8 +75,6 @@ public class Client {
     void sendMessage(ChatMessage msg) {
         try {
             sOutput.writeObject(msg);
-            sOutput.writeObject(0);//frendin id
-            sOutput.writeObject(2);//mun id
         } catch (IOException e) {
             display("Exception writing to server: " + e);
         }

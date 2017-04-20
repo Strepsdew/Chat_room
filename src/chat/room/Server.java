@@ -56,7 +56,7 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
                     break;
                 }
                 ClientThread t = new ClientThread(socket);
-                clients.put(0, t);
+                al.add(t);
                 t.start();
             }
             try {
@@ -102,11 +102,9 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
         for (int i = al.size(); --i >= 0;) {
             
             ClientThread ct = al.get(i);
-            if(i == myId || i == friendsId){
             if (!ct.writeMsg(messageLf)) {
                 al.remove(i);
                 display("Disconnected Client " + ct.username + " removed from list.");
-            }
             }
         }
     }
@@ -175,8 +173,6 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
             while (keepGoing) {
                 try {
                     cm = (ChatMessage) sInput.readObject();
-                     friendsId = (Integer) sInput.readObject();
-                     myId = (Integer) sInput.readObject();
                 } catch (IOException e) {
                     display(username + " Exception reading Streams: " + e);
                     break;
