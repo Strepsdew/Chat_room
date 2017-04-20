@@ -10,6 +10,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
@@ -17,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 public class login extends JFrame {
@@ -64,10 +69,16 @@ public class login extends JFrame {
                     Database k = new Database();
                     if (k.checkPassword(nickname, pw)) {
                         int id = k.getIdByNickname(nickname);
-                        Chat chatform = new Chat();
+                        ChatRoom mainForm = new ChatRoom();
                         System.out.println(id);
-                        chatform.giveCurrentUserId(id);
-
+                        try {
+                            mainForm.giveCurrentUserId(id);
+                        } catch (IOException ex) {
+                            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        mainForm.setVisible(true);
                         setVisible(false);
 
                     } else {
@@ -97,12 +108,17 @@ public class login extends JFrame {
                 Database k = new Database();
                 if (k.checkPassword(nickname, pw)) {
                     int id = k.getIdByNickname(nickname);
+                    ChatRoom mainForm = new ChatRoom();
                     System.out.println(id);
-                    Chat chatform = new Chat();
-                    chatform.giveCurrentUserId(id);
-
+                    try {
+                        mainForm.giveCurrentUserId(id);
+                    } catch (IOException ex) {
+                        Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    mainForm.setVisible(true);
                     setVisible(false);
-
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Something went wrong try again!");
                 }

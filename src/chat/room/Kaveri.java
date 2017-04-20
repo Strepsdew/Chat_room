@@ -21,13 +21,11 @@ public class Kaveri {
             k += " " + friendname;
             l += " " + this.IDs.get(i);
             i++;
-            System.out.println(friendname);
         }
         k += l;
         return k;
     }
     public ArrayList<String> getFriendnames() {
-        System.out.println(this.friendnames);
         return this.friendnames;
     }
     public ArrayList<Integer> getIds(){
