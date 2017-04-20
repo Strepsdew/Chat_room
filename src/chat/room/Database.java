@@ -522,7 +522,11 @@ public class Database {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
         Database meme = new Database();
-        System.out.println(meme.getIdByNickname("sup"));
+        meme.removeFriendById(2, 4);
+        meme.removeFriendById(2, 1);
+                
+        meme.removeFriendById(1, 2);
+        meme.removeFriendById(4, 2);
     }
 
     public static void suljeYhteys(Connection suljettavaYhteys) {

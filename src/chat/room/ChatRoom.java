@@ -121,6 +121,16 @@ public class ChatRoom extends JFrame {
                         kaveri.add(FriendNickname);
                         kaveri.add(pallo);
                     }
+                    System.out.println("uusi versio");
+                    kaveri.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+                            System.out.println("wat wat");
+                            Chat p = new Chat(currentUserId,id);
+                            p.giveCurrentUserIdAndFriend(currentUserId, id);
+                            p.setVisible(true);
+                        }
+                    });
                     pohja.add(kaveri);
                 } catch (IOException | SQLException ex) {
                 }
@@ -164,6 +174,16 @@ public class ChatRoom extends JFrame {
                 kaveri.add(FriendNickname);
                 kaveri.add(pallo);
             }
+            System.out.println("uusi versio");
+            kaveri.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    System.out.println("wat wat");
+                    Chat p = new Chat(currentUserId,id);
+                    p.giveCurrentUserIdAndFriend(currentUserId, id);
+                    p.setVisible(true);
+                }
+            });
             pohja.add(kaveri);
         } catch (Exception ex) {
         }
@@ -213,6 +233,16 @@ public class ChatRoom extends JFrame {
                 kaveri.add(FriendNickname);
                 kaveri.add(pallo);
             }
+            System.out.println(id);
+            kaveri.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    System.out.println("wat wat");
+                    Chat p = new Chat(currentUserId,id);
+                    p.giveCurrentUserIdAndFriend(currentUserId, id);
+                    p.setVisible(true);
+                }
+            });
             pohja.add(kaveri);
         }
     }
@@ -314,7 +344,7 @@ public class ChatRoom extends JFrame {
 
         @Override
         public void mousePressed(MouseEvent e) {
-            OmaProfiili k = new OmaProfiili();
+            OmaProfiili k = new OmaProfiili(currentUserId);
         }
 
         @Override

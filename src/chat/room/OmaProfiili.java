@@ -71,13 +71,13 @@ public class OmaProfiili extends JFrame {
         
         File sourceimage = null;
         Image image = null;
+        private int currentUserId;
         
         
-        
-    public OmaProfiili() {
-        
+    public OmaProfiili(int id) {
+        currentUserId = id;
         try{
-           image = resize(k.getBufferedImageById(4),150,95);
+           image = resize(k.getBufferedImageById(currentUserId),150,95);
            lbPic.setIcon(new ImageIcon(image));
         }catch(IOException a){
             System.out.println("asd");
@@ -85,7 +85,7 @@ public class OmaProfiili extends JFrame {
             System.out.println("dsa");
         }
         
-       Profiili p = k.getEverythingById(4); 
+       Profiili p = k.getEverythingById(currentUserId); 
         String[]tiedot = p.toString().split(",");
         if(tiedot[6].contains("null")){
             tiedot[6] = "";
@@ -143,7 +143,7 @@ public class OmaProfiili extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 
                int ika = Integer.parseInt(txtIka.getText());
-                k.updateProfiili(4, txtEtu.getText(), txtSuku.getText(), txtNimi.getText(), ika, txtBio.getText(), txtLocation.getText());
+                k.updateProfiili(currentUserId, txtEtu.getText(), txtSuku.getText(), txtNimi.getText(), ika, txtBio.getText(), txtLocation.getText());
                 
                 btnSave.setVisible(false);
                 btnEdit.setVisible(true);
@@ -158,7 +158,7 @@ public class OmaProfiili extends JFrame {
                 txtEtu.setEditable(false);
                 txtSuku.setEditable(false);
                 
-                 Profiili p = k.getEverythingById(4); 
+                 Profiili p = k.getEverythingById(currentUserId); 
                 
                 String[]tiedot = p.toString().split(",");
                 if(tiedot[6].contains("null")){
@@ -178,7 +178,7 @@ public class OmaProfiili extends JFrame {
                 
                 if(sourceimage == null){
                 }else{
-                k.insertPicture(sourceimage, 4);
+                k.insertPicture(sourceimage, currentUserId);
                 }
                 
                 
@@ -331,7 +331,6 @@ public class OmaProfiili extends JFrame {
     }
 
     public static void main(String[] args) {
-        OmaProfiili k = new OmaProfiili();
     }
 
     private void fontChange(JLabel lbTitle) {

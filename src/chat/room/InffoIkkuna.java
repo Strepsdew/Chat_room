@@ -74,7 +74,6 @@ public class InffoIkkuna extends JFrame{
         return dimg;
     }
     public static void main(String[] args) {
-        new InffoIkkuna(2).setVisible(true);
     }
 }
 

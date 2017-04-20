@@ -47,23 +47,27 @@ public class Chat extends JFrame {
     private JTextArea chatArea = new JTextArea();
 
     private int currentUserId;
+    private int currentFriendId;
     Client client = new Client("localhost", 1500, null, this);
 
     private boolean connected;
 
 
-    public Chat() {
+    public Chat(int userid,int friendid) {
+        currentUserId = userid;
+        currentFriendId = friendid;
         Database k = new Database();
         BufferedImage kuva = null;
         try {
-            kuva = k.getBufferedImageById(2);
+            System.out.println(friendid);
+            kuva = k.getBufferedImageById(friendid);
         } catch (Exception ex) {
         }
         kuva = resize(kuva, 45, 45);
         FriendLabel.setIcon(new ImageIcon(kuva));
 
 
-        this.setTitle("Chat with KAVERIN_NIMI"); // tähän lisätään chat with kaverin nimi
+        this.setTitle("Chat with "+k.getNicknameById(friendid)); // tähän lisätään chat with kaverin nimi
         this.setSize(410, 350);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -76,7 +80,6 @@ public class Chat extends JFrame {
         closeBtn.setBackground(Color.GRAY);
         closeBtn.setForeground(Color.BLACK);
         asetteleKomponentit();
-        this.setVisible(true);
         chatArea.setEditable(false);
         sendBtn.setBackground(Color.GRAY);
         sendBtn.setForeground(Color.BLACK);
@@ -86,7 +89,7 @@ public class Chat extends JFrame {
         viesti.setBorder(roundedBorder);
         //yritän tehdä kirjoitus areasta pyöreän
         FriendLabel.addMouseListener(new MouseListener() {
-            InffoIkkuna tama= new InffoIkkuna(2); // friend id = 2 vaihda sitte myöhemmin
+            InffoIkkuna tama= new InffoIkkuna(currentFriendId); // friend id = 2 vaihda sitte myöhemmin
             @Override
             public void mouseClicked(MouseEvent e) {
             }
@@ -192,8 +195,9 @@ public class Chat extends JFrame {
         return dimg;
     }
 
-    public void giveCurrentUserId(int id) {
+    public void giveCurrentUserIdAndFriend(int id,int friendid) {
         currentUserId = id;
+        currentFriendId = friendid;
         client.getUsername(currentUserId);
         run();
     }
@@ -212,8 +216,6 @@ public class Chat extends JFrame {
     }
 
     public static void main(String[] args) {
-        new Chat();
-
     }
 
     void append(String str) {
