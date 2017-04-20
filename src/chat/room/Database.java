@@ -5,7 +5,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -22,6 +21,7 @@ import javax.imageio.ImageIO;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -80,6 +80,8 @@ public class Database {
         } catch (Exception ex) {
             System.out.println("Error in getUserByUsername : " + ex);
             return null;
+        } finally {
+            suljeYhteys(connection);
         }
         return profiilit;
     }
@@ -96,9 +98,12 @@ public class Database {
             }
         } catch (Exception ex) {
             System.out.println("Error in getIdByNickname : " + ex);
+        } finally {
+            suljeYhteys(connection);
         }
         return 0;
     }
+
     public int getIdByUsername(String username) {
         try {
             connection = DriverManager.getConnection(connectionString);
@@ -139,6 +144,8 @@ public class Database {
         } catch (Exception ex) {
             System.out.println("Error in selectProfiili : " + ex);
             return null;
+        } finally {
+            suljeYhteys(connection);
         }
         return k;
     }
@@ -157,11 +164,13 @@ public class Database {
         } catch (Exception ex) {
             System.out.println("error in getHashPasswordByNickname : " + ex);
             return null;
+        } finally {
+            suljeYhteys(connection);
         }
         return null;
     }
 
-    public boolean createUser(String Username, String etunimi, String sukunimi, String nickname,String email, String password) {
+    public boolean createUser(String Username, String etunimi, String sukunimi, String nickname, String email, String password) {
         ArrayList<Profiili> k = new ArrayList<>();
         k = getUserByNickname(nickname);
         if (k.size() == 0) {
@@ -181,6 +190,8 @@ public class Database {
                 prepsInsertProduct.executeUpdate();
             } catch (Exception ex) {
                 System.out.println("Error in createUser : " + ex);
+            } finally {
+                suljeYhteys(connection);
             }
             return true;
         }
@@ -204,23 +215,30 @@ public class Database {
         } catch (Exception ex) {
             System.out.println("error in checkPassword : " + ex);
             return false;
+        } finally {
+            suljeYhteys(connection);
         }
         return false;
     }
+    
 
-    public void updateProfiili(int id, String nickname, int ika, String bio, String location) {
+    public void updateProfiili(int id, String etu, String suku, String nickname, int ika, String bio, String location) {
         try {
             connection = DriverManager.getConnection(connectionString);
-            String query = "Update profile set nickname=? ika=? bio=? location=? where ProfiiliID=?";
+            String query = "Update profile set etunimi =?, sukunimi=?, nickname=?, ika=?, bio=?, location=? where ProfileID=?";
             prepsInsertProduct = connection.prepareStatement(query);
-            prepsInsertProduct.setString(1, nickname);
-            prepsInsertProduct.setInt(2, ika);
-            prepsInsertProduct.setString(3, bio);
-            prepsInsertProduct.setString(4, location);
-            prepsInsertProduct.setInt(5, id);
+            prepsInsertProduct.setString(1, etu);
+            prepsInsertProduct.setString(2, suku);
+            prepsInsertProduct.setString(3, nickname);
+            prepsInsertProduct.setInt(4, ika);
+            prepsInsertProduct.setString(5, bio);
+            prepsInsertProduct.setString(6, location);
+            prepsInsertProduct.setInt(7, id);
             prepsInsertProduct.executeUpdate();
         } catch (Exception ex) {
             System.out.println("Error in updateProfiili : " + ex);
+        } finally {
+            suljeYhteys(connection);
         }
     }
 
@@ -234,8 +252,11 @@ public class Database {
             if (rs.next()) {
                 return rs.getString("nickname");
             }
+             
         } catch (Exception ex) {
             System.out.println("error in getNicknameById : " + ex);
+        } finally {
+            suljeYhteys(connection);
         }
         return null;
     }
@@ -261,6 +282,8 @@ public class Database {
         } catch (Exception ex) {
             System.out.println("error in getfriendsbyid " + ex);
             return null;
+        } finally {
+            suljeYhteys(connection);
         }
     }
 
@@ -292,6 +315,8 @@ public class Database {
         } catch (Exception ex) {
             System.out.println("error in getfriendsbyid " + ex);
             return null;
+        } finally {
+            suljeYhteys(connection);
         }
     }
 
@@ -371,6 +396,8 @@ public class Database {
             return true;
         } catch (Exception ex) {
             System.out.println("Error in addFriend" + ex);
+        } finally {
+            suljeYhteys(connection);
         }
         return false;
     }
@@ -406,6 +433,8 @@ public class Database {
         } catch (Exception ex) {
             System.out.println("Error in getFriendByNickname" + ex);
             return null;
+        } finally {
+            suljeYhteys(connection);
         }
     }
 
@@ -434,6 +463,8 @@ public class Database {
         } catch (Exception ex) {
             System.out.println("Error in removeFriendById  : " + ex);
             return false;
+        } finally {
+            suljeYhteys(connection);
         }
     }
 
@@ -453,6 +484,8 @@ public class Database {
         } catch (Exception ex) {
             System.out.println("Error in insertPicture : " + ex);
             return false;
+        } finally {
+            suljeYhteys(connection);
         }
     }
 
@@ -471,6 +504,8 @@ public class Database {
         } catch (Exception ex) {
             System.out.println("Error in getPicture : " + ex);
             return null;
+        } finally {
+            suljeYhteys(connection);
         }
     }
 
@@ -488,5 +523,15 @@ public class Database {
     public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
         Database meme = new Database();
         System.out.println(meme.getIdByNickname("sup"));
+    }
+
+    public static void suljeYhteys(Connection suljettavaYhteys) {
+        if (suljettavaYhteys != null) {
+            try {
+                suljettavaYhteys.close();
+            } catch (Exception e) {
+                //mitään ei ole tehtävissä
+            }
+        }
     }
 }

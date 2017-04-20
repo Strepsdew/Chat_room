@@ -71,6 +71,7 @@ public class ChatRoom extends JFrame {
                 new login();
             }
         });
+
     }
 
     public void paivitaKaverit() {

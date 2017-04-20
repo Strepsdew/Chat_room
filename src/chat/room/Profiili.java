@@ -40,6 +40,7 @@ public class Profiili {
         return this.ika;
     }
     public String getBio() {
+        
         return this.bio;
     }
     public String getLocation() {
@@ -49,7 +50,7 @@ public class Profiili {
         return this.email;
     }
     public String toString() {
-        return "" + this.ID+ " " + this.Username +" "+ this.etunimi + " "+ this.sukunimi + " "+ this.nickname + " "+ this.ika + " "+ this.bio + " " + this.location + " " + this.email;
+        return this.ID+ "," + this.Username +","+ this.etunimi + ","+ this.sukunimi + ","+ this.nickname + ","+ this.ika + ","+ this.bio + "," + this.location + "," + this.email;
     }
 }
 
