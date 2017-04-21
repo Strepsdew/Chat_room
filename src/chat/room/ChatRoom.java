@@ -18,6 +18,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
@@ -344,7 +346,14 @@ public class ChatRoom extends JFrame {
 
         @Override
         public void mousePressed(MouseEvent e) {
-            OmaProfiili k = new OmaProfiili(currentUserId);
+            try {
+                OmaProfiili k = new OmaProfiili(currentUserId);
+                k.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(ChatRoom.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(ChatRoom.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
         @Override
