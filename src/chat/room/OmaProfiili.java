@@ -102,7 +102,7 @@ public class OmaProfiili extends JFrame {
         }
         txtEtu.setText(tiedot[2]);
         txtSuku.setText(tiedot[3]);
-        txtNimi.setText(tiedot[1]);
+        txtNimi.setText(tiedot[4]);
         txtBio.setText(tiedot[6]);
         txtIka.setText(tiedot[5]);
         txtLocation.setText(tiedot[7]);
@@ -147,8 +147,8 @@ public class OmaProfiili extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 int ika = Integer.parseInt(txtIka.getText());
+                k.changeNicknameInFriends(txtNimi.getText(),k.getNicknameById(currentUserId),currentUserId);
                 k.updateProfiili(currentUserId, txtEtu.getText(), txtSuku.getText(), txtNimi.getText(), ika, txtBio.getText(), txtLocation.getText());
-
                 btnSave.setVisible(false);
                 btnEdit.setVisible(true);
                 txtNimi.setEditable(false);
@@ -175,7 +175,7 @@ public class OmaProfiili extends JFrame {
 
                 txtEtu.setText(tiedot[2]);
                 txtSuku.setText(tiedot[3]);
-                txtNimi.setText(tiedot[1]);
+                txtNimi.setText(tiedot[4]);
                 txtBio.setText(tiedot[6]);
                 txtIka.setText(tiedot[5]);
                 txtLocation.setText(tiedot[7]);

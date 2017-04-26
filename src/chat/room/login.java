@@ -64,11 +64,11 @@ public class login extends JFrame {
             @Override
             public void keyReleased(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    String nickname = tfNimi.getText();
+                    String username = tfNimi.getText();
                     String pw = tfPw.getText();
                     Database k = new Database();
-                    if (k.checkPassword(nickname, pw)) {
-                        int id = k.getIdByNickname(nickname);
+                    if (k.checkPassword(username, pw)) {
+                        int id = k.getIdByUsername(username);
                         ChatRoom mainForm = new ChatRoom();
                         System.out.println(id);
                         try {
@@ -103,11 +103,11 @@ public class login extends JFrame {
         login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nickname = tfNimi.getText();
+                String username = tfNimi.getText();
                 String pw = tfPw.getText();
                 Database k = new Database();
-                if (k.checkPassword(nickname, pw)) {
-                    int id = k.getIdByNickname(nickname);
+                if (k.checkPassword(username, pw)) {
+                    int id = k.getIdByUsername(username);
                     ChatRoom mainForm = new ChatRoom();
                     System.out.println(id);
                     try {
