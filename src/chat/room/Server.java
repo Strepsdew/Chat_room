@@ -92,7 +92,7 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
             WriteToFile();
         }
 
-    private synchronized void broadcast(String message) throws IOException {
+    private synchronized void broadcast(String message, String friend, String user) throws IOException {
         String time = sdf.format(new Date());
         String messageLf = time + " " + message + "\n";
         System.out.print(messageLf);
@@ -102,9 +102,11 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
         for (int i = al.size(); --i >= 0;) {
             
             ClientThread ct = al.get(i);
-            if (!ct.writeMsg(messageLf)) {
-                al.remove(i);
-                display("Disconnected Client " + ct.username + " removed from list.");
+            if (friend.equals(ct.username) || ct.username.equals(user)) {
+                if (!ct.writeMsg(messageLf)) {
+                    al.remove(i);
+                    display("Disconnected Client " + ct.username + " removed from list.");
+                }
             }
         }
     }
@@ -148,6 +150,7 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
         ObjectOutputStream sOutput;
         int id;
         String username;
+        String fUser;
         ChatMessage cm;
         String date;
 
@@ -158,8 +161,10 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
             try {
                 sOutput = new ObjectOutputStream(socket.getOutputStream());
                 sInput = new ObjectInputStream(socket.getInputStream());
+
                 username = (String) sInput.readObject();
-                display(username + "just connected.");
+                fUser = (String) sInput.readObject();
+                display(username + " just connected and is trying to talk to: "+fUser);
             } catch (IOException e) {
                 display("Exception creating new input/output Streams: " + e);
             } catch (ClassNotFoundException e) {
@@ -187,7 +192,7 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
                     case ChatMessage.MESSAGE:
                 {
                     try {
-                        broadcast(username + ": " + message);
+                        broadcast(username + ": " + message, fUser, username);
                     } catch (IOException ex) {
                         Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
                     }
