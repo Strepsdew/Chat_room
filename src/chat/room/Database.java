@@ -175,8 +175,13 @@ public class Database {
         k = getUserByNickname(nickname);
         if (k.size() == 0) {
             try {
+                BufferedImage img = ImageIO.read(new File("Pic.png"));
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(img, "png",baos);
+                Blob blFile = new javax.sql.rowset.serial.SerialBlob(baos.toByteArray());
+                
                 connection = DriverManager.getConnection(connectionString);
-                String query = "INSERT INTO profile (username,etunimi,sukunimi,nickname,email,password) values (?,?,?,?,?,PWDENCRYPT(?))";
+                String query = "INSERT INTO profile (username,etunimi,sukunimi,nickname,email,password,ProfilePhoto) values (?,?,?,?,?,PWDENCRYPT(?),?)";
                 prepsInsertProduct = connection.prepareStatement(query);
                 prepsInsertProduct.setString(1, Username);
                 prepsInsertProduct.setString(2, etunimi);
@@ -184,6 +189,7 @@ public class Database {
                 prepsInsertProduct.setString(4, nickname);
                 prepsInsertProduct.setString(5, email);
                 prepsInsertProduct.setString(6, password);
+                prepsInsertProduct.setBlob(7,blFile);
                 prepsInsertProduct.executeUpdate();
                 String query2 = "insert into kaverit (kaveri) values ('')";
                 prepsInsertProduct = connection.prepareStatement(query2);
