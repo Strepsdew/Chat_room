@@ -77,7 +77,6 @@ public class OmaProfiili extends JFrame {
     private int currentUserId;
 
     public OmaProfiili(int id) throws SQLException, IOException {
-        System.out.println("wat wat");
         currentUserId = id;
         if (Objects.nonNull(k.getBufferedImageById(currentUserId))) {
             try {
@@ -147,7 +146,9 @@ public class OmaProfiili extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 int ika = Integer.parseInt(txtIka.getText());
-                k.changeNicknameInFriends(txtNimi.getText(),k.getNicknameById(currentUserId),currentUserId);
+                if(!k.getNicknameById(currentUserId).equals(txtNimi.getText())){
+                    k.changeNicknameInFriends(txtNimi.getText(),k.getNicknameById(currentUserId),currentUserId);
+                }
                 k.updateProfiili(currentUserId, txtEtu.getText(), txtSuku.getText(), txtNimi.getText(), ika, txtBio.getText(), txtLocation.getText());
                 btnSave.setVisible(false);
                 btnEdit.setVisible(true);

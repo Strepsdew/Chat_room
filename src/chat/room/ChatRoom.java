@@ -77,6 +77,7 @@ public class ChatRoom extends JFrame {
     }
 
     public void paivitaKaverit() {
+        nimi.setText(db.getNicknameById(currentUserId));
         Kaveri uudetKaverit = db.getFriendsByIdInKaveri(currentUserId);
         if (Objects.isNull(kaverit) || Objects.isNull(uudetKaverit) || Objects.isNull(kaverit.getIds()) || Objects.isNull(uudetKaverit.getIds())) {
             lisaaAinoakaveri();
