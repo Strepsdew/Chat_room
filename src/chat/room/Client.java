@@ -54,6 +54,7 @@ public class Client {
         new ListenFromServer().start();
         try {
             sOutput.writeObject(username);
+            sOutput.writeObject("pekka");
         } catch (IOException elO) {
             display("Exception doing login : " + elO);
             disconnect();

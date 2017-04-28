@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/Chat_room.iml" filepath="$PROJECT_DIR$/Chat_room.iml" />
       <module fileurl="file://$PROJECT_DIR$/sqljdbc_6.0/enu/samples/samples.iml" filepath="$PROJECT_DIR$/sqljdbc_6.0/enu/samples/samples.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/Chat_room.iml" filepath="$PROJECT_DIR$/.idea/Chat_room.iml" />
+>>>>>>> refs/remotes/origin/master
     </modules>
   </component>
 </project>

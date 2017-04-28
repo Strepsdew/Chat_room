@@ -61,6 +61,11 @@ public class Chat extends JFrame {
         try {
             System.out.println(friendid);
             kuva = k.getBufferedImageById(friendid);
+            if(kuva==null){
+                File file = new File("Pic.png");
+                kuva = ImageIO.read(file);
+                
+            }
         } catch (Exception ex) {
         }
         kuva = resize(kuva, 45, 45);
