@@ -1,5 +1,11 @@
 [
   {
+<<<<<<< HEAD
+    "message": "13:30 pekka: s\n\n"
+  },
+  {
+    "message": "13:31 pekka: mitäää vitttua\n\n"
+=======
     "message": "12:54 tobias: olet jotain\n\n"
   },
   {
@@ -31,5 +37,6 @@
   },
   {
     "message": "13:04 tobias: Gagga\n\n"
+>>>>>>> refs/remotes/origin/master
   }
 ]

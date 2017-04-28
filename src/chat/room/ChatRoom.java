@@ -77,6 +77,7 @@ public class ChatRoom extends JFrame {
     }
 
     public void paivitaKaverit() {
+        nimi.setText(db.getNicknameById(currentUserId));
         Kaveri uudetKaverit = db.getFriendsByIdInKaveri(currentUserId);
         if (Objects.isNull(kaverit) || Objects.isNull(uudetKaverit) || Objects.isNull(kaverit.getIds()) || Objects.isNull(uudetKaverit.getIds())) {
             lisaaAinoakaveri();
@@ -144,6 +145,7 @@ public class ChatRoom extends JFrame {
 
     private void lisaaAinoakaveri() {
         Kaveri uudetKaverit = new Database().getFriendsByIdInKaveri(currentUserId);
+        if(Objects.isNull(uudetKaverit)) return;
         int id = uudetKaverit.getIds().get(uudetKaverit.getIds().size() - 1);
         try {
             BufferedImage image = db.getBufferedImageById(id);
@@ -195,7 +197,9 @@ public class ChatRoom extends JFrame {
     public void giveCurrentUserId(int id) throws IOException, SQLException {
         this.currentUserId = id;
         kaverit = db.getFriendsByIdInKaveri(currentUserId);
+        System.out.println("kaverilistan size " +kaverit.getIds().size());
         asetteleKaverit();
+        System.out.println("nickname : "+db.getNicknameById(id)+ " id "+id);
         nimi.setText(db.getNicknameById(id));
     }
 
