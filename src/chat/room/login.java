@@ -65,9 +65,8 @@ public class login extends JFrame {
             public void keyReleased(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     String username = tfNimi.getText();
-                    String pw = tfPw.getText();
                     Database k = new Database();
-                    if (k.checkPassword(username, pw)) {
+                    if (k.checkPassword(username, tfPw.getText();)) {
                         int id = k.getIdByUsername(username);
                         ChatRoom mainForm = new ChatRoom();
                         System.out.println(id);
