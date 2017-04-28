@@ -48,8 +48,8 @@ public class OmaProfiili extends JFrame {
 
     //label
     JLabel lbNick = new JLabel("Nickname:      ");
-    JLabel lbEtu = new JLabel("Etunimi:      ");
-    JLabel lbSuku = new JLabel("Sukunimi:      ");
+    JLabel lbEtu = new JLabel("First Name:      ");
+    JLabel lbSuku = new JLabel("Last Name:      ");
     JLabel lbBio = new JLabel("Bio:     ");
     JLabel lbIka = new JLabel("Age:     ");
     JLabel lbLocation = new JLabel("Location:     ");

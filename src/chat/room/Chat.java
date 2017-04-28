@@ -88,7 +88,7 @@ public class Chat extends JFrame {
         chatArea.setEditable(false);
         sendBtn.setBackground(Color.GRAY);
         sendBtn.setForeground(Color.BLACK);
-        viesti.setText("kirjoitat tähän");
+        viesti.setText("Write here");
         chatArea.requestFocus();
         Border roundedBorder = new LineBorder(null, 2, true); // the third parameter - true, says it's round
         viesti.setBorder(roundedBorder);

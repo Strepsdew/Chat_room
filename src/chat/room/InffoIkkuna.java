@@ -11,12 +11,14 @@ import javax.swing.JTextField;
 
 public class InffoIkkuna extends JFrame{
     
-    private JPanel pohja = new JPanel(new GridLayout(6,1));
+    private JPanel pohja = new JPanel(new GridLayout(8,1));
     private JTextField etunimi = new JTextField("");
     private JTextField sukunimi = new JTextField("");
     private JTextField nickname = new JTextField("");
     private JTextField username = new JTextField("");
     private JTextField email = new JTextField("");
+    private JTextField age  = new JTextField("");
+    private JTextField location  = new JTextField("");
     private JTextField bio  = new JTextField("");
 
     private int id;
@@ -24,7 +26,7 @@ public class InffoIkkuna extends JFrame{
         this.setUndecorated(true);
         this.id = id;
         Database k = new Database();
-        this.setSize(200,100);
+        this.setSize(200,150);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         asetteleKomponentit();
@@ -38,11 +40,15 @@ public class InffoIkkuna extends JFrame{
         username.setEditable(false);
         email.setEditable(false);
         bio.setEditable(false);
+        age.setEditable(false);
+        location.setEditable(false);
         Profiili profiili = k.getEverythingById(id);
-        etunimi.setText("Etunimi : " + profiili.getEtunimi());
-        sukunimi.setText("Sukunimi : "+profiili.getSukunimi());
+        etunimi.setText("First Name : " + profiili.getEtunimi());
+        sukunimi.setText("Last Name : "+profiili.getSukunimi());
         nickname.setText("Nickname : "+profiili.getNickname());
         username.setText("Username : "+profiili.getUsername());
+        age.setText("Age : "+profiili.getIka());
+        location.setText("Location : "+profiili.getLocation());
         if(profiili.getEmail() != null) {
             email.setText("Email : "+profiili.getEmail());
         }else{
@@ -60,6 +66,8 @@ public class InffoIkkuna extends JFrame{
         pohja.add(nickname);
         pohja.add(username);
         pohja.add(email);
+        pohja.add(age);
+        pohja.add(location);
         pohja.add(bio); 
         this.add(pohja);
     }

@@ -45,7 +45,7 @@ public class ChatRoom extends JFrame {
     JMenu refreshmenu = new JMenu("Refresh");
     JLabel addlb = new JLabel("Add Friend");
 
-    JLabel lbTitle = new JLabel("Oma profiili");
+    JLabel lbTitle = new JLabel("My Profile");
     JLabel nimi = new JLabel("", SwingConstants.CENTER);
 
     public ChatRoom() {
