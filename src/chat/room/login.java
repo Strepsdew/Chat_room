@@ -50,7 +50,7 @@ public class login extends JFrame {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     String username = tfNimi.getText();
                     Database k = new Database();
-                    if (k.checkPassword(username, tfPw.getText();)) {
+                    if (k.checkPassword(username, tfPw.getText())) {
                         int id = k.getIdByUsername(username);
                         ChatRoom mainForm = new ChatRoom();
                         System.out.println(id);
