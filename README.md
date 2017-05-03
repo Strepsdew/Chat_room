@@ -1,6 +1,14 @@
-#Chat_room
+# Chat_room
 
->Chat room on javalla tehty chat sovellus. 
-+me myydään teidän tiedot
+Chat room is a chat application made with java as a school project.
 
-ps. fuck you
+a word from our customers:
+
+>Saanko lainaa teijän koodia
+-Santeri
+
+>heil fuhrer Pekka
+-Pekka
+
+>Tapa mut
+-Jyri
