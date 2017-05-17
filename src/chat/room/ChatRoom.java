@@ -60,6 +60,8 @@ public class ChatRoom extends JFrame {
         this.setResizable(false);
         addlb.addMouseListener(new addL());
         lbTitle.addMouseListener(new msProfile());
+        
+        
         refreshmenu.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -182,10 +184,27 @@ public class ChatRoom extends JFrame {
             kaveri.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
+                    if(e.getButton()==MouseEvent.BUTTON3){
+                        RemoveIkkuna remove = new RemoveIkkuna (currentUserId,id);
+                        remove.setVisible(true);
+                    }else{
+                        
+                    }
+                    
+      
+                }
+            });
+            kaveri.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    if(e.getButton()==MouseEvent.BUTTON1){
                     System.out.println("wat wat");
                     Chat p = new Chat(currentUserId,id);
                     p.giveCurrentUserIdAndFriend(currentUserId, id);
                     p.setVisible(true);
+                    }else{
+                        
+                    }
                 }
             });
             pohja.add(kaveri);
@@ -309,8 +328,13 @@ public class ChatRoom extends JFrame {
 
         // Set the label's font size to the newly determined size.
         lbTitle.setFont(new Font(labelFont.getName(), Font.PLAIN, fontSizeToUse));
+        
+        
     }
 
+   
+    
+    
     class addL implements MouseListener {
 
         @Override

@@ -24,26 +24,27 @@ public class RemoveIkkuna extends JFrame{
     private JButton removebt = new JButton("Add");
 
     private int currentUserId;
-    public RemoveIkkuna(int id) {
+    private int kaveriId;
+    public RemoveIkkuna(int Id, int Id2) {
         this.setUndecorated(true);
-        this.currentUserId = id;
+        this.currentUserId = Id;
+        this.kaveriId = Id2;
         this.setSize(240,60);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         asetteleKomponentit();
-        removebt.addActionListener(new alsAdd());
+        removebt.addActionListener(new alsRemove());
     }
     private void asetteleKomponentit() {
         pohja.add(removebt);
         pohja.setBorder(BorderFactory.createLineBorder(Color.black));
         this.add(pohja);  
     }    
-    class alsAdd implements ActionListener{
+    class alsRemove implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-             Database d = new Database();
-             
+               
         }
     }
     
