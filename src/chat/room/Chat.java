@@ -110,8 +110,8 @@ public class Chat extends JFrame {
             @Override
             public void mouseEntered(MouseEvent e) {
                 tiedotIkkunaan(tama);
-            }
-            @Override
+            } 
+           @Override
             public void mouseExited(MouseEvent e) {
                 tama.setVisible(false);
             }
