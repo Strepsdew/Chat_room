@@ -250,7 +250,7 @@ public class OmaProfiili extends JFrame {
     }
 
     private void asetteleKomponentit() {
-
+    //Aseteeekomponentit
         getContentPane().add(panelMain);
         Border padding = BorderFactory.createEmptyBorder(10, 10, 10, 10);
 
@@ -327,6 +327,8 @@ public class OmaProfiili extends JFrame {
     }
 
     private void fontChange(JLabel lbTitle) {
+        //Vaihataa fontin 
+        
         Font labelFont = lbTitle.getFont();
         String labelText = lbTitle.getText();
 

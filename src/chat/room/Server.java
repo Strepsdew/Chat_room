@@ -40,9 +40,11 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
         this.port = port;
         sdf = new SimpleDateFormat("HH:mm");
         al = new ArrayList<ClientThread>();
-    }
-
-    public void start() {
+    }   
+/**
+ * Aloittaa serverin.
+ */
+    public void start() { // aloittaa serverin.
         keepGoing = true;
 
         try {
@@ -79,20 +81,23 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
             display(msg);
         }
     }
-
-    private void display(String msg) {
+/**
+ *  näyttää viestin
+ * @param msg on viesti jonka käyttäjä on lähettänyt toiselle käyttäjälle
+ */
+    private void display(String msg) { // näyttää viestin
         String time = sdf.format(new Date()) + " " + msg;
         System.out.println(time);
 
     }
 
-      private void add(String msg)  throws IOException {
+      private void add(String msg)  throws IOException { // lisää viestin logiin
             Log asd = new Log(msg);
             message.add(asd);
             WriteToFile();
         }
 
-    private synchronized void broadcast(String message, String friend, String user) throws IOException {
+    private synchronized void broadcast(String message, String friend, String user) throws IOException { // ottaa viestin vastaan ja tekee viestistä oikeen muotosen ja lähettää sen.
         String time = sdf.format(new Date());
         String messageLf = time + " " + message + "\n";
         System.out.print(messageLf);
@@ -111,7 +116,7 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
         }
     }
 
-    synchronized void remove(int id) {
+    synchronized void remove(int id) { // poistaa ideen clientthread listalta
         for (int i = 0; i < al.size(); ++i) {
             ClientThread ct = al.get(i);
 
@@ -243,7 +248,7 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
 
       
 
-        private boolean writeMsg(String msg) {
+        private boolean writeMsg(String msg) { // kirjoittaa viestin
             if (!socket.isConnected()) {
                 close();
                 return false;
@@ -263,7 +268,7 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
 
     }
 
-    public boolean WriteToFile() throws IOException {
+    public boolean WriteToFile() throws IOException { // kirjoittaa tiedostoon viestien datan
         
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDate localDate = LocalDate.now();

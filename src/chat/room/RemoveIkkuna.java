@@ -49,7 +49,7 @@ public class RemoveIkkuna extends JFrame{
             }
         });
     }
-    private void asetteleKomponentit() {
+    private void asetteleKomponentit() { // asettaakomponentit
         pohja.add(removebt);
         pohja.setBorder(BorderFactory.createLineBorder(Color.black));
         this.add(pohja);  

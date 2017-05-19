@@ -129,6 +129,7 @@ public class Register extends JFrame {
     }
 
     private void asetteleKomponentit() {
+//Aseteeekomponentit
         fontChange();
         lbTitle.setFont(new Font(lbTitle.getName(), Font.PLAIN, 20));
         titlep.add(lbTitle);
@@ -165,6 +166,7 @@ public class Register extends JFrame {
     }
 
     private void fontChange() {
+        //Vaihataa fontin 	
         Font labelFont = lbTitle.getFont();
         String labelText = lbTitle.getText();
 

@@ -56,6 +56,7 @@ public class Database {
     }
 
     public ArrayList<Profiili> getUserByNickname(String nimi) {
+        // hakee profiilin tiedot nicknamella
         ArrayList<Profiili> profiilit = new ArrayList<>();
         try {
             connection = DriverManager.getConnection(connectionString);
@@ -87,6 +88,7 @@ public class Database {
     }
 
     public int getIdByNickname(String nickname) {
+        // hakee  nicknamen perusteella ideen
         try {
             connection = DriverManager.getConnection(connectionString);
             String query = "select ProfileID from profile where nickname=?";
@@ -105,6 +107,7 @@ public class Database {
     }
 
     public int getIdByUsername(String username) {
+        // hakee  usernamen perusteella ideen
         try {
             connection = DriverManager.getConnection(connectionString);
             String query = "select ProfileID from profile where username=?";
@@ -121,6 +124,7 @@ public class Database {
     }
 
     public Profiili getEverythingById(int id) {
+        // hakee kaiken ideen perusteella.
         Profiili k = null;
         try {
             connection = DriverManager.getConnection(connectionString);
@@ -151,6 +155,7 @@ public class Database {
     }
 
     public Object getHashPasswordByUsername(String username) {
+        // hakee password hashin usernamen perusteella
         try {
             connection = DriverManager.getConnection(connectionString);
             String query = "select password from profile where username=?";
@@ -171,6 +176,7 @@ public class Database {
     }
 
     public boolean createUser(String Username, String etunimi, String sukunimi, String nickname, String email, String password) {
+        // tekee käyttäjän tietokantaan
         ArrayList<Profiili> k = new ArrayList<>();
         k = getUserByNickname(nickname);
         if (k.size() == 0) {
@@ -205,6 +211,7 @@ public class Database {
     }
 
     public boolean checkPassword(String username, String pw) {
+        // tarkistaa että salasana on oikea
         Object hash = getHashPasswordByUsername(username);
         try {
             connection = DriverManager.getConnection(connectionString);
@@ -229,6 +236,7 @@ public class Database {
     
 
     public void updateProfiili(int id, String etu, String suku, String nickname, int ika, String bio, String location) {
+        //päivittää profiiliin tarvitut tiedot.
         try {
             connection = DriverManager.getConnection(connectionString);
             String query = "Update profile set etunimi =?, sukunimi=?, nickname=?, ika=?, bio=?, location=? where ProfileID=?";
@@ -249,6 +257,7 @@ public class Database {
     }
 
     public String getNicknameById(int id) {
+        // hakee nicknamen ideen perusteella
         try {
             connection = DriverManager.getConnection(connectionString);
             String query = "select nickname from profile where ProfileID=?";
@@ -268,6 +277,7 @@ public class Database {
     }
 
     public JsonObject getFriendsByIdInJsonObject(int id) {
+        // hakee kaverit ideen perusteella jsonobjectiin
         try {
             connection = DriverManager.getConnection(connectionString);
             String sql = "select kaveri from kaverit where ProfileID=?";
@@ -294,6 +304,7 @@ public class Database {
     }
 
     public Kaveri getFriendsByIdInKaveri(int id) {
+        // hakee kaverit ideen perusteella kaveri objecttiin (Oma varasto luokka alhaalla enemmän tietoa)
         Kaveri kaveri = new Kaveri();
         try {
             connection = DriverManager.getConnection(connectionString);
@@ -327,6 +338,7 @@ public class Database {
     }
 
     public boolean haveThisFriend(int friendId, int currentUserId) {
+        // tarkistaa onko kyseisellä ideellä kyseistä kaveria
         Database d = new Database();
         Kaveri kaveri = null;
         if (d.getFriendsByIdInKaveri(currentUserId) != null) {
@@ -347,6 +359,7 @@ public class Database {
     }
 
     public boolean addFriend(int currentUserId, int friendId) {
+        // lisää kaverin
         Database d = new Database();
         Gson gson = new Gson();
         JsonParser jsonparser = new JsonParser();
@@ -409,6 +422,7 @@ public class Database {
     }
 
     public HashMap<String, Integer> getFriendByNickname(int currentUserId, String nickname) {
+        // hakee kyseisen kaverin nicknamen perusteella
         HashMap<String, Integer> kaveri = new HashMap<>();
         JsonParser jsonparser = new JsonParser();
         try {
@@ -445,6 +459,7 @@ public class Database {
     }
 
     public boolean removeFriendById(int currentUserId, int removeId) {
+        // poistaa kaverin ideen perusteella    
         Database d = new Database();
         JsonObject currentuserfriends = d.getFriendsByIdInJsonObject(currentUserId);
         final JsonArray pituus = currentuserfriends.getAsJsonArray("friendnames");
@@ -488,6 +503,7 @@ public class Database {
         }
     }
     public void changeNicknameInFriends(String newnickname,String oldnickname,int currentUserId) {
+        // Vaihtaa nicknamen kavereitten json listoista.
         Kaveri kaverit = getFriendsByIdInKaveri(currentUserId);
         Gson gson = new Gson();
         JsonParser jsonparser = new JsonParser();
@@ -518,6 +534,7 @@ public class Database {
     }
 
     public boolean insertPicture(File file, int currentUserId) {
+        // asettaa kuvan tietokantaan   
         try {
             BufferedImage img = ImageIO.read(file);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -539,6 +556,7 @@ public class Database {
     }
 
     public Blob getPicture(int id) {
+        //hakee kuvan tietokannasta ideen perusteella
         Blob result = null;
         try {
             connection = DriverManager.getConnection(connectionString);
@@ -559,6 +577,7 @@ public class Database {
     }
 
     public BufferedImage getBufferedImageById(int id) throws IOException, SQLException {
+        // hakee kuvan iiden perusteella
         Database k = new Database();
         Blob j = k.getPicture(id);
         if (Objects.nonNull(j)) {
@@ -574,6 +593,7 @@ public class Database {
         meme.changeNicknameInFriends("ruupe","Lihapulla",7);
     }
     public static void suljeYhteys(Connection suljettavaYhteys) {
+        // sulkee yhteyden  
         if (suljettavaYhteys != null) {
             try {
                 suljettavaYhteys.close();

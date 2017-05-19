@@ -61,6 +61,7 @@ public class InffoIkkuna extends JFrame{
         }
     }
     private void asetteleKomponentit() {
+        // asettaakomponentit
         pohja.add(etunimi);
         pohja.add(sukunimi);
         pohja.add(nickname);

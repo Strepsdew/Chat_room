@@ -35,6 +35,7 @@ public class AddIkkuna extends JFrame{
         addbt.addActionListener(new alsAdd());
     }
     private void asetteleKomponentit() {
+        // asettaakomponentit
         pohja.add(tf);
         pohja.add(addbt);
         pohja.setBorder(BorderFactory.createLineBorder(Color.black));

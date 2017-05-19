@@ -21,32 +21,32 @@ public class Profiili {
         this.location = location;
         this.email = email;
     }
-    public int getId() {
+    public int getId() { // kertoo ideen
         return this.ID;
     }
-    public String getUsername() {
+    public String getUsername() { // kertoo usernamen
         return this.Username;
     }
-    public String getEtunimi() {
+    public String getEtunimi() { // kertoo etunimen
         return this.etunimi;
     }
-    public String getSukunimi() {
+    public String getSukunimi() { // kertoo sukunimen
         return this.sukunimi;
     }
-    public String getNickname() {
+    public String getNickname() { // kertoo nicknamen
         return this.nickname;
     }
-    public int getIka() {
+    public int getIka() { // kertoo iän
         return this.ika;
     }
-    public String getBio() {
-        
+    public String getBio() { // kertoo bion
+      
         return this.bio;
     }
-    public String getLocation() {
+    public String getLocation() { // kertoo sijainnin
         return this.location;
     }
-    public String getEmail() {
+    public String getEmail() { // kertoo sähköposti osoitteen
         return this.email;
     }
     public String toString() {

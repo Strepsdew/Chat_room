@@ -1,20 +1,20 @@
 package chat.room;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -25,7 +25,6 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
@@ -81,7 +80,16 @@ public class ChatRoom extends JFrame {
                 new login();
             }
         });
-
+        helpmenu.addMouseListener(new MouseAdapter() {
+            @Override
+                public void mouseClicked(MouseEvent e) {
+                    try {
+                        File myFile = new File("Käyttöohjeet.pdf");
+                        Desktop.getDesktop().open(myFile);
+                    } catch (IOException ex) {}
+                }
+        });
+       
     }
 
     public void giveCurrentUserId(int id) throws IOException, SQLException {
@@ -92,6 +100,7 @@ public class ChatRoom extends JFrame {
     }
 
     private void asetteleKaverit() throws IOException, SQLException {
+        // hakee kaverit ja asettelee ne
         if (Objects.isNull(kaverit)) {
             return;
         }
@@ -152,11 +161,13 @@ public class ChatRoom extends JFrame {
         }
     }
     private void tiedotIkkunaan(RemoveIkkuna k, JPanel panel){
+        // Asettaa removeikkunan näky ville oikeeseen kohtaan
         k.setLocationRelativeTo(panel);
         k.setVisible(true);
     }
 
     public BufferedImage resize(BufferedImage img, int newW, int newH) {
+        // vaihtaa kuvan kokoa
         Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
         BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = dimg.createGraphics();
@@ -166,6 +177,7 @@ public class ChatRoom extends JFrame {
     }
 
     private void asetteleKomponentit() {
+        //Aseteeekomponentit
         fontChange();
         addlb.setFont(new Font(addlb.getName(), Font.PLAIN, 20));
         lbTitle.setFont(new Font(addlb.getName(), Font.PLAIN, 20));
@@ -187,6 +199,7 @@ public class ChatRoom extends JFrame {
         this.add(new JScrollPane(pohja));
     }
     private void fontChange() {
+        //Vaihataa fontin 	
         Font labelFont = lbTitle.getFont();
         String labelText = lbTitle.getText();
 
@@ -275,6 +288,7 @@ public class ChatRoom extends JFrame {
     }
 
     private void tiedotIkkunaaa(AddIkkuna k) {
+         // Asettaa addikkunan näkyville oikeeseen kohtaan
         k.setLocation(this.getX() + 10, this.getY() + 80);
         //k.setLocationRelativeTo(FriendLabel);
         k.setVisible(true);
