@@ -16,6 +16,7 @@ public class Client {
     private Chat gui;
 
     private String server = "localhost", username;
+    private String friendsName;
     private int port = 1500;
     Database k = new Database();
     
@@ -30,8 +31,9 @@ public class Client {
         this.gui =gui;
     }
     
-    public void getUsername(int id){
+    public void getUsername(int id, int frndId){
         username = k.getNicknameById(id);
+        friendsName = k.getNicknameById(frndId);
        new Client(server,port,username,gui);
     }
 
@@ -54,7 +56,8 @@ public class Client {
         new ListenFromServer().start();
         try {
             sOutput.writeObject(username);
-            sOutput.writeObject("pekka");
+            sOutput.writeObject(friendsName);
+
         } catch (IOException elO) {
             display("Exception doing login : " + elO);
             disconnect();

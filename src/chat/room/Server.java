@@ -13,10 +13,7 @@ import java.util.logging.Logger;
 
 
 public class Server {
-    
-    
 
-Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
 
     private static int uniqueId;
 
@@ -28,13 +25,10 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
 
     private boolean keepGoing;
 
+    private ArrayList<keskustelu_id> ki = new ArrayList<keskustelu_id>();
 
     private ArrayList<Log> message = new ArrayList<Log>();
-    
-    private int myId;
-    private Database k = new Database();
-    
-    private int friendsId;
+    private int s;
 
     public Server(int port) {
         this.port = port;
@@ -86,23 +80,24 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
 
     }
 
-      private void add(String msg)  throws IOException {
+
+      private void addToLog(String msg)  throws IOException {
             Log asd = new Log(msg);
             message.add(asd);
             WriteToFile();
         }
 
-    private synchronized void broadcast(String message, String friend, String user) throws IOException {
+    private synchronized void broadcast(String message, int friend, int user) throws IOException {
         String time = sdf.format(new Date());
         String messageLf = time + " " + message + "\n";
         System.out.print(messageLf);
-        add(messageLf);
+        addToLog(messageLf);
 
-
+        //Käy läpi kaikki käyttäjät ja lähettää niille viestit
         for (int i = al.size(); --i >= 0;) {
-            
+
             ClientThread ct = al.get(i);
-            if (friend.equals(ct.username) || ct.username.equals(user)) {
+            if (ct.id == friend || ct.id == user) {
                 if (!ct.writeMsg(messageLf)) {
                     al.remove(i);
                     display("Disconnected Client " + ct.username + " removed from list.");
@@ -144,7 +139,6 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
     }
 
     class ClientThread extends Thread {
-
         Socket socket;
         ObjectInputStream sInput;
         ObjectOutputStream sOutput;
@@ -153,18 +147,55 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
         String fUser;
         ChatMessage cm;
         String date;
+        keskustelu_id keskId = new keskustelu_id();
+        int friend_id;
 
         ClientThread(Socket socket) {
             id = ++uniqueId;
             this.socket = socket;
+
             System.out.println("Thread trying to create Object Input/Output Streams");
             try {
                 sOutput = new ObjectOutputStream(socket.getOutputStream());
                 sInput = new ObjectInputStream(socket.getInputStream());
-
                 username = (String) sInput.readObject();
                 fUser = (String) sInput.readObject();
-                display(username + " just connected and is trying to talk to: "+fUser);
+                display(username + " just connected.");
+
+                if (ki.size() == 0){
+                    keskId.setKenelle(fUser);
+                    keskId.setKuka(username);
+                    keskId.setKuka_id(id);
+                    ki.add(keskId);
+                }else {
+                    for (int i = 0; i <= ki.size(); i++) {
+                        if(i != ki.size()) {
+                            keskustelu_id kis = ki.get(i);
+                            if (username.contains(kis.getKuka()) || fUser.contains(kis.getKuka())) {
+                                if (username.contains(kis.getKenelle()) || fUser.contains(kis.getKenelle())){
+                                    if (username.contains(kis.getKenelle())){
+                                        if (kis.getKenen_id() == 0){
+                                            kis.setKenen_id(id);
+                                        }
+                                    }else if(username.contains(kis.getKuka())){
+                                        if (kis.getKuka_id() == 0){
+                                            kis.setKuka_id(id);
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                        if (i == ki.size()) {
+                            keskId.setKenelle(fUser);
+                            keskId.setKuka(username);
+                            keskId.setKuka_id(id);
+                            ki.add(keskId);
+                            break;
+                        }
+
+                    }
+                }
             } catch (IOException e) {
                 display("Exception creating new input/output Streams: " + e);
             } catch (ClassNotFoundException e) {
@@ -177,6 +208,18 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
             boolean keepGoing = true;
             while (keepGoing) {
                 try {
+                    for (int i = 0; i < ki.size(); i++) {
+                        keskustelu_id kis = ki.get(i);
+                        if (username.contains(kis.getKuka()) || fUser.contains(kis.getKuka())) {
+                            if (username.contains(kis.getKenelle()) || fUser.contains(kis.getKenelle())) {
+                                if (fUser.contains(kis.getKuka())){
+                                    friend_id = kis.getKuka_id();
+                                }else if(fUser.contains(kis.getKenelle())){
+                                    friend_id = kis.getKenen_id();
+                                }
+                            }
+                        }
+                    }
                     cm = (ChatMessage) sInput.readObject();
                 } catch (IOException e) {
                     display(username + " Exception reading Streams: " + e);
@@ -192,7 +235,7 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
                     case ChatMessage.MESSAGE:
                 {
                     try {
-                        broadcast(username + ": " + message, fUser, username);
+                        broadcast(username + ": " + message, friend_id, id);
                     } catch (IOException ex) {
                         Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -241,7 +284,7 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
             }
         }
 
-      
+
 
         private boolean writeMsg(String msg) {
             if (!socket.isConnected()) {
@@ -251,38 +294,83 @@ Map<Integer, ClientThread> clients = new HashMap<Integer, ClientThread> ();
 
             try {
                 sOutput.writeObject(msg);
-                
+
 
             } catch (IOException e) {
                 display("error sending message to " + username);
                 display(e.toString());
             }
-            
+
             return true;
         }
 
     }
 
     public boolean WriteToFile() throws IOException {
-        
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         LocalDate localDate = LocalDate.now();
-        
+
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         String json = gson.toJson(message);
 
-        try (FileWriter writer = new FileWriter(localDate+".json")) {
+        try (FileWriter writer = new FileWriter("Log\\"+dtf.format(localDate)+".json")) {
 
             writer.write(json);
         } catch (IOException e) {
             System.out.println("Writing failed " + e.getMessage());
         }
 
-//        PrintWriter writer = new PrintWriter(new FileWriter("kayttaja.txt", true));
-//        writer.println(this.list);
-//        writer.close();
         return false;
+    }
+    public class keskustelu_id{
+        private String Kuka = null;
+        private String kenelle = null;
+        private int id = 0;
+        private int kuka_id = 0;
+        private int kenen_id = 0;
+
+        public int getId() {
+            id++;
+            return id;
+        }
+
+        public String getKenelle() {
+            return kenelle;
+        }
+
+        public String getKuka() {
+            return Kuka;
+        }
+
+        public int getKuka_id() {
+            return kuka_id;
+        }
+
+        public int getKenen_id() {
+            return kenen_id;
+        }
+
+        public void setKenen_id(int kenen_id) {
+            this.kenen_id = kenen_id;
+        }
+
+        public void setKuka_id(int kuka_id) {
+            this.kuka_id = kuka_id;
+        }
+
+        public void setKuka(String kuka) {
+            Kuka = kuka;
+        }
+
+        public void setKenelle(String kenelle) {
+            this.kenelle = kenelle;
+        }
+
+    }
+    public void käy_läpi_ihmiset(){
+
     }
 
 }

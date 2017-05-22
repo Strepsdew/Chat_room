@@ -112,7 +112,7 @@ public class OmaProfiili extends JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         asetteleKomponentit();
-        setResizable(true);
+        setResizable(false);
         this.pack();
 
         btnPic.setVisible(false);
@@ -245,6 +245,7 @@ public class OmaProfiili extends JFrame {
                     System.out.println(es);
                 }
 
+
             }
         });
     }
@@ -347,6 +348,7 @@ public class OmaProfiili extends JFrame {
     }
 
     //pöllin pekalta :D
+
     public BufferedImage resize(Image img, int newW, int newH) {
         Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
         BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
@@ -354,7 +356,6 @@ public class OmaProfiili extends JFrame {
         Graphics2D g2d = dimg.createGraphics();
         g2d.drawImage(tmp, 0, 0, null);
         g2d.dispose();
-
         return dimg;
     }
 }

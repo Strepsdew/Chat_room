@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Chat_Room@chatservu.database.windows.net" uuid="d9378e0d-5808-4d5b-878f-867e7a824ff0">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://chatservu.database.windows.net\chatservu.database.windows.net:1433;databaseName=Chat_Room</jdbc-url>
+    </data-source>
+  </component>
+</project>
