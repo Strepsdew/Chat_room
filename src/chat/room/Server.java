@@ -184,9 +184,13 @@ public class Server {
                                     if (username.contains(kis.getKenelle())){
                                         if (kis.getKenen_id() == 0){
                                             kis.setKenen_id(id);
+                                        }else if (kis.getKenen_id() != id){
+                                            kis.setKenen_id(id);
                                         }
                                     }else if(username.contains(kis.getKuka())){
                                         if (kis.getKuka_id() == 0){
+                                            kis.setKuka_id(id);
+                                        }else if (kis.getKuka_id() != id){
                                             kis.setKuka_id(id);
                                         }
                                     }
