@@ -34,9 +34,11 @@ public class Server {
         this.port = port;
         sdf = new SimpleDateFormat("HH:mm");
         al = new ArrayList<ClientThread>();
-    }
-
-    public void start() {
+    }   
+/**
+ * Aloittaa serverin.
+ */
+    public void start() { // aloittaa serverin.
         keepGoing = true;
 
         try {
@@ -73,21 +75,27 @@ public class Server {
             display(msg);
         }
     }
-
-    private void display(String msg) {
+/**
+ *  näyttää viestin
+ * @param msg on viesti jonka käyttäjä on lähettänyt toiselle käyttäjälle
+ */
+    private void display(String msg) { // näyttää viestin
         String time = sdf.format(new Date()) + " " + msg;
         System.out.println(time);
 
     }
 
 
-      private void addToLog(String msg)  throws IOException {
+
+      private void addToLog(String msg)  throws IOException {// lisää viestin logiin
+
             Log asd = new Log(msg);
             message.add(asd);
             WriteToFile();
         }
 
-    private synchronized void broadcast(String message, int friend, int user) throws IOException {
+
+    private synchronized void broadcast(String message, int friend, int user) throws IOException {// ottaa viestin vastaan ja tekee viestistä oikeen muotosen ja lähettää sen.
         String time = sdf.format(new Date());
         String messageLf = time + " " + message + "\n";
         System.out.print(messageLf);
@@ -106,7 +114,7 @@ public class Server {
         }
     }
 
-    synchronized void remove(int id) {
+    synchronized void remove(int id) { // poistaa ideen clientthread listalta
         for (int i = 0; i < al.size(); ++i) {
             ClientThread ct = al.get(i);
 
@@ -286,7 +294,7 @@ public class Server {
 
 
 
-        private boolean writeMsg(String msg) {
+        private boolean writeMsg(String msg) { // kirjoittaa viestin
             if (!socket.isConnected()) {
                 close();
                 return false;
@@ -306,9 +314,11 @@ public class Server {
 
     }
 
-    public boolean WriteToFile() throws IOException {
+
+    public boolean WriteToFile() throws IOException {// kirjoittaa tiedostoon viestien datan
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
         LocalDate localDate = LocalDate.now();
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();

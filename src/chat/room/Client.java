@@ -31,13 +31,15 @@ public class Client {
         this.gui =gui;
     }
     
-    public void getUsername(int id, int frndId){
+
+    public void getUsername(int id, int frndId){//hakee käyttäjän nimen ja tekee siitä clientin
+      
         username = k.getNicknameById(id);
         friendsName = k.getNicknameById(frndId);
        new Client(server,port,username,gui);
     }
 
-    public boolean start() {
+    public boolean start() { // aloittaa yhteyden serverille
         try {
             socket = new Socket(server, port);
         } catch (Exception ec) {
@@ -66,7 +68,7 @@ public class Client {
         return true;
     }
 
-    private void display(String msg) {
+    private void display(String msg) { // näyttää viestin
       if(gui == null){
           System.out.println(msg);
       }else{
@@ -76,7 +78,7 @@ public class Client {
       }
     }
 
-    void sendMessage(ChatMessage msg) {
+    void sendMessage(ChatMessage msg) { // lähettää viestin
         try {
             sOutput.writeObject(msg);
         } catch (IOException e) {
@@ -84,7 +86,7 @@ public class Client {
         }
     }
 
-    private void disconnect() {
+    private void disconnect() { // katkaisee yhteyden
         try {
             if (sInput != null) {
                 sInput.close();

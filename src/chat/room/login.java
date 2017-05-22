@@ -112,6 +112,7 @@ public class login extends JFrame {
     }
 
     private void asetteleKomponentit() {
+        //Aseteeekomponentit    
         fontChange();
         titlep.add(lbTitle);
         tunnup.add(lbNimi);
@@ -132,6 +133,7 @@ public class login extends JFrame {
     }
 
     private void fontChange() {
+         //Vaihataa fontin 
         Font labelFont = lbTitle.getFont();
         String labelText = lbTitle.getText();
 

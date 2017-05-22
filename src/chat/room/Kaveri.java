@@ -10,6 +10,7 @@ public class Kaveri {
     }
     
     public void addFriend(String nimi,int id) {
+        // lisää kaverit arraylistoihin
         this.friendnames.add(nimi);
         this.IDs.add(id);
     }
@@ -25,10 +26,10 @@ public class Kaveri {
         k += l;
         return k;
     }
-    public ArrayList<String> getFriendnames() {
+    public ArrayList<String> getFriendnames() { // hakee kavereitten nimet
         return this.friendnames;
     }
-    public ArrayList<Integer> getIds(){
+    public ArrayList<Integer> getIds(){ // hakee kavereitten ideet
         return this.IDs;
     }
 }

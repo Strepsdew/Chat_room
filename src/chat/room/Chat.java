@@ -110,8 +110,8 @@ public class Chat extends JFrame {
             @Override
             public void mouseEntered(MouseEvent e) {
                 tiedotIkkunaan(tama);
-            }
-            @Override
+            } 
+           @Override
             public void mouseExited(MouseEvent e) {
                 tama.setVisible(false);
             }
@@ -185,12 +185,15 @@ public class Chat extends JFrame {
 
     }
     private void tiedotIkkunaan(InffoIkkuna k){
+        //Asettaa inffoikkuna näkyville oikeeseen kohtaan
+
         k.setLocation(this.getX()+10,this.getY()+80);
         //k.setLocationRelativeTo(FriendLabel);
         k.setVisible(true);
     }
 
     public BufferedImage resize(BufferedImage img, int newW, int newH) {
+        // vaihtaa kuvan kokoa
         Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
         BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
 
@@ -202,6 +205,7 @@ public class Chat extends JFrame {
     }
 
     public void giveCurrentUserIdAndFriend(int id,int friendid) {
+        // antaa käyttäjän idee ikkunalle
         currentUserId = id;
         currentFriendId = friendid;
         client.getUsername(currentUserId, currentFriendId);
@@ -209,6 +213,7 @@ public class Chat extends JFrame {
     }
 
     private void asetteleKomponentit() {
+        // asettaakomponentit
         ylaosa.add(FriendLabel, BorderLayout.LINE_START);
         ylaosa.add(closeBtn, BorderLayout.LINE_END);
         pohja.add(ylaosa, BorderLayout.PAGE_START);
@@ -225,11 +230,13 @@ public class Chat extends JFrame {
     }
 
     void append(String str) {
+        // laittaa viestin näkyville
         chatArea.append(str);
         chatArea.setCaretPosition(chatArea.getText().length() - 1);
     }
 
     public void run() {
+        // aloitta client luokan
         if (!client.start()) {
             return;
         }
@@ -239,7 +246,7 @@ public class Chat extends JFrame {
 
     
     public void sendImage(){
-        
+        // lähettää valokuvan
         try{
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(".jpg","JPG");

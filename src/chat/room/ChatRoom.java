@@ -1,20 +1,20 @@
 package chat.room;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -25,7 +25,6 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
@@ -60,11 +59,19 @@ public class ChatRoom extends JFrame {
         this.setResizable(false);
         addlb.addMouseListener(new addL());
         lbTitle.addMouseListener(new msProfile());
+        
+        
         refreshmenu.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                paivitaKaverit();
-            }
+                dispose();
+                try{
+                ChatRoom k = new ChatRoom();
+                k.giveCurrentUserId(currentUserId);
+                k.setVisible(true);
+                }catch(Exception ex) {
+                    System.out.println(ex);}
+                }
         });
         logoutmenu.addMouseListener(new MouseAdapter() {
             @Override
@@ -73,137 +80,27 @@ public class ChatRoom extends JFrame {
                 new login();
             }
         });
-
-    }
-
-    public void paivitaKaverit() {
-        nimi.setText(db.getNicknameById(currentUserId));
-        Kaveri uudetKaverit = db.getFriendsByIdInKaveri(currentUserId);
-        if (Objects.isNull(kaverit) || Objects.isNull(uudetKaverit) || Objects.isNull(kaverit.getIds()) || Objects.isNull(uudetKaverit.getIds())) {
-            lisaaAinoakaveri();
-            kaverit = uudetKaverit;
-            return;
-        }
-        if (uudetKaverit.getIds().size() > kaverit.getIds().size()) {
-            int i = kaverit.getIds().size();
-            while (i < uudetKaverit.getIds().size()) {
-                int id;
-                if (i != 0) {
-                    id = uudetKaverit.getIds().get(i);
-                } else {
-                    id = uudetKaverit.getIds().get(1);
-                }
-                try {
-                    BufferedImage image = db.getBufferedImageById(id);
-                    JLabel FriendNickname = new JLabel(uudetKaverit.getFriendnames().get(i), SwingConstants.CENTER);
-                    JPanel kaveri = new JPanel(new GridLayout(1, 3));
-                    if (Objects.isNull(image)) {
-                        JPanel pallo = new JPanel() {
-                            public void paintComponent(Graphics g) {
-                                super.paintComponent(g);
-                                g.drawOval(0, 0, 45, 45);
-                            }
-                        };
-                        kaveri.add(FriendNickname);
-                        kaveri.add(pallo);
-                    } else {
-                        BufferedImage img = resize(image, 45, 45);
-                        JPanel pallo = new JPanel() {
-                            protected void paintComponent(Graphics g) {
-                                super.paintComponent(g);
-
-                                Graphics2D g2 = (Graphics2D) g;
-                                Ellipse2D ellipse = new Ellipse2D.Double(0, 0, 45, 45);
-                                Rectangle2D rect = new Rectangle2D.Double(0, 0, 500, 500);
-                                g2.setPaint(new Color(255, 0, 0, 150));
-                                g2.setClip(ellipse);
-                                g2.clip(rect);
-                                g.drawImage(img, 0, 0, null);
-                            }
-                        };
-                        kaveri.add(FriendNickname);
-                        kaveri.add(pallo);
-                    }
-                    System.out.println("uusi versio");
-                    kaveri.addMouseListener(new MouseAdapter() {
-                        @Override
-                        public void mouseClicked(MouseEvent e) {
-                            System.out.println("wat wat");
-                            Chat p = new Chat(currentUserId,id);
-                            p.giveCurrentUserIdAndFriend(currentUserId, id);
-                            p.setVisible(true);
-                        }
-                    });
-                    pohja.add(kaveri);
-                } catch (IOException | SQLException ex) {
-                }
-                i++;
-            }
-            kaverit = uudetKaverit;
-        }
-    }
-
-    private void lisaaAinoakaveri() {
-        Kaveri uudetKaverit = new Database().getFriendsByIdInKaveri(currentUserId);
-        if(Objects.isNull(uudetKaverit)) return;
-        int id = uudetKaverit.getIds().get(uudetKaverit.getIds().size() - 1);
-        try {
-            BufferedImage image = db.getBufferedImageById(id);
-            JLabel FriendNickname = new JLabel(uudetKaverit.getFriendnames().get(uudetKaverit.getIds().size() - 1), SwingConstants.CENTER);
-            JPanel kaveri = new JPanel(new GridLayout(1, 3));
-            if (Objects.isNull(image)) {
-                JPanel pallo = new JPanel() {
-                    public void paintComponent(Graphics g) {
-                        super.paintComponent(g);
-                        g.drawOval(0, 0, 45, 45);
-                    }
-                };
-                kaveri.add(FriendNickname);
-                kaveri.add(pallo);
-            } else {
-                BufferedImage img = resize(image, 45, 45);
-                JPanel pallo = new JPanel() {
-                    protected void paintComponent(Graphics g) {
-                        super.paintComponent(g);
-
-                        Graphics2D g2 = (Graphics2D) g;
-                        Ellipse2D ellipse = new Ellipse2D.Double(0, 0, 45, 45);
-                        Rectangle2D rect = new Rectangle2D.Double(0, 0, 500, 500);
-                        g2.setPaint(new Color(255, 0, 0, 150));
-                        g2.setClip(ellipse);
-                        g2.clip(rect);
-                        g.drawImage(img, 0, 0, null);
-                    }
-                };
-                kaveri.add(FriendNickname);
-                kaveri.add(pallo);
-            }
-            System.out.println("uusi versio");
-            kaveri.addMouseListener(new MouseAdapter() {
-                @Override
+        helpmenu.addMouseListener(new MouseAdapter() {
+            @Override
                 public void mouseClicked(MouseEvent e) {
-                    System.out.println("wat wat");
-                    Chat p = new Chat(currentUserId,id);
-                    p.giveCurrentUserIdAndFriend(currentUserId, id);
-                    p.setVisible(true);
+                    try {
+                        File myFile = new File("Käyttöohjeet.pdf");
+                        Desktop.getDesktop().open(myFile);
+                    } catch (IOException ex) {}
                 }
-            });
-            pohja.add(kaveri);
-        } catch (Exception ex) {
-        }
-
+        });
+       
     }
 
     public void giveCurrentUserId(int id) throws IOException, SQLException {
         this.currentUserId = id;
         kaverit = db.getFriendsByIdInKaveri(currentUserId);
-        System.out.println("kaverilistan size " +kaverit.getIds().size());
         asetteleKaverit();
-        System.out.println("nickname : "+db.getNicknameById(id)+ " id "+id);
         nimi.setText(db.getNicknameById(id));
     }
 
     private void asetteleKaverit() throws IOException, SQLException {
+        // hakee kaverit ja asettelee ne
         if (Objects.isNull(kaverit)) {
             return;
         }
@@ -233,38 +130,54 @@ public class ChatRoom extends JFrame {
                         g2.setPaint(new Color(255, 0, 0, 150));
                         g2.setClip(ellipse);
                         g2.clip(rect);
-                        g.drawImage(img, 0, 0, null);
-                    }
+                        g.drawImage(img, 0, 0, null)
+;                    }
                 };
                 kaveri.add(FriendNickname);
                 kaveri.add(pallo);
             }
-            System.out.println(id);
             kaveri.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    System.out.println("wat wat");
-                    Chat p = new Chat(currentUserId,id);
-                    p.giveCurrentUserIdAndFriend(currentUserId, id);
-                    p.setVisible(true);
+                    if(e.getButton()==MouseEvent.BUTTON3){
+                        RemoveIkkuna remove = new RemoveIkkuna (currentUserId,id);
+                        tiedotIkkunaan(remove,kaveri);
+                    }else if(e.getButton()==MouseEvent.BUTTON1){
+                        Chat p = new Chat(currentUserId,id);
+                        p.giveCurrentUserIdAndFriend(currentUserId, id);
+                        p.setVisible(true);
+                    }
+                    
+      
+                }
+            });
+            kaveri.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                   
                 }
             });
             pohja.add(kaveri);
         }
     }
+    private void tiedotIkkunaan(RemoveIkkuna k, JPanel panel){
+        // Asettaa removeikkunan näky ville oikeeseen kohtaan
+        k.setLocationRelativeTo(panel);
+        k.setVisible(true);
+    }
 
     public BufferedImage resize(BufferedImage img, int newW, int newH) {
+        // vaihtaa kuvan kokoa
         Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
         BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
-
         Graphics2D g2d = dimg.createGraphics();
         g2d.drawImage(tmp, 0, 0, null);
         g2d.dispose();
-
         return dimg;
     }
 
     private void asetteleKomponentit() {
+        //Aseteeekomponentit
         fontChange();
         addlb.setFont(new Font(addlb.getName(), Font.PLAIN, 20));
         lbTitle.setFont(new Font(addlb.getName(), Font.PLAIN, 20));
@@ -285,13 +198,8 @@ public class ChatRoom extends JFrame {
         rivi1.add(lbTitle);
         this.add(new JScrollPane(pohja));
     }
-
-    public static void main(String[] args) {
-        ChatRoom cr = new ChatRoom();
-
-    }
-
     private void fontChange() {
+        //Vaihataa fontin 	
         Font labelFont = lbTitle.getFont();
         String labelText = lbTitle.getText();
 
@@ -309,8 +217,13 @@ public class ChatRoom extends JFrame {
 
         // Set the label's font size to the newly determined size.
         lbTitle.setFont(new Font(labelFont.getName(), Font.PLAIN, fontSizeToUse));
+        
+        
     }
 
+   
+    
+    
     class addL implements MouseListener {
 
         @Override
@@ -375,6 +288,7 @@ public class ChatRoom extends JFrame {
     }
 
     private void tiedotIkkunaaa(AddIkkuna k) {
+         // Asettaa addikkunan näkyville oikeeseen kohtaan
         k.setLocation(this.getX() + 10, this.getY() + 80);
         //k.setLocationRelativeTo(FriendLabel);
         k.setVisible(true);
