@@ -1,10 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a24bf21b-c48e-46c7-aea2-37ddf4d690bc" name="Default" comment="">
+    <list default="true" id="6c99a277-0b09-4d6c-8555-7abbe979cda9" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Chat_Room.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_8_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/sqljdbc41.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/sqljdbc42.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/2017-04-05.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/2017-04-07.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/2017-04-20.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/2017-04-21.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/2017-04-26.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/2017-04-27.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Download.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Download.png.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pic.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PogChamp.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SoundEffectsMOTD.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Swiftrage.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/monkaS.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/slk_hbc_logo.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Chat$1.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Chat$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Chat$2.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Chat$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Chat$3.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Chat$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Chat$4.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Chat$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Chat$5.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Chat$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Chat.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Chat.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/ChatRoom.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/ChatRoom.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Client$ListenFromServer.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Client$ListenFromServer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Client.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Client.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Database.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Database.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/InffoIkkuna.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/InffoIkkuna.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Log.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Log.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/OmaProfiili$5.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/OmaProfiili$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/OmaProfiili.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/OmaProfiili.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Server$ClientThread.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Server$ClientThread.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Server.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/Server.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/login$1.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/login$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/login$2.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/login$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/login$3.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/login$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Chat_room/chat/room/login.class" afterPath="$PROJECT_DIR$/out/production/Chat_room/chat/room/login.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Chat_room.iml" afterPath="$PROJECT_DIR$/.idea/Chat_room.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/built-jar.properties" afterPath="$PROJECT_DIR$/build/built-jar.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nbproject/private/private.properties" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/chat/room/Chat.java" afterPath="$PROJECT_DIR$/src/chat/room/Chat.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/chat/room/Client.java" afterPath="$PROJECT_DIR$/src/chat/room/Client.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/chat/room/Log.java" afterPath="$PROJECT_DIR$/src/chat/room/Log.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/chat/room/OmaProfiili.java" afterPath="$PROJECT_DIR$/src/chat/room/OmaProfiili.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/chat/room/Server.java" afterPath="$PROJECT_DIR$/src/chat/room/Server.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/chat/room/login.java" afterPath="$PROJECT_DIR$/src/chat/room/login.java" />
+
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,55 +63,44 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="Chat_room" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="login.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/chat/room/login.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="122" column="26" lean-forward="false" selection-start-line="15" selection-start-column="39" selection-end-line="152" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="misc.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChatRoom.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/chat/room/ChatRoom.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+            <state relative-caret-position="119">
+              <caret line="85" column="11" lean-forward="true" selection-start-line="85" selection-start-column="11" selection-end-line="85" selection-end-column="11" />
               <folding>
-                <marker date="1495046323673" expanded="true" signature="12963:13458" ph="{...}" />
-                <marker date="1495046323673" expanded="true" signature="13031:13135" ph="{...}" />
-                <marker date="1495046323673" expanded="true" signature="13202:13214" ph="{...}" />
-                <marker date="1495046323673" expanded="true" signature="13282:13294" ph="{...}" />
-                <marker date="1495046323673" expanded="true" signature="13361:13373" ph="{...}" />
-                <marker date="1495046323673" expanded="true" signature="13439:13451" ph="{...}" />
-                <marker date="1495046323673" expanded="true" signature="13505:14291" ph="{...}" />
-                <marker date="1495046323673" expanded="true" signature="13573:13585" ph="{...}" />
-                <marker date="1495046323673" expanded="true" signature="13652:14050" ph="{...}" />
+                <element signature="e#3031#3210#0" expanded="true" />
+                <element signature="e#3209#3210#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/chat/room/Database.java">
+      <file leaf-file-name="OmaProfiili.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/chat/room/OmaProfiili.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="246" column="36" lean-forward="false" selection-start-line="246" selection-start-column="36" selection-end-line="246" selection-end-column="36" />
-              <folding />
+            <state relative-caret-position="17">
+              <caret line="238" column="42" lean-forward="false" selection-start-line="238" selection-start-column="42" selection-end-line="238" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#7358#7359#0" expanded="false" />
+                <element signature="e#7407#7408#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -69,14 +108,115 @@
       <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/chat/room/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+            <state relative-caret-position="170">
+              <caret line="227" column="16" lean-forward="false" selection-start-line="227" selection-start-column="16" selection-end-line="227" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/chat/room/Client.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="918">
+              <caret line="58" column="18" lean-forward="false" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#502#503#0" expanded="false" />
+                <element signature="e#543#544#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChatMessage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/chat/room/ChatMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding>
+                <element signature="e#374#375#0" expanded="false" />
+                <element signature="e#393#394#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Log.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/chat/room/Log.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/chat/room/Database.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="40" column="74" lean-forward="false" selection-start-line="40" selection-start-column="74" selection-end-line="40" selection-end-column="74" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <marker date="1493376713507" expanded="true" signature="1883:1921" ph="select * fro... profile" />
+                <marker date="1493376713507" expanded="true" signature="3177:3223" ph="select Profi... profile" />
+                <marker date="1493376713507" expanded="true" signature="3849:3895" ph="select Profi... profile" />
+                <marker date="1493376713507" expanded="true" signature="4489:4528" ph="select * fro... profile" />
+                <marker date="1493376713507" expanded="true" signature="5738:5783" ph="select passw... profile" />
+                <marker date="1493376713507" expanded="true" signature="7002:7121" ph="INSERT INTO profile... " />
+                <marker date="1493376713507" expanded="true" signature="7686:7726" ph="insert into kaverit... " />
+                <marker date="1493376713507" expanded="true" signature="8338:8361" ph="select PWDCO... " />
+                <marker date="1493376713507" expanded="true" signature="9181:9278" ph="Update profi... " />
+                <marker date="1493376713507" expanded="true" signature="10084:10130" ph="select nickn... profile" />
+                <marker date="1493376713507" expanded="true" signature="10773:10817" ph="select kaver... kaverit" />
+                <marker date="1493376713507" expanded="true" signature="11737:11781" ph="select kaver... kaverit" />
+                <marker date="1493376713507" expanded="true" signature="15013:15060" ph="update kaver... " />
+                <marker date="1493376713507" expanded="true" signature="15310:15357" ph="update kaver... " />
+                <marker date="1493376713507" expanded="true" signature="16105:16144" ph="SELECT * FRO... kaverit" />
+                <marker date="1493376713507" expanded="true" signature="18616:18662" ph="update kaver... " />
+                <marker date="1493376713507" expanded="true" signature="20394:20442" ph="update kaver... " />
+                <marker date="1493376713507" expanded="true" signature="21259:21310" ph="update profi... " />
+                <marker date="1493376713507" expanded="true" signature="21931:21981" ph="select Profi... profile" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>picture</find>
+      <find>write</find>
+      <find>message</find>
+      <find>add</find>
+      <find>datetimeforma</find>
+      <find>on_close</find>
+      <find>sourceimage</find>
+      <find>main</find>
+      <find>broadcas§</find>
+      <find>log</find>
+      <find>unique</find>
+      <find>ct.id</find>
+      <find>uniqu</find>
+      <find>id</find>
+      <find>broacas</find>
+      <find>clientthread</find>
+      <find>clientth</find>
+      <find>Threa</find>
+      <find>run()</find>
+      <find>broadcas</find>
+      <find>client</find>
+      <find>closebtn</find>
+      <find>keskid.setkuka</find>
+      <find>keskid.setkenelle</find>
+      <find>location</find>
+      <find>keskid</find>
+      <find>friend</find>
+      <find>broadca</find>
+      <find>broadcast</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -89,16 +229,28 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/chat/room/ChatRoom.java" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/src/chat/room/Log.java" />
+        <option value="$PROJECT_DIR$/src/chat/room/OmaProfiili.java" />
+        <option value="$PROJECT_DIR$/src/chat/room/login.java" />
+        <option value="$PROJECT_DIR$/src/chat/room/Chat.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/d9378e0d-5808-4d5b-878f-867e7a824ff0/console.sql" />
+        <option value="$PROJECT_DIR$/src/chat/room/Client.java" />
+        <option value="$PROJECT_DIR$/src/chat/room/Server.java" />
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-17" />
+
+    <option name="x" value="1" />
     <option name="y" value="1" />
-    <option name="width" value="1939" />
-    <option name="height" value="1091" />
+    <option name="width" value="1364" />
+    <option name="height" value="726" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -115,17 +267,53 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Chat_room" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Chat_room" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Chat_room" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Chat_room" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="room" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Libraries/gson-2.8.0.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/sqljdbc_6.0/enu/jre8/sqljdbc42.jar!/" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="SQL Server (Microsoft)" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -140,6 +328,26 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.login">
+    <configuration default="false" name="AddIkkuna" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="chat.room.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="chat.room.AddIkkuna" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Chat_room" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="false" name="login" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -168,6 +376,46 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="chat.room.Server" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Chat_room" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="OmaProfiili" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="chat.room.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="chat.room.OmaProfiili" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Chat_room" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Chat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="chat.room.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="chat.room.Chat" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -265,6 +513,136 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -279,6 +657,15 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -323,6 +710,22 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -356,6 +759,12 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -384,14 +793,43 @@
       <listeners />
       <method />
     </configuration>
-    <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Application.login" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Server" />
+
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Application.AddIkkuna" />
+      <item index="1" class="java.lang.String" itemvalue="Application.login" />
+      <item index="2" class="java.lang.String" itemvalue="Application.Server" />
+      <item index="3" class="java.lang.String" itemvalue="Application.OmaProfiili" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Chat" />
     </list>
     <recent_temporary>
-      <list size="2">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.login" />
         <item index="1" class="java.lang.String" itemvalue="Application.Server" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Chat" />
+        <item index="3" class="java.lang.String" itemvalue="Application.OmaProfiili" />
+        <item index="4" class="java.lang.String" itemvalue="Application.AddIkkuna" />
       </list>
     </recent_temporary>
   </component>
@@ -400,53 +838,138 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a24bf21b-c48e-46c7-aea2-37ddf4d690bc" name="Default" comment="" />
-      <created>1493377475769</created>
+      <changelist id="6c99a277-0b09-4d6c-8555-7abbe979cda9" name="Default" comment="" />
+      <created>1493376744448</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1493377475769</updated>
+      <updated>1493376744448</updated>
+      <workItem from="1495129039811" duration="7070000" />
+      <workItem from="1495178499882" duration="8113000" />
+      <workItem from="1495299175316" duration="4602000" />
+      <workItem from="1495304593112" duration="598000" />
+      <workItem from="1495439195558" duration="364000" />
     </task>
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="20747000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-17" y="1" width="1939" height="1091" extended-state="0" />
+    <frame x="1" y="1" width="1364" height="726" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32892057" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1685761" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16694772" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
+
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32733223" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25113463" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27231467" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39770868" sideWeight="0.49707174" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32649842" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17350158" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25183016" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+
+    <breakpoint-manager>
+      <option name="time" value="7" />
+    </breakpoint-manager>
+
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -456,161 +979,615 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/chat/room/login.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2880">
-          <caret line="152" column="0" lean-forward="false" selection-start-line="15" selection-start-column="39" selection-end-line="152" selection-end-column="0" />
-          <folding />
+
+        <state relative-caret-position="2074">
+          <caret line="130" column="20" lean-forward="false" selection-start-line="130" selection-start-column="20" selection-end-line="130" selection-end-column="20" />
+          <folding>
+            <element signature="e#3031#3210#0" expanded="true" />
+            <element signature="e#3209#3210#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/chat/room/ChatRoom.java">
+
+    <entry file="file://$PROJECT_DIR$/src/chat/room/OmaProfiili.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        <state relative-caret-position="3808">
+          <caret line="224" column="91" lean-forward="false" selection-start-line="224" selection-start-column="91" selection-end-line="224" selection-end-column="91" />
           <folding>
-            <marker date="1495046323673" expanded="true" signature="12963:13458" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13031:13135" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13202:13214" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13282:13294" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13361:13373" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13439:13451" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13505:14291" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13573:13585" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13652:14050" ph="{...}" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#7358#7359#0" expanded="false" />
+            <element signature="e#7407#7408#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/chat/room/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+        <state relative-caret-position="1785">
+          <caret line="105" column="39" lean-forward="false" selection-start-line="105" selection-start-column="39" selection-end-line="105" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/chat/room/Database.java">
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Log.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5040">
-          <caret line="277" column="28" lean-forward="true" selection-start-line="277" selection-start-column="28" selection-end-line="277" selection-end-column="28" />
+        <state relative-caret-position="136">
+          <caret line="8" column="39" lean-forward="false" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/chat/room/login.java">
+
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Chat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3040">
-          <caret line="152" column="0" lean-forward="false" selection-start-line="15" selection-start-column="39" selection-end-line="152" selection-end-column="0" />
+        <state relative-caret-position="2618">
+          <caret line="154" column="0" lean-forward="false" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/chat/room/Server.java">
+
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chat/room/ChatRoom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3440">
-          <caret line="202" column="27" lean-forward="false" selection-start-line="202" selection-start-column="27" selection-end-line="202" selection-end-column="27" />
+        <state relative-caret-position="221">
+          <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
           <folding>
-            <marker date="1495046323673" expanded="true" signature="12963:13458" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13031:13135" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13202:13214" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13282:13294" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13361:13373" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13439:13451" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13505:14291" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13573:13585" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13652:14050" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chat/room/login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2880">
-          <caret line="152" column="0" lean-forward="false" selection-start-line="15" selection-start-column="39" selection-end-line="152" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chat/room/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="35" lean-forward="true" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chat/room/ChatRoom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3440">
-          <caret line="202" column="27" lean-forward="false" selection-start-line="202" selection-start-column="27" selection-end-line="202" selection-end-column="27" />
-          <folding>
-            <marker date="1495046323673" expanded="true" signature="12963:13458" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13031:13135" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13202:13214" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13282:13294" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13361:13373" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13439:13451" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13505:14291" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13573:13585" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13652:14050" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chat/room/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chat/room/ChatRoom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-          <folding>
-            <marker date="1495046323673" expanded="true" signature="12963:13458" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13031:13135" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13202:13214" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13282:13294" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13361:13373" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13439:13451" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13505:14291" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13573:13585" ph="{...}" />
-            <marker date="1495046323673" expanded="true" signature="13652:14050" ph="{...}" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#502#503#0" expanded="false" />
+            <element signature="e#543#544#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/chat/room/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="246" column="36" lean-forward="false" selection-start-line="246" selection-start-column="36" selection-end-line="246" selection-end-column="36" />
-          <folding />
+        <state relative-caret-position="9367">
+          <caret line="551" column="21" lean-forward="false" selection-start-line="551" selection-start-column="21" selection-end-line="551" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1493376713507" expanded="true" signature="1883:1921" ph="select * fro... profile" />
+            <marker date="1493376713507" expanded="true" signature="3177:3223" ph="select Profi... profile" />
+            <marker date="1493376713507" expanded="true" signature="3849:3895" ph="select Profi... profile" />
+            <marker date="1493376713507" expanded="true" signature="4489:4528" ph="select * fro... profile" />
+            <marker date="1493376713507" expanded="true" signature="5738:5783" ph="select passw... profile" />
+            <marker date="1493376713507" expanded="true" signature="7002:7121" ph="INSERT INTO profile... " />
+            <marker date="1493376713507" expanded="true" signature="7686:7726" ph="insert into kaverit... " />
+            <marker date="1493376713507" expanded="true" signature="8338:8361" ph="select PWDCO... " />
+            <marker date="1493376713507" expanded="true" signature="9181:9278" ph="Update profi... " />
+            <marker date="1493376713507" expanded="true" signature="10084:10130" ph="select nickn... profile" />
+            <marker date="1493376713507" expanded="true" signature="10773:10817" ph="select kaver... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="11737:11781" ph="select kaver... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="15013:15060" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="15310:15357" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="16105:16144" ph="SELECT * FRO... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="18616:18662" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="20394:20442" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="21259:21310" ph="update profi... " />
+            <marker date="1493376713507" expanded="true" signature="21931:21981" ph="select Profi... profile" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/chat/room/login.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="122" column="26" lean-forward="false" selection-start-line="15" selection-start-column="39" selection-end-line="152" selection-end-column="0" />
+        <state relative-caret-position="2074">
+          <caret line="130" column="20" lean-forward="false" selection-start-line="130" selection-start-column="20" selection-end-line="130" selection-end-column="20" />
+          <folding>
+            <element signature="e#3031#3210#0" expanded="true" />
+            <element signature="e#3209#3210#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/OmaProfiili.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3808">
+          <caret line="224" column="91" lean-forward="false" selection-start-line="224" selection-start-column="91" selection-end-line="224" selection-end-column="91" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#7358#7359#0" expanded="false" />
+            <element signature="e#7407#7408#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="105" column="39" lean-forward="false" selection-start-line="105" selection-start-column="39" selection-end-line="105" selection-end-column="39" />
+
           <folding />
+        </state>
+      </provider>
+    </entry>
+
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Log.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="39" lean-forward="false" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Chat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2618">
+          <caret line="154" column="0" lean-forward="false" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#502#503#0" expanded="false" />
+            <element signature="e#543#544#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9367">
+          <caret line="551" column="21" lean-forward="true" selection-start-line="551" selection-start-column="21" selection-end-line="551" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1493376713507" expanded="true" signature="1883:1921" ph="select * fro... profile" />
+            <marker date="1493376713507" expanded="true" signature="3177:3223" ph="select Profi... profile" />
+            <marker date="1493376713507" expanded="true" signature="3849:3895" ph="select Profi... profile" />
+            <marker date="1493376713507" expanded="true" signature="4489:4528" ph="select * fro... profile" />
+            <marker date="1493376713507" expanded="true" signature="5738:5783" ph="select passw... profile" />
+            <marker date="1493376713507" expanded="true" signature="7002:7121" ph="INSERT INTO profile... " />
+            <marker date="1493376713507" expanded="true" signature="7686:7726" ph="insert into kaverit... " />
+            <marker date="1493376713507" expanded="true" signature="8338:8361" ph="select PWDCO... " />
+            <marker date="1493376713507" expanded="true" signature="9181:9278" ph="Update profi... " />
+            <marker date="1493376713507" expanded="true" signature="10084:10130" ph="select nickn... profile" />
+            <marker date="1493376713507" expanded="true" signature="10773:10817" ph="select kaver... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="11737:11781" ph="select kaver... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="15013:15060" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="15310:15357" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="16105:16144" ph="SELECT * FRO... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="18616:18662" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="20394:20442" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="21259:21310" ph="update profi... " />
+            <marker date="1493376713507" expanded="true" signature="21931:21981" ph="select Profi... profile" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#3031#3210#0" expanded="true" />
+            <element signature="e#3209#3210#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+
+    <entry file="file://$PROJECT_DIR$/src/chat/room/OmaProfiili.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3808">
+          <caret line="224" column="91" lean-forward="false" selection-start-line="224" selection-start-column="91" selection-end-line="224" selection-end-column="91" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#7358#7359#0" expanded="false" />
+            <element signature="e#7407#7408#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3315">
+          <caret line="195" column="64" lean-forward="false" selection-start-line="195" selection-start-column="64" selection-end-line="195" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="39" lean-forward="false" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Chat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2618">
+          <caret line="154" column="0" lean-forward="true" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#502#503#0" expanded="false" />
+            <element signature="e#543#544#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8976">
+          <caret line="528" column="50" lean-forward="true" selection-start-line="528" selection-start-column="50" selection-end-line="528" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1493376713507" expanded="true" signature="1883:1921" ph="select * fro... profile" />
+            <marker date="1493376713507" expanded="true" signature="3177:3223" ph="select Profi... profile" />
+            <marker date="1493376713507" expanded="true" signature="3849:3895" ph="select Profi... profile" />
+            <marker date="1493376713507" expanded="true" signature="4489:4528" ph="select * fro... profile" />
+            <marker date="1493376713507" expanded="true" signature="5738:5783" ph="select passw... profile" />
+            <marker date="1493376713507" expanded="true" signature="7002:7121" ph="INSERT INTO profile... " />
+            <marker date="1493376713507" expanded="true" signature="7686:7726" ph="insert into kaverit... " />
+            <marker date="1493376713507" expanded="true" signature="8338:8361" ph="select PWDCO... " />
+            <marker date="1493376713507" expanded="true" signature="9181:9278" ph="Update profi... " />
+            <marker date="1493376713507" expanded="true" signature="10084:10130" ph="select nickn... profile" />
+            <marker date="1493376713507" expanded="true" signature="10773:10817" ph="select kaver... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="11737:11781" ph="select kaver... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="15013:15060" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="15310:15357" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="16105:16144" ph="SELECT * FRO... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="18616:18662" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="20394:20442" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="21259:21310" ph="update profi... " />
+            <marker date="1493376713507" expanded="true" signature="21931:21981" ph="select Profi... profile" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="53" column="39" lean-forward="false" selection-start-line="53" selection-start-column="39" selection-end-line="53" selection-end-column="39" />
+          <folding>
+            <element signature="e#3031#3210#0" expanded="true" />
+            <element signature="e#3209#3210#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/OmaProfiili.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5950">
+          <caret line="350" column="58" lean-forward="false" selection-start-line="350" selection-start-column="58" selection-end-line="350" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#7358#7359#0" expanded="false" />
+            <element signature="e#7407#7408#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Log.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="39" lean-forward="false" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Chat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="77" column="56" lean-forward="false" selection-start-line="77" selection-start-column="56" selection-end-line="77" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="58" column="45" lean-forward="false" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#502#503#0" expanded="false" />
+            <element signature="e#543#544#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9146">
+          <caret line="563" column="33" lean-forward="false" selection-start-line="563" selection-start-column="33" selection-end-line="563" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1493376713507" expanded="true" signature="1883:1921" ph="select * fro... profile" />
+            <marker date="1493376713507" expanded="true" signature="3177:3223" ph="select Profi... profile" />
+            <marker date="1493376713507" expanded="true" signature="3849:3895" ph="select Profi... profile" />
+            <marker date="1493376713507" expanded="true" signature="4489:4528" ph="select * fro... profile" />
+            <marker date="1493376713507" expanded="true" signature="5738:5783" ph="select passw... profile" />
+            <marker date="1493376713507" expanded="true" signature="7002:7121" ph="INSERT INTO profile... " />
+            <marker date="1493376713507" expanded="true" signature="7686:7726" ph="insert into kaverit... " />
+            <marker date="1493376713507" expanded="true" signature="8338:8361" ph="select PWDCO... " />
+            <marker date="1493376713507" expanded="true" signature="9181:9278" ph="Update profi... " />
+            <marker date="1493376713507" expanded="true" signature="10084:10130" ph="select nickn... profile" />
+            <marker date="1493376713507" expanded="true" signature="10773:10817" ph="select kaver... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="11737:11781" ph="select kaver... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="15013:15060" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="15310:15357" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="16105:16144" ph="SELECT * FRO... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="18616:18662" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="20394:20442" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="21259:21310" ph="update profi... " />
+            <marker date="1493376713507" expanded="true" signature="21931:21981" ph="select Profi... profile" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4811">
+          <caret line="283" column="25" lean-forward="false" selection-start-line="283" selection-start-column="25" selection-end-line="283" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+
+    <entry file="file://$PROJECT_DIR$/src/chat/room/login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="21" lean-forward="false" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+          <folding>
+            <element signature="e#3031#3210#0" expanded="true" />
+            <element signature="e#3209#3210#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/OmaProfiili.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5950">
+          <caret line="350" column="58" lean-forward="true" selection-start-line="350" selection-start-column="58" selection-end-line="350" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#7358#7359#0" expanded="false" />
+            <element signature="e#7407#7408#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+
+        <state relative-caret-position="9367">
+          <caret line="551" column="26" lean-forward="true" selection-start-line="551" selection-start-column="26" selection-end-line="551" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1493376713507" expanded="true" signature="1883:1921" ph="select * fro... profile" />
+            <marker date="1493376713507" expanded="true" signature="3177:3223" ph="select Profi... profile" />
+            <marker date="1493376713507" expanded="true" signature="3849:3895" ph="select Profi... profile" />
+            <marker date="1493376713507" expanded="true" signature="4489:4528" ph="select * fro... profile" />
+            <marker date="1493376713507" expanded="true" signature="5738:5783" ph="select passw... profile" />
+            <marker date="1493376713507" expanded="true" signature="7002:7121" ph="INSERT INTO profile... " />
+            <marker date="1493376713507" expanded="true" signature="7686:7726" ph="insert into kaverit... " />
+            <marker date="1493376713507" expanded="true" signature="8338:8361" ph="select PWDCO... " />
+            <marker date="1493376713507" expanded="true" signature="9181:9278" ph="Update profi... " />
+            <marker date="1493376713507" expanded="true" signature="10084:10130" ph="select nickn... profile" />
+            <marker date="1493376713507" expanded="true" signature="10773:10817" ph="select kaver... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="11737:11781" ph="select kaver... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="15013:15060" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="15310:15357" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="16105:16144" ph="SELECT * FRO... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="18616:18662" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="20394:20442" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="21259:21310" ph="update profi... " />
+            <marker date="1493376713507" expanded="true" signature="21931:21981" ph="select Profi... profile" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+          <folding>
+            <element signature="e#3031#3210#0" expanded="true" />
+            <element signature="e#3209#3210#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/OmaProfiili.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1938">
+          <caret line="114" column="26" lean-forward="false" selection-start-line="114" selection-start-column="26" selection-end-line="114" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#7358#7359#0" expanded="false" />
+            <element signature="e#7407#7408#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="4" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/AddIkkuna.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-390">
+          <caret line="26" column="23" lean-forward="false" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/ChatRoom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="71" column="34" lean-forward="true" selection-start-line="71" selection-start-column="34" selection-end-line="71" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Chat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1479">
+          <caret line="124" column="0" lean-forward="false" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/io/PrintStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="524" column="0" lean-forward="false" selection-start-line="524" selection-start-column="0" selection-end-line="524" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/io/Writer.java">
+      <provider selected="true" editor-type-id="text-editor">
+
+        <state relative-caret-position="118">
+          <caret line="156" column="0" lean-forward="false" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="826" column="0" lean-forward="false" selection-start-line="826" selection-start-column="0" selection-end-line="826" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/io/BufferedWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="231" column="0" lean-forward="false" selection-start-line="231" selection-start-column="0" selection-end-line="231" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d9378e0d-5808-4d5b-878f-867e7a824ff0/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Log.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/ChatMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#374#375#0" expanded="false" />
+            <element signature="e#393#394#0" expanded="false" />
+          </folding>
+
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+
+        <state relative-caret-position="918">
+          <caret line="58" column="18" lean-forward="false" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#502#503#0" expanded="false" />
+            <element signature="e#543#544#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="652" column="0" lean-forward="false" selection-start-line="652" selection-start-column="0" selection-end-line="652" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="40" column="74" lean-forward="false" selection-start-line="40" selection-start-column="74" selection-end-line="40" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1493376713507" expanded="true" signature="1883:1921" ph="select * fro... profile" />
+            <marker date="1493376713507" expanded="true" signature="3177:3223" ph="select Profi... profile" />
+            <marker date="1493376713507" expanded="true" signature="3849:3895" ph="select Profi... profile" />
+            <marker date="1493376713507" expanded="true" signature="4489:4528" ph="select * fro... profile" />
+            <marker date="1493376713507" expanded="true" signature="5738:5783" ph="select passw... profile" />
+            <marker date="1493376713507" expanded="true" signature="7002:7121" ph="INSERT INTO profile... " />
+            <marker date="1493376713507" expanded="true" signature="7686:7726" ph="insert into kaverit... " />
+            <marker date="1493376713507" expanded="true" signature="8338:8361" ph="select PWDCO... " />
+            <marker date="1493376713507" expanded="true" signature="9181:9278" ph="Update profi... " />
+            <marker date="1493376713507" expanded="true" signature="10084:10130" ph="select nickn... profile" />
+            <marker date="1493376713507" expanded="true" signature="10773:10817" ph="select kaver... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="11737:11781" ph="select kaver... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="15013:15060" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="15310:15357" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="16105:16144" ph="SELECT * FRO... kaverit" />
+            <marker date="1493376713507" expanded="true" signature="18616:18662" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="20394:20442" ph="update kaver... " />
+            <marker date="1493376713507" expanded="true" signature="21259:21310" ph="update profi... " />
+            <marker date="1493376713507" expanded="true" signature="21931:21981" ph="select Profi... profile" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/OmaProfiili.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="238" column="42" lean-forward="false" selection-start-line="238" selection-start-column="42" selection-end-line="238" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#7358#7359#0" expanded="false" />
+            <element signature="e#7407#7408#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="227" column="16" lean-forward="false" selection-start-line="227" selection-start-column="16" selection-end-line="227" selection-end-column="16" />
+
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chat/room/login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="85" column="11" lean-forward="true" selection-start-line="85" selection-start-column="11" selection-end-line="85" selection-end-column="11" />
+          <folding>
+            <element signature="e#3031#3210#0" expanded="true" />
+            <element signature="e#3209#3210#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -689,6 +1666,17 @@
         </settings>
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
         <settings>
           <splitter-proportions>
             <option name="proportions">

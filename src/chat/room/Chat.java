@@ -75,7 +75,7 @@ public class Chat extends JFrame {
         this.setTitle("Chat with "+k.getNicknameById(friendid)); // tähän lisätään chat with kaverin nimi
         this.setSize(410, 350);
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         javax.swing.border.Border b = BorderFactory.createLineBorder(Color.BLACK);
         viesti.setBorder(BorderFactory.createCompoundBorder(b,
                 BorderFactory.createEmptyBorder(10, 10, 10, 10)));
@@ -94,7 +94,7 @@ public class Chat extends JFrame {
         viesti.setBorder(roundedBorder);
         //yritän tehdä kirjoitus areasta pyöreän
         FriendLabel.addMouseListener(new MouseListener() {
-            InffoIkkuna tama= new InffoIkkuna(currentFriendId); // friend id = 2 vaihda sitte myöhemmin
+            InffoIkkuna tama= new InffoIkkuna(currentFriendId);
             @Override
             public void mouseClicked(MouseEvent e) {
             }
@@ -122,6 +122,7 @@ public class Chat extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
             }
+
         });
         chatArea.addKeyListener(new KeyListener() {
             @Override
@@ -167,7 +168,7 @@ public class Chat extends JFrame {
         viesti.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (viesti.getText().equals("kirjoitat tähän")) {
+                if (viesti.getText().equals("Write here")) {
                     viesti.setText("");
                 }
 
@@ -177,7 +178,7 @@ public class Chat extends JFrame {
             public void focusLost(FocusEvent e) {
 
                 if (viesti.getText().equals("")) {
-                    viesti.setText("kirjoitat tähän");
+                    viesti.setText("Write here");
                 }
             }
         });
@@ -207,7 +208,7 @@ public class Chat extends JFrame {
         // antaa käyttäjän idee ikkunalle
         currentUserId = id;
         currentFriendId = friendid;
-        client.getUsername(currentUserId);
+        client.getUsername(currentUserId, currentFriendId);
         run();
     }
 
