@@ -177,6 +177,7 @@ public class Database {
 
     public boolean createUser(String Username, String etunimi, String sukunimi, String nickname, String email, String password) {
         // tekee käyttäjän tietokantaan
+        if(Username.equals("")) return false;
         ArrayList<Profiili> k = new ArrayList<>();
         k = getUserByNickname(nickname);
         if (k.size() == 0) {
@@ -296,7 +297,7 @@ public class Database {
 
             return obj;
         } catch (Exception ex) {
-            System.out.println("error in getfriendsbyid " + ex);
+            System.out.println("error in getfriendsbyid in jsonobject " + ex);
             return null;
         } finally {
             suljeYhteys(connection);
@@ -330,7 +331,7 @@ public class Database {
             }
             return kaveri;
         } catch (Exception ex) {
-            System.out.println("error in getfriendsbyid " + ex);
+            System.out.println("error in getfriendsbyidinkaveri " + ex);
             return null;
         } finally {
             suljeYhteys(connection);
@@ -509,13 +510,14 @@ public class Database {
         JsonParser jsonparser = new JsonParser();
         for (int i = 0; i < kaverit.getFriendnames().size(); i++) {
             Kaveri kaverinkaverit = getFriendsByIdInKaveri(kaverit.getIds().get(i));
-            for (int j = 0; j < kaverinkaverit.getFriendnames().size() ; j++) {
+            if(Objects.isNull(kaverinkaverit)||Objects.isNull(kaverinkaverit.getFriendnames())) break;
+            for (int j = 0; j <= kaverinkaverit.getFriendnames().size()-1 ; j++) {
+                if(Objects.isNull(kaverinkaverit.getFriendnames().get(j))) break;
                 if(kaverinkaverit.getFriendnames().get(j).equals(oldnickname)){
                     kaverinkaverit.getFriendnames().set(j,newnickname);
                     break;
                 }
             }
-            System.out.println(kaverinkaverit.getFriendnames());
             String kaveritstring = gson.toJson(kaverinkaverit);
             JsonObject obj = (JsonObject) jsonparser.parse(kaveritstring);
             String insert = obj.toString();
@@ -590,7 +592,7 @@ public class Database {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, SQLException {
         Database meme = new Database();
-        meme.changeNicknameInFriends("ruupe","Lihapulla",7);
+        meme.changeNicknameInFriends("pekka","Turha ihminenas",2);
     }
     public static void suljeYhteys(Connection suljettavaYhteys) {
         // sulkee yhteyden  
