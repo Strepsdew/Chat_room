@@ -45,7 +45,7 @@ public class Database {
                     = "jdbc:sqlserver://chatservu.database.windows.net:1433;"
                     + "database=Chat_Room;"
                     + "user=Strepsdew@chatservu;"
-                    + "password=Tämäonkiva1;"
+                    + "password=<password>;" //ei toimi
                     + "encrypt=true;"
                     + "trustServerCertificate=false;"
                     + "hostNameInCertificate=*.database.windows.net;"
